@@ -248,22 +248,31 @@
     reveals.forEach((el) => rio.observe(el));
   }
 
-  // Safari tints the status bar when the page loads; if the phone switches light/dark while the page
-  // is open, repaint the root background and theme-color so the tint follows the new theme
+  // Safari 26 takes the status-bar tint from the sticky nav at the top edge and does not re-read it when
+  // the phone switches light/dark while the page is open. Hiding the nav for one frame makes it re-tint.
   const scheme = window.matchMedia("(prefers-color-scheme: dark)");
   const retint = () => {
     const bg = scheme.matches ? "#000000" : "#F5F5F7";
     document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.setAttribute("content", bg); });
-    document.documentElement.style.backgroundColor = bg;
-    // Safari re-reads the tint when the page scrolls: nudge by one pixel and back
-    const y = window.scrollY;
-    window.scrollTo(0, y > 0 ? y - 1 : y + 1);
-    requestAnimationFrame(() => {
-      window.scrollTo(0, y);
-      document.documentElement.style.backgroundColor = "";
-    });
+    const nav = document.querySelector(".nav");
+    if (!nav) return;
+    nav.style.display = "none";
+    void nav.offsetHeight;
+    setTimeout(() => { nav.style.display = ""; }, 60);
+    window.__retints = (window.__retints || 0) + 1;
   };
-  if (scheme.addEventListener) scheme.addEventListener("change", retint);
+  // the change event does not always arrive, so also compare on return to the tab and every 1.5 s
+  let lastDark = scheme.matches;
+  const checkScheme = () => {
+    if (scheme.matches === lastDark) return;
+    lastDark = scheme.matches;
+    retint();
+  };
+  if (scheme.addEventListener) scheme.addEventListener("change", checkScheme);
+  document.addEventListener("visibilitychange", checkScheme);
+  window.addEventListener("focus", checkScheme);
+  window.addEventListener("pageshow", checkScheme);
+  setInterval(checkScheme, 1500);
 
   // "Open on computer": share sheet on phones, copy the link elsewhere
   const shareBtn = document.querySelector("[data-share]");
