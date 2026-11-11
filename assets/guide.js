@@ -255,7 +255,13 @@
     const bg = scheme.matches ? "#000000" : "#F5F5F7";
     document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.setAttribute("content", bg); });
     document.documentElement.style.backgroundColor = bg;
-    requestAnimationFrame(() => { document.documentElement.style.backgroundColor = ""; });
+    // Safari re-reads the tint when the page scrolls: nudge by one pixel and back
+    const y = window.scrollY;
+    window.scrollTo(0, y > 0 ? y - 1 : y + 1);
+    requestAnimationFrame(() => {
+      window.scrollTo(0, y);
+      document.documentElement.style.backgroundColor = "";
+    });
   };
   if (scheme.addEventListener) scheme.addEventListener("change", retint);
 
