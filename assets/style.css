@@ -33,7 +33,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+/* Safari 26 paints the status bar from the root background: set it on <html> too */
+html { -webkit-text-size-adjust: 100%; background-color: var(--bg); }
 body {
   margin: 0; background: var(--bg); color: var(--text);
   font: 400 17px/1.47 var(--font); letter-spacing: -.022em;
@@ -509,3 +510,7 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 .js .reveal { opacity: 0; transform: translateY(24px); }
 .js .reveal.seen { opacity: 1; transform: none; transition: opacity .6s ease-out, transform .8s var(--spring); }
 @media (prefers-reduced-motion: reduce) { .js .reveal { opacity: 1; transform: none; } }
+
+/* nav a touch more opaque so the status bar tint matches the page */
+.nav { background: rgba(245, 245, 247, .9); }
+@media (prefers-color-scheme: dark) { .nav { background: rgba(0, 0, 0, .86); } }
