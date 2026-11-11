@@ -135,7 +135,7 @@
     if (slide._played) return;
     slide._played = true;
     let first = true;
-    for (const msg of slide.querySelectorAll(".msg")) {
+    for (const msg of slide.querySelectorAll(".exchange .msg")) {   // earlier history stays put
       if (msg.classList.contains("me")) {
         await wait(first ? 120 : 420);
         msg.classList.add("in");
@@ -159,7 +159,7 @@
     const caption = phone.querySelector(".caption");
     const arrows = [...phone.querySelectorAll(".pg-arrow")];
 
-    items.forEach((slide) => slide.querySelectorAll(".msg.ai").forEach((m) => {
+    items.forEach((slide) => slide.querySelectorAll(".exchange .msg.ai").forEach((m) => {
       const t = document.createElement("span");
       t.className = "typing";
       t.setAttribute("aria-hidden", "true");
