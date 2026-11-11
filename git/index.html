@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=17">
+<link rel="stylesheet" href="../assets/style.css?v=18">
 <script>document.documentElement.className = "js";</script>
 </head>
 <body data-os="win" data-ai="claude">
@@ -183,21 +183,31 @@ Press Enter to open https://github.com/login/device in your browser...
   <section class="section reveal">
     <p class="step">Шаг 4 из 4</p>
     <h2>Фразы, которые всё делают</h2>
-    <p class="lead-in">Пиши их <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением. Команды Git он наберёт сам. Листай вбок, чтобы увидеть следующую команду. Нажми на своё сообщение справа, чтобы скопировать</p>
+    <p class="lead-in">Пиши их <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением, команды Git он наберёт сам. Выбери ситуацию над окном</p>
 
-    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки, листай вбок">
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с ИИ">
+      <div class="cmd-tabs" role="group" aria-label="Ситуация">
+        <button type="button" aria-pressed="true">Версия</button>
+        <button type="button" aria-pressed="false">Откат</button>
+        <button type="button" aria-pressed="false">Ветка</button>
+        <button type="button" aria-pressed="false">Метка</button>
+        <button type="button" aria-pressed="false">GitHub</button>
+      </div>
+      <p class="caption" aria-live="polite">Сохранить версию проекта</p>
       <div class="mac">
         <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">my-app</span></div>
           <div class="slides" tabindex="0">
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Сохранить версию проекта" data-caption="Сохранить версию проекта">
               <div class="history">
+                <div class="msg me"><p class="bubble-me">Сделай сайт для кофейни «Зерно»</p></div>
+                <div class="msg ai"><p class="bubble-ai">Готово, сайт лежит в папке my-app</p></div>
                 <div class="msg me"><p class="bubble-me">Добавь форму входа на главную</p></div>
                 <div class="msg ai"><p class="bubble-ai">Готово, форма входа теперь на главной странице. Открой index.html в браузере, чтобы посмотреть</p></div>
               </div>
               <div class="exchange">
-                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сохрани проект"><span class="say">Сохрани проект</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">add</span> <span class="tok">-A</span></code></p></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">commit</span> <span class="tok">-m</span> <span class="tok">&quot;Добавил</span> <span class="tok">форму</span> <span class="tok">входа&quot;</span></code></p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сохрани проект"><span class="say">Сохрани проект</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Сохрани проект"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div>
+                <div class="msg ai tool" data-status="Собираю изменения"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">add</span> <span class="tok">-A</span></code></p></div>
+                <div class="msg ai tool" data-status="Сохраняю версию"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">commit</span> <span class="tok">-m</span> <span class="tok">&quot;Добавил</span> <span class="tok">форму</span> <span class="tok">входа&quot;</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Готово, сохранил версию «Добавил форму входа». Если что-то сломается, вернёмся к ней</p></div>
               </div>
             </div>
@@ -207,11 +217,11 @@ Press Enter to open https://github.com/login/device in your browser...
                 <div class="msg ai"><p class="bubble-ai">Поменял, все кнопки теперь зелёные</p></div>
               </div>
               <div class="exchange">
-                <div class="msg me"><img class="att" src="../assets/img/chat-broken.webp" alt="Скриншот: форма съехала на заголовок" width="560" height="364" decoding="async"><button type="button" class="bubble-btn" aria-label="Скопировать: Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт"><span class="say">Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">diff</span> <span class="tok">--stat</span></code></p></div>
+                <div class="msg me"><img class="att" src="../assets/img/chat-broken.webp" alt="Скриншот: форма съехала на заголовок" width="560" height="364" decoding="async"><button type="button" class="bubble-btn" aria-label="Скопировать: Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт"><span class="say">Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div>
+                <div class="msg ai tool" data-status="Смотрю, что изменилось"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">diff</span> <span class="tok">--stat</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Пропадут правки в двух файлах: style.css и app.js. Откатываю?</p></div>
                 <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да"><span class="say">Да</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">restore</span> <span class="tok">.</span></code></p></div>
+                <div class="msg ai tool" data-status="Откатываю правки"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">restore</span> <span class="tok">.</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Вернул проект к версии «Добавил форму входа»</p></div>
               </div>
             </div>
@@ -221,38 +231,42 @@ Press Enter to open https://github.com/login/device in your browser...
                 <div class="msg ai"><p class="bubble-ai">Тогда попробуем её в отдельной ветке. Основная версия останется как есть</p></div>
               </div>
               <div class="exchange">
-                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай ветку для новой фичи"><span class="say">Сделай ветку для новой фичи</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">switch</span> <span class="tok">-c</span> <span class="tok">new-feature</span></code></p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай ветку для новой фичи"><span class="say">Сделай ветку для новой фичи</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Сделай ветку для новой фичи"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div>
+                <div class="msg ai tool" data-status="Создаю ветку"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">switch</span> <span class="tok">-c</span> <span class="tok">new-feature</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Создал ветку new-feature. Основная версия не тронута</p></div>
-                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Слей ветку обратно"><span class="say">Слей ветку обратно</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">switch</span> <span class="tok">main</span> <span class="tok">&amp;&amp;</span> <span class="tok">git</span> <span class="tok">merge</span> <span class="tok">new-feature</span></code></p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Слей ветку обратно"><span class="say">Слей ветку обратно</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Слей ветку обратно"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div>
+                <div class="msg ai tool" data-status="Сливаю ветку"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">switch</span> <span class="tok">main</span> <span class="tok">&amp;&amp;</span> <span class="tok">git</span> <span class="tok">merge</span> <span class="tok">new-feature</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Готово, фича теперь в основной версии</p></div>
               </div>
               <p class="sys">Не получилось? Напиши <button type="button" class="pill" aria-label="Скопировать: Удали ветку"><span class="say">Удали ветку</span></button></p>
             </div>
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Закладка на удачной версии" data-caption="Закладка на удачной версии">
               <div class="history">
+                <div class="msg me"><p class="bubble-me">Сделай кнопку входа заметнее</p></div>
+                <div class="msg ai"><p class="bubble-ai">Сделал кнопку крупнее и ярче</p></div>
                 <div class="msg me"><p class="bubble-me">Сделай, чтобы после входа был виден заказ</p></div>
                 <div class="msg ai"><p class="bubble-ai">Готово, после входа открывается карточка с заказом и временем, когда он будет готов</p></div>
                 <div class="msg me"><p class="bubble-me">Проверь, что вход работает</p></div>
                 <div class="msg ai"><p class="bubble-ai">Проверил, ошибок нет, вход работает</p></div>
               </div>
               <div class="exchange">
-                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Поставь метку v1"><span class="say">Поставь метку v1</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">tag</span> <span class="tok">v1</span></code></p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Поставь метку v1"><span class="say">Поставь метку v1</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Поставь метку v1"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div>
+                <div class="msg ai tool" data-status="Ставлю метку"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">git</span> <span class="tok">tag</span> <span class="tok">v1</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Поставил метку v1. Вернуться к ней: <button type="button" class="pill" aria-label="Скопировать: Верни проект к метке v1"><span class="say">Верни проект к метке v1</span></button></p></div>
               </div>
             </div>
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Чтобы проект не пропал" data-caption="Чтобы проект не пропал">
               <div class="history">
+                <div class="msg me"><p class="bubble-me">Поставь фото кофе на главную</p></div>
+                <div class="msg ai"><p class="bubble-ai">Добавил фото в шапку сайта</p></div>
                 <div class="msg me"><p class="bubble-me">Сделай сайт удобным на телефоне</p></div>
                 <div class="msg ai"><p class="bubble-ai">Готово, на телефоне меню и форма теперь в одну колонку</p></div>
                 <div class="msg me"><p class="bubble-me">Добавь меню с ценами</p></div>
                 <div class="msg ai"><p class="bubble-ai">Добавил раздел «Меню» с ценами</p></div>
               </div>
               <div class="exchange">
-                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Отправь проект на GitHub в закрытый репозиторий"><span class="say">Отправь проект на GitHub в закрытый репозиторий</span></button><span class="status" aria-hidden="true"></span></div>
-                <div class="msg ai tool"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">gh</span> <span class="tok">repo</span> <span class="tok">create</span> <span class="tok">my-app</span> <span class="tok">--private</span> <span class="tok">--source</span> <span class="tok">.</span> <span class="tok">--push</span></code></p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Отправь проект на GitHub в закрытый репозиторий"><span class="say">Отправь проект на GitHub в закрытый репозиторий</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Отправь проект на GitHub в закрытый репозиторий"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div>
+                <div class="msg ai tool" data-status="Отправляю на GitHub"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">gh</span> <span class="tok">repo</span> <span class="tok">create</span> <span class="tok">my-app</span> <span class="tok">--private</span> <span class="tok">--source</span> <span class="tok">.</span> <span class="tok">--push</span></code></p></div>
                 <div class="msg ai"><p class="bubble-ai">Создал закрытый репозиторий my-app и отправил туда всю историю</p></div>
               </div>
             </div>
@@ -262,20 +276,6 @@ Press Enter to open https://github.com/login/device in your browser...
           <div class="mc-foot"><span><span data-ai-only="claude">Auto</span><span data-ai-only="codex">Local</span></span><span><span data-ai-only="claude">Opus 5.5</span><span data-ai-only="codex" class="mc-branch"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="4" cy="3.5" r="1.8"/><circle cx="4" cy="12.5" r="1.8"/><circle cx="12" cy="5.5" r="1.8"/><path d="M4 5.3v5.4M12 7.3c0 3-4.5 2.4-7.4 4"/></svg>main</span></span></div>
         </div>
       </div>
-          <div class="pager">
-            <p class="caption" aria-live="polite">Сохранить версию проекта</p>
-            <div class="pager-row">
-              <button type="button" class="pg-arrow" data-dir="-1" aria-label="Предыдущая команда">‹</button>
-              <div class="dots">
-              <button type="button" class="dot" aria-label="Команда 1: Сохранить версию проекта" aria-current="true"></button>
-              <button type="button" class="dot" aria-label="Команда 2: Откатить, когда всё сломалось"></button>
-              <button type="button" class="dot" aria-label="Команда 3: Попробовать новое без риска"></button>
-              <button type="button" class="dot" aria-label="Команда 4: Закладка на удачной версии"></button>
-              <button type="button" class="dot" aria-label="Команда 5: Чтобы проект не пропал"></button>
-              </div>
-              <button type="button" class="pg-arrow" data-dir="1" aria-label="Следующая команда">›</button>
-            </div>
-          </div>
     </div>
     <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
     <p class="done">Готово. Что бы ни сломалось дальше, ты вернёшься назад за одну фразу</p>
@@ -335,6 +335,7 @@ Press Enter to open https://github.com/login/device in your browser...
 </footer>
 
 <div class="toast" role="status" aria-live="polite" hidden></div>
-<script src="../assets/guide.js?v=17" defer></script>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=18" defer></script>
 </body>
 </html>
