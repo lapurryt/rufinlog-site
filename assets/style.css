@@ -532,130 +532,119 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 /* Safari: children with their own compositing layer (animated bubbles, the swipe hint, the scroll
    container) escape a parent's border-radius + overflow:hidden and show square corners.
    A mask on the rounded container forces WebKit to clip them to the curve. */
-.screen, .shot, .term {
+.mac, .shot, .term {
   -webkit-mask-image: -webkit-radial-gradient(white, black);
   isolation: isolate;
 }
 
-/* ---------- step 4: real iPhone render (Blender, assets/img/iphone-*.webp) + an iMessage-true screen ----------
-   Geometry comes from the render: frame 75.1 x 153.2 mm, display 66.86 x 145.36 mm, corner 10.31 mm.
-   The HTML screen is 0.6 mm larger than the glass opening, so the bezel image always covers its edge. */
-.phone { max-width: 330px; margin: 14px auto 0; }
-.device { position: relative; aspect-ratio: 901 / 1838; }
-.device::before {
-  content: ""; position: absolute; inset: 1.044% 2.13%; border-radius: 17.85% / 8.55%;
-  box-shadow: 0 44px 70px -40px rgba(0, 0, 0, .5);
+/* ---------- step 4: the AI app in a Mac window (Claude Code desktop, Codex app) ----------
+   Looks follow public screenshots of both apps: the person's message in a grey bubble on the right,
+   the AI's answer as plain text, the commands it runs as rows, the text field at the bottom. */
+.phone { max-width: 560px; margin: 14px auto 0; }
+.mac {
+  --w-bg: #FAF9F5; --w-ink: #141413; --w-ink2: #73726C; --w-line: rgba(31, 30, 29, .13);
+  --w-user: #F0EEE6; --w-field: #FFFFFF; --w-tool: rgba(31, 30, 29, .03);
+  position: relative; border-radius: 14px; overflow: hidden; background: var(--w-bg); color: var(--w-ink);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .1), 0 28px 60px -30px rgba(0, 0, 0, .45);
 }
-.bezel { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; user-select: none; -webkit-user-drag: none; }
-.bezel-silver { display: none; }
-.screen {
-  position: absolute; left: 4.687%; top: 2.166%; width: 90.626%; height: 95.667%; z-index: 1;
-  border-radius: 16.03% / 7.445%; overflow: hidden; --scr-bg: #FFFFFF; background: var(--scr-bg);
-}
-.display {
-  position: absolute; inset: .409% .882%; container-type: size; display: flex; flex-direction: column;
-  --pt: calc(100cqw / 402);          /* one iOS point of a 402 pt wide iPhone screen */
-  --u: calc(100cqw / 402 * 1.12);    /* app content at a slightly larger text size */
-  --card: var(--scr-bg); --ai-bg: #E9E9EB; color: var(--text); font-family: var(--font);
+[data-ai="codex"] .mac {
+  --w-bg: #FFFFFF; --w-ink: #0D0D0D; --w-ink2: #8F8F8F; --w-line: rgba(0, 0, 0, .1);
+  --w-user: #F3F3F3; --w-field: #FFFFFF; --w-tool: transparent;
 }
 @media (prefers-color-scheme: dark) {
-  .bezel-black { display: none; }
-  .bezel-silver { display: block; }
-  .device::before { box-shadow: none; }
-  .screen { --scr-bg: #000000; }
-  .display { --ai-bg: #262628; }
+  .mac {
+    --w-bg: #262624; --w-ink: #FAF9F5; --w-ink2: #A6A39A; --w-line: rgba(222, 220, 209, .14);
+    --w-user: #141413; --w-field: #30302E; --w-tool: rgba(222, 220, 209, .04);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .12), 0 28px 60px -30px rgba(0, 0, 0, .8);
+  }
+  [data-ai="codex"] .mac {
+    --w-bg: #181818; --w-ink: #ECECEC; --w-ink2: #8F8F8F; --w-line: rgba(255, 255, 255, .1);
+    --w-user: #2F2F2F; --w-field: #242424; --w-tool: transparent;
+  }
 }
 
-/* status bar: centred in the two "ears" beside the Dynamic Island, like iOS */
-.sb {
-  display: grid; grid-template-columns: 1fr calc(var(--pt) * 126) 1fr; align-items: center; height: calc(var(--pt) * 59.3);
-  font-weight: 600; font-size: calc(var(--pt) * 17); line-height: 1; letter-spacing: calc(var(--pt) * -.4);
-}
-.sb-time { justify-self: center; }
-.sb-right { justify-self: center; display: flex; align-items: center; gap: calc(var(--pt) * 5.5); }
-.sb svg { display: block; height: auto; }
-.sb-cell, .sb-bat { fill: currentColor; }
-.sb-cell { width: calc(var(--pt) * 18.5); }
-.sb-wifi { width: calc(var(--pt) * 16.5); }
-.sb-bat { width: calc(var(--pt) * 27.3); }
+/* title bar: traffic lights + project name; a soft fade where older messages scroll under it */
+.mac-bar { position: relative; z-index: 3; display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; background: var(--w-bg); }
+.mac-bar::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 30px; background: linear-gradient(var(--w-bg), transparent); pointer-events: none; }
+.mac-bar i { width: 12px; height: 12px; border-radius: 50%; background: #FF5F57; box-shadow: inset 0 0 0 .5px rgba(0, 0, 0, .15); }
+.mac-bar i:nth-child(2) { background: #FEBC2E; }
+.mac-bar i:nth-child(3) { background: #28C840; }
+.mac-title { position: absolute; inset: 0; display: grid; place-items: center; font-size: 13px; font-weight: 600; color: var(--w-ink2); letter-spacing: -.01em; }
 
-/* conversation header */
-.convo-top { flex: none; background: rgba(246, 246, 246, .94); border-bottom: 1px solid rgba(60, 60, 67, .14); }
-.convo-head {
-  display: grid; grid-template-columns: calc(var(--pt) * 60) 1fr calc(var(--pt) * 60); align-items: start;
-  padding: calc(var(--pt) * 2) 0 calc(var(--pt) * 8);
+/* the chat: newest at the bottom, older history slides up under the title bar */
+/* narrow window = longer lines wrap more, so it gets taller: ~440 px at phone width, ~380 px at 560 px */
+.mac { container-type: inline-size; }
+.mac .slides { height: calc(31.5rem - 27.65cqw); }
+.mac .slide { min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
+.mac .slide.thread { padding: 0 16px 8px; }
+.mac .msg { margin-top: 10px; }
+.mac .msg.me { margin-top: 22px; }
+.mac .msg.tool { margin-top: 7px; }
+.mac .msg.tool + .msg.ai:not(.tool) { margin-top: 10px; }
+.mac .history .msg:first-child { margin-top: 0; }
+.mac .bubble-btn, .mac .bubble-me {
+  max-width: 86%; margin: 0; padding: 8px 13px; border-radius: 14px; background: var(--w-user); color: var(--w-ink);
+  font-size: .8529rem; line-height: 1.42; letter-spacing: -.005em; text-align: left;
 }
-.ch-side { display: flex; color: var(--me); padding: calc(var(--pt) * 15) 0 0 calc(var(--pt) * 14); }
-.ch-right { justify-content: flex-end; padding: calc(var(--pt) * 18) calc(var(--pt) * 16) 0 0; }
-.ch-back { width: calc(var(--pt) * 12); height: calc(var(--pt) * 20); }
-.ch-video { width: calc(var(--pt) * 26); height: calc(var(--pt) * 16); }
-.ch-who { display: flex; flex-direction: column; align-items: center; gap: calc(var(--pt) * 4); }
-.display .avatar {
-  width: calc(var(--pt) * 52); height: calc(var(--pt) * 52); border-radius: 50%; display: grid; place-items: center;
-  background: linear-gradient(#A5ABB8, #858994); color: #fff; font-weight: 500; font-size: calc(var(--pt) * 22); line-height: 1;
+.mac .bubble-ai {
+  max-width: 100%; padding: 0; border-radius: 0; background: none; color: var(--w-ink);
+  font-size: .8529rem; line-height: 1.5; letter-spacing: -.005em;
 }
-.display .who-name { display: inline-flex; align-items: center; gap: calc(var(--pt) * 3); font-size: calc(var(--pt) * 11); line-height: 1.2; }
-.ch-more { width: calc(var(--pt) * 5); height: calc(var(--pt) * 9); color: #8E8E93; }
-@media (prefers-color-scheme: dark) {
-  .convo-top { background: rgba(22, 22, 24, .94); border-bottom-color: rgba(84, 84, 88, .5); }
-  .display .avatar { background: linear-gradient(#6E7380, #535661); }
-}
-
-/* the chat: newest messages sit right above the text field, as in any real messenger */
-.display .slides { flex: 1 1 0; min-height: 0; }
-.display .slide { min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; overflow: hidden; }
-.display .slide.thread { padding: 0 calc(var(--u) * 13) calc(var(--u) * 8); font-size: calc(var(--u) * 17); }
-.stamp { text-align: center; color: #8E8E93; font-size: calc(var(--u) * 11); line-height: 1.3; margin: calc(var(--u) * 14) 0 calc(var(--u) * 6); letter-spacing: 0; }
-.stamp b { font-weight: 600; }
-.display .msg { margin-top: calc(var(--u) * 2); }
-.display .thread .msg.me + .msg.ai, .display .thread .msg.ai + .msg.me { margin-top: calc(var(--u) * 9); }
-.display .bubble-btn, .display .bubble-ai, .display .bubble-me {
-  max-width: 76%; margin: 0; padding: calc(var(--u) * 7) calc(var(--u) * 12); border-radius: calc(var(--u) * 18);
-  font-size: calc(var(--u) * 17); line-height: 1.29; letter-spacing: calc(var(--u) * -.43);
-}
-.display .bubble-me { position: relative; z-index: 0; background: var(--me); color: #fff; }
-.display .bubble-btn::before, .display .bubble-btn::after, .display .bubble-ai::before, .display .bubble-ai::after,
-.display .bubble-me::before, .display .bubble-me::after { content: ""; position: absolute; bottom: 0; height: 1.06em; }
-.display .bubble-me::before, .display .bubble-me::after { z-index: -1; }
-.display .bubble-btn::before, .display .bubble-me::before { right: -.41em; width: 1.18em; background: var(--me); border-bottom-left-radius: .94em .82em; }
-.display .bubble-btn::after, .display .bubble-me::after { right: -.59em; width: .59em; background: var(--card); border-bottom-left-radius: .59em; }
-.display .bubble-ai::before { left: -.41em; width: 1.18em; background: var(--ai-bg); border-bottom-right-radius: .94em .82em; }
-.display .bubble-ai::after { left: -.59em; width: .59em; background: var(--card); border-bottom-right-radius: .59em; }
+.mac .bubble-btn::before, .mac .bubble-btn::after, .mac .bubble-ai::before, .mac .bubble-ai::after { display: none; }
 .js .thread:not(.solo) .history .msg > .bubble-ai { opacity: 1; transform: none; }
-.display .typing { padding: .66em .8em; gap: .28em; border-radius: 1.06em; }
-.display .typing i { width: .47em; height: .47em; }
-.display .pill { font-size: .86em; padding: .28em .72em; }
-.display .sys { font-size: calc(var(--u) * 12.5); margin: calc(var(--u) * 10) 0 0; }
-.display .thread .status { left: 0; right: auto; bottom: calc(var(--u) * 6); font-size: calc(var(--u) * 11); }
+.mac .bubble-btn:focus-visible { outline: 3px solid var(--link); outline-offset: 2px; }
 
-/* text field and home indicator */
-.composer { flex: none; display: flex; align-items: center; gap: calc(var(--pt) * 8); padding: calc(var(--pt) * 6) calc(var(--pt) * 12) calc(var(--pt) * 4); }
-.cmp-plus {
-  flex: none; width: calc(var(--pt) * 34); height: calc(var(--pt) * 34); border-radius: 50%; display: grid; place-items: center;
-  background: #E9E9EB; color: #7C7C80; font-size: calc(var(--pt) * 26); font-weight: 300; line-height: 1;
+/* a command the AI runs (Claude: a "Bash" card; Codex: a "Ran ..." line) */
+.mac .tool-row {
+  display: flex; flex-direction: column; gap: 3px; width: 100%; padding: 8px 11px;
+  border: 1px solid var(--w-line); border-radius: 10px; background: var(--w-tool);
 }
-.cmp-field {
-  flex: 1; display: flex; align-items: center; justify-content: space-between; height: calc(var(--pt) * 36);
-  padding: 0 calc(var(--pt) * 11) 0 calc(var(--pt) * 14); border: 1px solid rgba(60, 60, 67, .2); border-radius: calc(var(--pt) * 18);
-  color: #8E8E93; font-size: calc(var(--pt) * 17); letter-spacing: calc(var(--pt) * -.4);
+.mac .tool-name { font-size: .7059rem; font-weight: 600; color: var(--w-ink2); letter-spacing: 0; }
+.mac .tool-row code { padding: 0; background: none; border-radius: 0; font: 500 .7353rem/1.45 var(--mono); color: var(--w-ink); white-space: pre-wrap; overflow-wrap: anywhere; letter-spacing: 0; }
+.mac .tool-row code::before { content: "$ "; color: var(--w-ink2); }
+[data-ai="codex"] .mac .tool-row { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 0 6px; padding: 0; border: 0; border-radius: 0; background: none; }
+[data-ai="codex"] .mac .tool-name { font-size: .7941rem; font-weight: 400; }
+[data-ai="codex"] .mac .tool-row code { font: 400 .7941rem/1.45 var(--font); }
+[data-ai="codex"] .mac .tool-row code::before { content: none; }
+[data-ai="codex"] .mac .tool-row code::after { content: " \203A"; color: var(--w-ink2); }
+
+/* screenshot the person attached to a message */
+.mac .att { display: block; width: 48%; max-width: 230px; height: auto; margin-bottom: 6px; border-radius: 10px; box-shadow: 0 0 0 1px var(--w-line); }
+.js .thread:not(.solo) .msg > .att { opacity: 0; transform: translateY(12px) scale(.94); transform-origin: 100% 100%; }
+.js .thread:not(.solo) .msg.in > .att { opacity: 1; transform: none; transition: transform .52s var(--spring), opacity .18s linear; }
+
+.mac .typing { padding: 6px 0; background: none; }
+.mac .typing i { width: 7px; height: 7px; }
+.mac .thread .status { top: -17px; bottom: auto; right: 4px; font-size: .6471rem; }
+.mac .pill { background: var(--w-user); color: var(--link); }
+.mac .sys { color: var(--w-ink2); font-size: .7647rem; margin: 12px 0 0; }
+
+/* text field */
+.mac-composer { padding: 6px 14px 12px; }
+.mc-field {
+  display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 10px; min-height: 46px;
+  padding: 8px 12px; border: 1px solid var(--w-line); border-radius: 16px; background: var(--w-field);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .04);
 }
-.cmp-mic { width: calc(var(--pt) * 11); height: calc(var(--pt) * 17); }
-.home-ind { flex: none; height: calc(var(--pt) * 30); position: relative; }
-.home-ind::after {
-  content: ""; position: absolute; left: 50%; bottom: calc(var(--pt) * 8); width: calc(var(--pt) * 140); height: calc(var(--pt) * 5);
-  margin-left: calc(var(--pt) * -70); border-radius: 99px; background: var(--text);
+.mc-plus { font-size: 1.25rem; line-height: 1; font-weight: 300; color: var(--w-ink2); }
+.mc-ph { min-width: 0; font-size: .8235rem; color: var(--w-ink2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mc-icons { display: flex; align-items: center; gap: 10px; color: var(--w-ink2); }
+.mc-icons > svg { display: block; width: 13px; height: 18px; }
+.mc-send { display: none; }
+.mc-foot { display: flex; justify-content: space-between; padding: 7px 6px 0; font-size: .7059rem; color: var(--w-ink2); }
+.mc-branch { display: inline-flex; align-items: center; gap: 4px; }
+.mc-branch svg { width: 12px; height: 12px; }
+[data-ai="codex"] .mc-field {
+  grid-template-areas: "ph ph ph" "plus . icons"; row-gap: 12px; padding: 12px 10px 8px 14px; border-radius: 22px;
+  box-shadow: 0 2px 10px -4px rgba(0, 0, 0, .14);
 }
-@media (prefers-color-scheme: dark) {
-  .cmp-plus { background: #262628; color: #98989D; }
-  .cmp-field { border-color: rgba(235, 235, 245, .18); }
-}
+[data-ai="codex"] .mc-ph { grid-area: ph; }
+[data-ai="codex"] .mc-plus { grid-area: plus; }
+[data-ai="codex"] .mc-icons { grid-area: icons; }
+[data-ai="codex"] .mc-send { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--w-ink); color: var(--w-bg); }
+[data-ai="codex"] .mc-send svg { width: 14px; height: 14px; }
 .phone .pager { padding: 18px 0 0; }
-
-/* image attachment in the chat: no tail, rounded like a photo in iMessage */
-.display .bubble-img { padding: 0; background: none; width: 68%; max-width: 68%; }
-.display .bubble-img::before, .display .bubble-img::after { display: none; }
-.display .bubble-img img {
-  display: block; width: 100%; height: auto; border-radius: calc(var(--u) * 16);
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, .06);
-}
-@media (prefers-color-scheme: dark) { .display .bubble-img img { box-shadow: 0 0 0 1px rgba(255, 255, 255, .08); } }
+.mac .tool-row .tok { white-space: nowrap; }
+[data-ai="codex"] .mac .tool-row { display: block; }
+[data-ai="codex"] .mac .tool-name { margin-right: 6px; }
+[data-ai="codex"] .mac .slides { height: calc(29.5rem - 27.65cqw); }

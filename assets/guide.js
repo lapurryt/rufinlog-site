@@ -139,6 +139,9 @@
       if (msg.classList.contains("me")) {
         await wait(first ? 120 : 420);
         msg.classList.add("in");
+      } else if (msg.classList.contains("tool")) {   // the command the AI runs: no typing dots
+        await wait(reduce ? 0 : 380);
+        msg.classList.add("in");
       } else {
         await wait(260);
         msg.classList.add("typing-on");
@@ -159,7 +162,7 @@
     const caption = phone.querySelector(".caption");
     const arrows = [...phone.querySelectorAll(".pg-arrow")];
 
-    items.forEach((slide) => slide.querySelectorAll(".exchange .msg.ai").forEach((m) => {
+    items.forEach((slide) => slide.querySelectorAll(".exchange .msg.ai:not(.tool)").forEach((m) => {
       const t = document.createElement("span");
       t.className = "typing";
       t.setAttribute("aria-hidden", "true");
