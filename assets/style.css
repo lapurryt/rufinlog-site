@@ -191,8 +191,7 @@ ul.group li:first-child { border-top: 0; }
 /* show only the chosen OS */
 body[data-os="win"] [data-only="mac"], body[data-os="mac"] [data-only="win"],
 body[data-ai="claude"] [data-ai-only="codex"], body[data-ai="codex"] [data-ai-only="claude"] { display: none !important; }
-.hero .segmented + .segmented { margin-left: 8px; }
-@media (max-width: 420px) { .hero .segmented + .segmented { margin: 10px 0 0; } }
+
 
 @media (min-width: 734px) {
   .hero { padding: 80px 0 36px; }
@@ -374,4 +373,18 @@ body[data-ai="claude"] [data-ai-only="codex"], body[data-ai="codex"] [data-ai-on
 .js .sketch.play .hand { opacity: 1; transition: opacity .35s linear var(--d, 0s); }
 @media (prefers-reduced-motion: reduce) {
   .js .sketch .ink, .js .sketch .hand { opacity: 1 !important; stroke-dashoffset: 0 !important; transition: none !important; }
+}
+
+/* ---------- phone polish ---------- */
+.switches { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.switches .segmented { display: flex; width: 272px; }
+.switches .segmented button { flex: 1; }
+button, a, summary { -webkit-tap-highlight-color: transparent; }
+.segmented button:active, .copy:active, .nav-action:active { opacity: .6; }
+.row.cmd code { white-space: normal; overflow-wrap: normal; }
+.row.cmd code .tok { white-space: nowrap; }
+.row.cmd code .tok.long { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .row.cmd code { font-size: 13.5px; line-height: 1.5; }
+  .copy { font-size: 14px; }
 }

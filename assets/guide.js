@@ -12,6 +12,19 @@
   }
 
   // Clipboard: the modern API fails inside some in-app browsers (Instagram), so fall back to a hidden textarea.
+  // Commands wrap only between words on phones: "-e" never splits into "-" and "e"
+  document.querySelectorAll(".row.cmd code").forEach((code) => {
+    const parts = code.textContent.split(/( +)/);
+    code.textContent = "";
+    parts.forEach((part) => {
+      if (/^ +$/.test(part) || part === "") { code.append(part); return; }
+      const span = document.createElement("span");
+      span.className = part.length > 26 ? "tok long" : "tok";
+      span.textContent = part;
+      code.append(span);
+    });
+  });
+
   async function copyText(text) {
     try {
       if (navigator.clipboard && window.isSecureContext) {

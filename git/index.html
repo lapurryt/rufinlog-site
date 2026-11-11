@@ -9,6 +9,8 @@
 <meta property="og:description" content="Claude и ChatGPT сами сохраняют проект, откатывают его и выкладывают на GitHub. Пошагово для Windows и Mac">
 <meta property="og:type" content="article">
 <meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
@@ -30,13 +32,15 @@
     <h1>Git для Claude Code и Codex</h1>
     <p class="sub">Настрой один раз, и Claude с ChatGPT сами сохраняют проект, возвращают рабочую версию и выкладывают его на GitHub. По одной фразе</p>
     <p class="meta">20 минут, удобнее с компьютера</p>
-    <div class="segmented" role="group" aria-label="Твой компьютер">
-      <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
-      <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
-    </div>
-    <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
-      <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
-      <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
+    <div class="switches">
+      <div class="segmented" role="group" aria-label="Твой компьютер">
+        <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+        <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+      </div>
+      <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
+        <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
+        <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
+      </div>
     </div>
   </header>
 
