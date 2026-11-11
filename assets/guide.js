@@ -237,6 +237,17 @@
     io.observe(sk);
   });
 
+  // Sections fade up once as they scroll in (Apple product-page rhythm)
+  const reveals = document.querySelectorAll(".reveal");
+  if (reduce || !("IntersectionObserver" in window)) {
+    reveals.forEach((el) => el.classList.add("seen"));
+  } else {
+    const rio = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("seen"); rio.unobserve(e.target); }
+    }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    reveals.forEach((el) => rio.observe(el));
+  }
+
   // "Open on computer": share sheet on phones, copy the link elsewhere
   const shareBtn = document.querySelector("[data-share]");
   if (shareBtn) {

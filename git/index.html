@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=3">
+<link rel="stylesheet" href="../assets/style.css?v=5">
 <script>document.documentElement.className = "js";</script>
 </head>
 <body data-os="win" data-ai="claude">
@@ -22,7 +22,7 @@
 <nav class="nav">
   <div class="nav-in">
     <a class="brand" href="../">rufinlog</a>
-    <button class="nav-action" type="button" data-share>Открыть на компьютере</button>
+    <button class="nav-pill" type="button" data-share aria-label="Открыть гайд на компьютере">На компьютер</button>
   </div>
 </nav>
 
@@ -30,21 +30,31 @@
 
   <header class="hero">
     <h1>Git для Claude Code и Codex</h1>
-    <p class="sub">Настрой один раз, и Claude с ChatGPT сами сохраняют проект, возвращают рабочую версию и выкладывают его на GitHub. По одной фразе</p>
+    <p class="sub">Сломал проект? Вернёшь одной фразой</p>
     <p class="meta">20 минут, удобнее с компьютера</p>
-    <div class="switches">
-      <div class="segmented" role="group" aria-label="Твой компьютер">
-        <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
-        <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
-      </div>
-      <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
-        <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
-        <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
-      </div>
-    </div>
   </header>
 
-  <section class="section">
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+      <div class="row setup-row">
+        <span class="setup-label">ИИ</span>
+        <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
+          <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
+          <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
+  </section>
+
+  <section class="section reveal">
     <h2>Что понадобится</h2>
     <ul class="group">
       <li>Компьютер на Windows 10, 11 или Mac</li>
@@ -54,15 +64,19 @@
     </ul>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <p class="step">Шаг 1 из 4</p>
     <h2>Поставь Git</h2>
 
     <div data-only="win">
       <ol class="how">
-        <li>Скачай установщик на <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">git-scm.com</a>, кнопка «Git for Windows/x64 Setup»</li>
-        <li>Запусти его и нажимай Next до конца, ничего не меняя</li>
+        <li>Открой <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">git-scm.com</a> и нажми «Click here to download»</li>
+        <li>Запусти скачанный файл и нажимай Next до конца, ничего не меняя</li>
       </ol>
+      <figure class="shot">
+        <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>git-scm.com</span></div>
+        <img src="../assets/img/git-download.webp" width="1120" height="544" loading="lazy" alt="Страница git-scm.com: ссылка Click here to download обведена синим">
+      </figure>
       <p class="label">Или одной командой в PowerShell</p>
       <div class="group">
         <div class="row cmd"><code>winget install --id Git.Git -e --source winget</code><button type="button" class="copy">Скопировать</button></div>
@@ -86,7 +100,7 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <p class="step">Шаг 2 из 4</p>
     <h2>Войди в GitHub</h2>
     <ol class="how">
@@ -101,8 +115,22 @@
     <p class="label">Закрой терминал, открой заново и войди</p>
     <div class="group">
       <div class="row cmd"><code>gh auth login</code><button type="button" class="copy">Скопировать</button></div>
-      <div class="row note">Отвечай стрелками и Enter: GitHub.com, HTTPS, Yes, Login with a web browser. Терминал покажет код из 8 символов, вставь его в браузере, который откроется</div>
+      <div class="row note">Отвечай стрелками и Enter, как на картинке ниже. Код из 8 символов вставь в браузере, который откроется</div>
     </div>
+
+    <figure class="term">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>Терминал</span></div>
+      <pre aria-label="Пример входа в GitHub CLI"><span class="t-dim">&gt;</span> gh auth login
+<span class="t-q">?</span> Where do you use GitHub? <span class="t-a">GitHub.com</span>
+<span class="t-q">?</span> What is your preferred protocol for Git operations on this host? <span class="t-a">HTTPS</span>
+<span class="t-q">?</span> Authenticate Git with your GitHub credentials? <span class="t-a">Yes</span>
+<span class="t-q">?</span> How would you like to authenticate GitHub CLI? <span class="t-a">Login with a web browser</span>
+
+<span class="t-w">!</span> First copy your one-time code: <span class="t-a">1A2B-3C4D</span>
+Press Enter to open https://github.com/login/device in your browser...
+<span class="t-ok">✓</span> Logged in as your-name</pre>
+      <figcaption>Пример. Код и ник у тебя будут свои</figcaption>
+    </figure>
 
     <p class="label">Проверка</p>
     <div class="group">
@@ -111,7 +139,7 @@
     </div>
   </section>
 
-  <aside class="tile">
+  <aside class="tile reveal">
     <p class="tile-title">Новые гайды выходят в Telegram</p>
     <p>Сначала там, потом здесь</p>
     <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
@@ -152,74 +180,79 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section reveal">
     <p class="step">Шаг 4 из 4</p>
     <h2>Фразы, которые всё делают</h2>
     <p class="lead-in">Пиши их <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением. Команды Git он наберёт сам. Листай вбок, чтобы увидеть следующую команду. Нажми на синее сообщение, чтобы скопировать</p>
 
-    <div class="phone" role="region" aria-roledescription="карусель" aria-label="Примеры переписки, листай вбок">
-      <div class="phone-top" aria-hidden="true">
-        <span class="phone-back">‹</span>
-        <span class="phone-who">
-          <span class="avatar"><span data-ai-only="claude">C</span><span data-ai-only="codex">X</span></span>
-          <span class="who-name"><span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span></span>
-          <span class="who-sub">папка my-app</span>
-        </span>
-        <span class="phone-back phone-ghost">‹</span>
-      </div>
-      <div class="slides" tabindex="0">
-        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Сохранить версию проекта" data-caption="Сохранить версию проекта">
-          <div class="exchange">
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сохрани проект"><span class="say">Сохрани проект</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Готово, сохранил версию «Добавил форму входа»</p></div>
+    <div class="iphone reveal">
+      <div class="iphone-screen">
+        <div class="status-bar" aria-hidden="true"><span>9:41</span><span class="island"></span><span class="sb-right"><svg class="sig" viewBox="0 0 17 11" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx="1"/><rect x="4.6" y="5" width="3" height="6" rx="1"/><rect x="9.2" y="2.5" width="3" height="8.5" rx="1"/><rect x="13.8" y="0" width="3" height="11" rx="1"/></svg><i class="bat"></i></span></div>
+        <div class="phone" role="region" aria-roledescription="карусель" aria-label="Примеры переписки, листай вбок">
+          <div class="phone-top" aria-hidden="true">
+            <span class="phone-back">‹</span>
+            <span class="phone-who">
+              <span class="avatar"><span data-ai-only="claude">C</span><span data-ai-only="codex">X</span></span>
+              <span class="who-name"><span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span></span>
+              <span class="who-sub">папка my-app</span>
+            </span>
+            <span class="phone-back phone-ghost">‹</span>
           </div>
-          
-        </div>
-        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Откатить, когда всё сломалось" data-caption="Откатить, когда всё сломалось">
-          <div class="exchange">
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт"><span class="say">Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Пропадут правки в двух файлах: style.css и app.js. Откатываю?</p></div>
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да"><span class="say">Да</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Вернул проект к версии «Добавил форму входа»</p></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Сохранить версию проекта" data-caption="Сохранить версию проекта">
+              <div class="exchange">
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сохрани проект"><span class="say">Сохрани проект</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Готово, сохранил версию «Добавил форму входа»</p></div>
+              </div>
+              
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Откатить, когда всё сломалось" data-caption="Откатить, когда всё сломалось">
+              <div class="exchange">
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт"><span class="say">Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Пропадут правки в двух файлах: style.css и app.js. Откатываю?</p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да"><span class="say">Да</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Вернул проект к версии «Добавил форму входа»</p></div>
+              </div>
+              
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 5: Попробовать новое без риска" data-caption="Попробовать новое без риска">
+              <div class="exchange">
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай ветку для новой фичи"><span class="say">Сделай ветку для новой фичи</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Создал ветку new-feature. Основная версия не тронута</p></div>
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Слей ветку обратно"><span class="say">Слей ветку обратно</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Готово, фича теперь в основной версии</p></div>
+              </div>
+              <p class="sys">Не получилось? Напиши <button type="button" class="pill" aria-label="Скопировать: Удали ветку"><span class="say">Удали ветку</span></button></p>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Закладка на удачной версии" data-caption="Закладка на удачной версии">
+              <div class="exchange">
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Поставь метку v1"><span class="say">Поставь метку v1</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Поставил метку v1. Вернуться к ней: <button type="button" class="pill" aria-label="Скопировать: Верни проект к метке v1"><span class="say">Верни проект к метке v1</span></button></p></div>
+              </div>
+              
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Чтобы проект не пропал" data-caption="Чтобы проект не пропал">
+              <div class="exchange">
+                <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Отправь проект на GitHub в закрытый репозиторий"><span class="say">Отправь проект на GitHub в закрытый репозиторий</span></button><span class="status" aria-hidden="true"></span></div>
+                <div class="msg ai"><p class="bubble-ai">Создал закрытый репозиторий my-app и отправил туда всю историю</p></div>
+              </div>
+              
+            </div>
           </div>
-          
-        </div>
-        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 5: Попробовать новое без риска" data-caption="Попробовать новое без риска">
-          <div class="exchange">
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай ветку для новой фичи"><span class="say">Сделай ветку для новой фичи</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Создал ветку new-feature. Основная версия не тронута</p></div>
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Слей ветку обратно"><span class="say">Слей ветку обратно</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Готово, фича теперь в основной версии</p></div>
+          <div class="pager">
+            <p class="caption" aria-live="polite">Сохранить версию проекта</p>
+            <div class="pager-row">
+              <button type="button" class="pg-arrow" data-dir="-1" aria-label="Предыдущая команда">‹</button>
+              <div class="dots">
+              <button type="button" class="dot" aria-label="Команда 1: Сохранить версию проекта" aria-current="true"></button>
+              <button type="button" class="dot" aria-label="Команда 2: Откатить, когда всё сломалось"></button>
+              <button type="button" class="dot" aria-label="Команда 3: Попробовать новое без риска"></button>
+              <button type="button" class="dot" aria-label="Команда 4: Закладка на удачной версии"></button>
+              <button type="button" class="dot" aria-label="Команда 5: Чтобы проект не пропал"></button>
+              </div>
+              <button type="button" class="pg-arrow" data-dir="1" aria-label="Следующая команда">›</button>
+            </div>
           </div>
-          <p class="sys">Не получилось? Напиши <button type="button" class="pill" aria-label="Скопировать: Удали ветку"><span class="say">Удали ветку</span></button></p>
-        </div>
-        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Закладка на удачной версии" data-caption="Закладка на удачной версии">
-          <div class="exchange">
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Поставь метку v1"><span class="say">Поставь метку v1</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Поставил метку v1. Вернуться к ней: <button type="button" class="pill" aria-label="Скопировать: Верни проект к метке v1"><span class="say">Верни проект к метке v1</span></button></p></div>
-          </div>
-          
-        </div>
-        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Чтобы проект не пропал" data-caption="Чтобы проект не пропал">
-          <div class="exchange">
-            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Отправь проект на GitHub в закрытый репозиторий"><span class="say">Отправь проект на GitHub в закрытый репозиторий</span></button><span class="status" aria-hidden="true"></span></div>
-            <div class="msg ai"><p class="bubble-ai">Создал закрытый репозиторий my-app и отправил туда всю историю</p></div>
-          </div>
-          
-        </div>
-      </div>
-      <div class="pager">
-        <p class="caption" aria-live="polite">Сохранить версию проекта</p>
-        <div class="pager-row">
-          <button type="button" class="pg-arrow" data-dir="-1" aria-label="Предыдущая команда">‹</button>
-          <div class="dots">
-          <button type="button" class="dot" aria-label="Команда 1: Сохранить версию проекта" aria-current="true"></button>
-          <button type="button" class="dot" aria-label="Команда 2: Откатить, когда всё сломалось"></button>
-          <button type="button" class="dot" aria-label="Команда 3: Попробовать новое без риска"></button>
-          <button type="button" class="dot" aria-label="Команда 4: Закладка на удачной версии"></button>
-          <button type="button" class="dot" aria-label="Команда 5: Чтобы проект не пропал"></button>
-          </div>
-          <button type="button" class="pg-arrow" data-dir="1" aria-label="Следующая команда">›</button>
         </div>
       </div>
     </div>
@@ -227,7 +260,7 @@
     <p class="done">Готово. Что бы ни сломалось дальше, ты вернёшься назад за одну фразу</p>
   </section>
 
-  <div class="glow" id="club">
+  <div class="glow reveal" id="club">
     <aside class="tile tile-club">
       <p class="tile-title">Закрытый клуб</p>
       <div class="sketch">
@@ -255,7 +288,7 @@
     </aside>
   </div>
 
-  <section class="section">
+  <section class="section reveal">
     <h2>Если что-то пошло не так</h2>
     <div class="group">
       <details class="row fix"><summary>«git» не является внутренней или внешней командой</summary>
@@ -281,6 +314,6 @@
 </footer>
 
 <div class="toast" role="status" aria-live="polite" hidden></div>
-<script src="../assets/guide.js?v=3" defer></script>
+<script src="../assets/guide.js?v=5" defer></script>
 </body>
 </html>
