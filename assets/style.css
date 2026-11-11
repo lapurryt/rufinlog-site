@@ -650,3 +650,12 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
   .cmp-field { border-color: rgba(235, 235, 245, .18); }
 }
 .phone .pager { padding: 18px 0 0; }
+
+/* image attachment in the chat: no tail, rounded like a photo in iMessage */
+.display .bubble-img { padding: 0; background: none; width: 68%; max-width: 68%; }
+.display .bubble-img::before, .display .bubble-img::after { display: none; }
+.display .bubble-img img {
+  display: block; width: 100%; height: auto; border-radius: calc(var(--u) * 16);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, .06);
+}
+@media (prefers-color-scheme: dark) { .display .bubble-img img { box-shadow: 0 0 0 1px rgba(255, 255, 255, .08); } }
