@@ -194,6 +194,7 @@
       requestAnimationFrame(() => {
         ticking = false;
         const i = Math.round(track.scrollLeft / track.clientWidth);
+        if (track.scrollLeft > 4) phone._swiped = true;
         if (i !== active) activate(i);
       });
     }, { passive: true });
@@ -211,7 +212,14 @@
         if (!entries.some((e) => e.isIntersecting)) return;
         io.disconnect();
         visible = true;
-        play(items[active]);
+        play(items[active]).then(() => {
+          // once: show that the chat swipes, unless the person already swiped
+          if (reduce || active !== 0 || phone._swiped) return;
+          setTimeout(() => {
+            track.classList.add("hint");
+            setTimeout(() => track.classList.remove("hint"), 1000);
+          }, 700);
+        });
       }, { threshold: 0.4 });
       io.observe(phone);
     } else {
