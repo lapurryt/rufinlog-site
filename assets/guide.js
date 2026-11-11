@@ -248,6 +248,17 @@
     reveals.forEach((el) => rio.observe(el));
   }
 
+  // Safari tints the status bar when the page loads; if the phone switches light/dark while the page
+  // is open, repaint the root background and theme-color so the tint follows the new theme
+  const scheme = window.matchMedia("(prefers-color-scheme: dark)");
+  const retint = () => {
+    const bg = scheme.matches ? "#000000" : "#F5F5F7";
+    document.querySelectorAll('meta[name="theme-color"]').forEach((m) => { m.setAttribute("content", bg); });
+    document.documentElement.style.backgroundColor = bg;
+    requestAnimationFrame(() => { document.documentElement.style.backgroundColor = ""; });
+  };
+  if (scheme.addEventListener) scheme.addEventListener("change", retint);
+
   // "Open on computer": share sheet on phones, copy the link elsewhere
   const shareBtn = document.querySelector("[data-share]");
   if (shareBtn) {
