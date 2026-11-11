@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Git для Claude Code и Codex | rufinlog</title>
+<meta name="description" content="Настрой Git за 20 минут: Claude и ChatGPT сами сохраняют проект, возвращают рабочую версию и выкладывают его на GitHub по одной фразе">
+<meta property="og:title" content="Git для Claude Code и Codex">
+<meta property="og:description" content="Claude и ChatGPT сами сохраняют проект, откатывают его и выкладывают на GitHub. Пошагово для Windows и Mac">
+<meta property="og:type" content="article">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-os="win" data-ai="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-action" type="button" data-share>Открыть на компьютере</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Git для Claude Code и Codex</h1>
+    <p class="sub">Настрой один раз, и Claude с ChatGPT сами сохраняют проект, возвращают рабочую версию и выкладывают его на GitHub. По одной фразе</p>
+    <p class="meta">20 минут, удобнее с компьютера</p>
+    <div class="segmented" role="group" aria-label="Твой компьютер">
+      <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+      <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+    </div>
+    <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
+      <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
+      <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
+    </div>
+  </header>
+
+  <section class="section">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Компьютер на Windows 10, 11 или Mac</li>
+      <li data-ai-only="claude">Для Claude Code нужна подписка Claude Pro или выше. На бесплатном тарифе его нет</li>
+      <li data-ai-only="codex">Для Codex хватит любого аккаунта ChatGPT, даже бесплатного</li>
+      <li>Папка с проектом. Если проекта ещё нет, создай пустую папку, например my-app</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Поставь Git</h2>
+
+    <div data-only="win">
+      <ol class="how">
+        <li>Скачай установщик на <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">git-scm.com</a>, кнопка «Git for Windows/x64 Setup»</li>
+        <li>Запусти его и нажимай Next до конца, ничего не меняя</li>
+      </ol>
+      <p class="label">Или одной командой в PowerShell</p>
+      <div class="group">
+        <div class="row cmd"><code>winget install --id Git.Git -e --source winget</code><button type="button" class="copy">Скопировать</button></div>
+      </div>
+    </div>
+
+    <div data-only="mac">
+      <ol class="how">
+        <li>Открой Терминал: Cmd + Пробел и набери «Терминал»</li>
+        <li>Вставь команду и нажми «Установить» в окне, которое появится</li>
+      </ol>
+      <div class="group">
+        <div class="row cmd"><code>xcode-select --install</code><button type="button" class="copy">Скопировать</button></div>
+      </div>
+    </div>
+
+    <p class="label">Проверка: открой терминал заново</p>
+    <div class="group">
+      <div class="row cmd"><code>git --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится строка вида <code>git version 2.56.1</code>. Цифры могут быть другими</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Войди в GitHub</h2>
+    <ol class="how">
+      <li>Зарегистрируйся на <a href="https://github.com/signup" target="_blank" rel="noopener">github.com</a>. Это бесплатно</li>
+      <li>Поставь GitHub CLI. Через него <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> выкладывает проект от твоего имени</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">winget install --id GitHub.cli --source winget</code><code data-only="mac">brew install gh</code><button type="button" class="copy">Скопировать</button></div>
+    </div>
+    <p class="foot-note" data-only="mac">Если пишет «command not found: brew», скачай установщик для Mac на <a href="https://cli.github.com" target="_blank" rel="noopener">cli.github.com</a></p>
+
+    <p class="label">Закрой терминал, открой заново и войди</p>
+    <div class="group">
+      <div class="row cmd"><code>gh auth login</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Отвечай стрелками и Enter: GitHub.com, HTTPS, Yes, Login with a web browser. Терминал покажет код из 8 символов, вставь его в браузере, который откроется</div>
+    </div>
+
+    <p class="label">Проверка</p>
+    <div class="group">
+      <div class="row cmd"><code>gh auth status</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Написано <code>Logged in to github.com account</code> и твой ник</div>
+    </div>
+  </section>
+
+  <aside class="tile">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section" data-ai-only="claude">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Подключи Claude Code</h2>
+    <ol class="how">
+      <li>Скачай приложение Claude на <a href="https://claude.com/download" target="_blank" rel="noopener">claude.com/download</a> и войди</li>
+      <li>Открой вкладку Code вверху слева</li>
+      <li>Под полем ввода выбери Local, потом Open folder… и папку проекта</li>
+      <li>Отправь первое сообщение:</li>
+    </ol>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай из этой папки git-репозиторий и сохрани первую версию"><span class="say">Сделай из этой папки git-репозиторий и сохрани первую версию</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <div class="group">
+      <div class="row result">Claude ответит, что создал репозиторий и сделал первый коммит. Спроси «Покажи историю коммитов», и увидишь одну строку</div>
+    </div>
+
+    <details class="group disclosure">
+      <summary>Через терминал, если привык</summary>
+      <div class="row cmd"><code data-only="win">irm https://claude.ai/install.ps1 | iex</code><code data-only="mac">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Потом открой терминал в папке проекта и запусти <code>claude</code></div>
+    </details>
+  </section>
+
+  <section class="section" data-ai-only="codex">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Подключи Codex</h2>
+    <ol class="how">
+      <li>Скачай приложение на <a href="https://learn.chatgpt.com/docs/app" target="_blank" rel="noopener">официальной странице Codex</a>, есть версии для Windows и Mac</li>
+      <li>Войди через аккаунт ChatGPT и выбери Codex в списке вверху</li>
+      <li>Открой папку проекта и отправь первое сообщение:</li>
+    </ol>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай из этой папки git-репозиторий и сохрани первую версию"><span class="say">Сделай из этой папки git-репозиторий и сохрани первую версию</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <div class="group">
+      <div class="row result">Codex ответит, что создал репозиторий и сделал первый коммит. Спроси «Покажи историю коммитов», и увидишь одну строку</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Фразы, которые всё делают</h2>
+    <p class="lead-in">Пиши их <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением. Команды Git он наберёт сам. Листай вбок, чтобы увидеть следующую команду. Нажми на синее сообщение, чтобы скопировать</p>
+
+    <div class="phone" role="region" aria-roledescription="карусель" aria-label="Примеры переписки, листай вбок">
+      <div class="phone-top" aria-hidden="true">
+        <span class="phone-back">‹</span>
+        <span class="phone-who">
+          <span class="avatar"><span data-ai-only="claude">C</span><span data-ai-only="codex">X</span></span>
+          <span class="who-name"><span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span></span>
+          <span class="who-sub">папка my-app</span>
+        </span>
+        <span class="phone-back phone-ghost">‹</span>
+      </div>
+      <div class="slides" tabindex="0">
+        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Сохранить версию проекта" data-caption="Сохранить версию проекта">
+          <div class="exchange">
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сохрани проект"><span class="say">Сохрани проект</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Готово, сохранил версию «Добавил форму входа»</p></div>
+          </div>
+          
+        </div>
+        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Откатить, когда всё сломалось" data-caption="Откатить, когда всё сломалось">
+          <div class="exchange">
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт"><span class="say">Верни проект к последнему коммиту, где всё работало. Сначала покажи, что пропадёт</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Пропадут правки в двух файлах: style.css и app.js. Откатываю?</p></div>
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да"><span class="say">Да</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Вернул проект к версии «Добавил форму входа»</p></div>
+          </div>
+          
+        </div>
+        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 5: Попробовать новое без риска" data-caption="Попробовать новое без риска">
+          <div class="exchange">
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай ветку для новой фичи"><span class="say">Сделай ветку для новой фичи</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Создал ветку new-feature. Основная версия не тронута</p></div>
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Слей ветку обратно"><span class="say">Слей ветку обратно</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Готово, фича теперь в основной версии</p></div>
+          </div>
+          <p class="sys">Не получилось? Напиши <button type="button" class="pill" aria-label="Скопировать: Удали ветку"><span class="say">Удали ветку</span></button></p>
+        </div>
+        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Закладка на удачной версии" data-caption="Закладка на удачной версии">
+          <div class="exchange">
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Поставь метку v1"><span class="say">Поставь метку v1</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Поставил метку v1. Вернуться к ней: <button type="button" class="pill" aria-label="Скопировать: Верни проект к метке v1"><span class="say">Верни проект к метке v1</span></button></p></div>
+          </div>
+          
+        </div>
+        <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Чтобы проект не пропал" data-caption="Чтобы проект не пропал">
+          <div class="exchange">
+            <div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Отправь проект на GitHub в закрытый репозиторий"><span class="say">Отправь проект на GitHub в закрытый репозиторий</span></button><span class="status" aria-hidden="true"></span></div>
+            <div class="msg ai"><p class="bubble-ai">Создал закрытый репозиторий my-app и отправил туда всю историю</p></div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="pager">
+        <p class="caption" aria-live="polite">Сохранить версию проекта</p>
+        <div class="pager-row">
+          <button type="button" class="pg-arrow" data-dir="-1" aria-label="Предыдущая команда">‹</button>
+          <div class="dots">
+          <button type="button" class="dot" aria-label="Команда 1: Сохранить версию проекта" aria-current="true"></button>
+          <button type="button" class="dot" aria-label="Команда 2: Откатить, когда всё сломалось"></button>
+          <button type="button" class="dot" aria-label="Команда 3: Попробовать новое без риска"></button>
+          <button type="button" class="dot" aria-label="Команда 4: Закладка на удачной версии"></button>
+          <button type="button" class="dot" aria-label="Команда 5: Чтобы проект не пропал"></button>
+          </div>
+          <button type="button" class="pg-arrow" data-dir="1" aria-label="Следующая команда">›</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+    <p class="done">Готово. Что бы ни сломалось дальше, ты вернёшься назад за одну фразу</p>
+  </section>
+
+  <div class="glow" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Закрытый клуб</p>
+      <div class="sketch">
+        <div class="ipad"><div class="ipad-screen">
+              <svg viewBox="0 0 360 220" role="img" aria-label="Схема урока: задача, ИИ, результат, время и деньги">
+                <text class="hand small" x="22" y="36" style="--d:.0s">Урок 1</text>
+                <path class="ink orange" pathLength="1" style="--d:.15s;--t:.35s" d="M20 44 C 50 47, 80 41, 108 45"/>
+                <path class="ink" pathLength="1" style="--d:.45s" d="M16 92 C 15 82, 22 78, 32 79 L 86 78 C 96 78, 100 84, 99 94 L 99 118 C 99 127, 94 131, 85 131 L 30 132 C 20 132, 15 126, 16 117 Z"/>
+                <text class="hand" x="57" y="111" text-anchor="middle" style="--d:.75s">Задача</text>
+                <path class="ink" pathLength="1" style="--d:.95s;--t:.3s" d="M104 106 C 114 104, 124 107, 134 105 M 126 99 L 135 105 L 126 112"/>
+                <path class="ink blue" pathLength="1" style="--d:1.2s;--t:.55s" d="M178 79 C 205 78, 220 92, 219 106 C 218 122, 200 134, 177 133 C 153 132, 138 120, 139 105 C 140 90, 155 79, 180 80"/>
+                <text class="hand" x="179" y="112" text-anchor="middle" style="--d:1.6s">ИИ</text>
+                <path class="ink" pathLength="1" style="--d:1.8s;--t:.3s" d="M224 106 C 234 104, 244 107, 254 105 M 246 99 L 255 105 L 246 112"/>
+                <path class="ink" pathLength="1" style="--d:2.05s" d="M262 90 C 261 81, 267 78, 276 78 L 336 79 C 345 79, 348 85, 347 94 L 347 119 C 347 127, 342 131, 334 131 L 276 132 C 267 132, 262 127, 262 118 Z"/>
+                <text class="hand" x="305" y="111" text-anchor="middle" style="--d:2.35s">Результат</text>
+                <text class="hand green" x="305" y="168" text-anchor="middle" style="--d:2.6s">время + деньги</text>
+                <path class="ink green" pathLength="1" style="--d:2.8s;--t:.4s" d="M245 176 C 280 180, 320 174, 356 178"/>
+              </svg>
+            </div></div>
+      </div>
+      <p>Раз в неделю живой урок на планшете, задание и чат участников</p>
+      <p>Первые 30 платят 500 ₽ в месяц, и цена остаётся навсегда</p>
+      <a class="button" href="https://t.me/+-mXj2macD3szNjVi" target="_blank" rel="noopener">Записаться в лист ожидания</a>
+      <p class="fine">Запись бесплатная. Открою, когда наберётся 30 человек</p>
+    </aside>
+  </div>
+
+  <section class="section">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>«git» не является внутренней или внешней командой</summary>
+        <p>Закрой терминал и открой заново: он не видит только что установленные программы. Не помогло, поставь Git ещё раз (шаг 1)</p></details>
+      <details class="row fix"><summary>winget не найден</summary>
+        <p>Скачай установщики с сайтов: Git на <a href="https://git-scm.com/install/windows" target="_blank" rel="noopener">git-scm.com</a>, GitHub CLI на <a href="https://cli.github.com" target="_blank" rel="noopener">cli.github.com</a></p></details>
+      <details class="row fix" data-ai-only="claude"><summary>Вкладка Code просит оплату</summary>
+        <p>Claude Code работает на тарифе Pro и выше. Без подписки настрой Codex, он есть даже в бесплатном ChatGPT</p></details>
+      <details class="row fix"><summary>ИИ спрашивает разрешение выполнить команду</summary>
+        <p>Это нормально: он показывает команду Git, которую хочет запустить. Разреши</p></details>
+      <details class="row fix"><summary>При отправке на GitHub просит логин или пароль</summary>
+        <p>Ещё раз выполни <code>gh auth login</code> из шага 2 и повтори фразу</p></details>
+      <details class="row fix"><summary>fatal: not a git repository</summary>
+        <p>В этой папке ещё нет Git. Напиши ИИ: «Сделай из этой папки git-репозиторий и сохрани первую версию»</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Проверено по официальной документации 11 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<script src="../assets/guide.js" defer></script>
+</body>
+</html>
