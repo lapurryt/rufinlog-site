@@ -327,3 +327,116 @@
     });
   }
 })();
+
+// ---- Reading stats for the author (bot command /guide) ----
+// Anonymous: a random id in localStorage, no cookies, nothing personal. Respects Do Not Track.
+// Events: view (with source ?src=bot|ig|…), step reached, scroll depth, engaged time, copies, tabs, club button.
+(() => {
+  "use strict";
+  const local = /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  // local tests (?track=1) talk to `wrangler dev` on 8787, the live site to the bot on Cloudflare
+  const ENDPOINT = local ? "http://127.0.0.1:8787/t" : "https://rufinlog-bot.rufinlog-bot.workers.dev/t";
+  if (navigator.doNotTrack === "1" || location.protocol === "file:" || (local && !/[?&]track=1/.test(location.search))) return;
+  if (!navigator.sendBeacon) return;
+
+  const seg = location.pathname.replace(/index\.html$/, "").split("/").filter(Boolean).pop() || "home";
+  const page = seg === "rufinlog-site" ? "home" : seg.toLowerCase();
+
+  const store = (s, k, v) => { try { if (v === undefined) return s.getItem(k); s.setItem(k, v); } catch (e) { /* private mode */ } return v; };
+  const rid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Math.random()).slice(2) + Date.now());
+  const vid = store(localStorage, "rufinlog-vid") || store(localStorage, "rufinlog-vid", rid());
+  const load = rid().slice(0, 8);
+
+  // Where the person came from: ?src=… from our links, else a guess from the referrer. Kept for the whole visit.
+  const params = new URLSearchParams(location.search);
+  let src = params.get("src") || params.get("utm_source");
+  if (!src) {
+    const ref = document.referrer;
+    src = store(sessionStorage, "rufinlog-src") ||
+      (!ref ? "direct" : /instagram/i.test(ref) ? "ig" : /t\.me|telegram/i.test(ref) ? "tg" : ref.startsWith(location.origin) ? "direct" : "ref:" + new URL(ref).hostname.replace(/^www\./, ""));
+  }
+  src = src.toLowerCase().slice(0, 40);
+  store(sessionStorage, "rufinlog-src", src);
+  if (params.has("src") || params.has("utm_source")) {      // clean address: shared links don't carry the source
+    params.delete("src"); params.delete("utm_source");
+    const q = params.toString();
+    history.replaceState(history.state, "", location.pathname + (q ? "?" + q : "") + location.hash);
+  }
+
+  const send = (e, d, n) => {
+    try { navigator.sendBeacon(ENDPOINT, JSON.stringify({ v: vid, p: page, s: src, e, d, n })); } catch (err) { /* offline */ }
+  };
+  send("view", document.referrer ? new URL(document.referrer).hostname : "");
+
+  // Which parts of the guide people actually reach
+  const seen = new Set();
+  const label = (el) => {
+    if (el.id === "club") return "club_seen";
+    if (el.classList.contains("done")) return "done";
+    const step = el.querySelector(":scope > .step");
+    const m = step && step.textContent.match(/\d+/);
+    if (m) return "step" + m[0];
+    const h = el.querySelector("h2");
+    if (h && /понадобится/i.test(h.textContent)) return "needs";
+    if (h && /пошло не так/i.test(h.textContent)) return "fixes";
+    return null;
+  };
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const l = label(en.target);
+        if (l && !seen.has(l) && !en.target.closest("[hidden]") && en.target.offsetParent !== null) { seen.add(l); send("step", l); }
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.35 });
+    document.querySelectorAll("main > section, #club, .done").forEach((el) => io.observe(el));
+  }
+
+  // Scroll depth milestones
+  const marks = [25, 50, 75, 100];
+  let ticking = false;
+  window.addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      ticking = false;
+      const h = document.documentElement.scrollHeight - innerHeight;
+      const pct = h > 0 ? Math.round((scrollY / h) * 100) : 100;
+      while (marks.length && pct >= marks[0] - 2) send("scroll", "", marks.shift());
+    });
+  }, { passive: true });
+
+  // Engaged time: counts only while the page is visible; sent when the person leaves or switches away
+  let shownAt = document.visibilityState === "visible" ? Date.now() : 0;
+  let total = 0;
+  const flush = () => {
+    if (shownAt) { total += Date.now() - shownAt; shownAt = 0; }
+    if (total > 1500) send("time", load, Math.round(total / 1000));
+  };
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") flush();
+    else shownAt = Date.now();
+  });
+  window.addEventListener("pagehide", flush);
+
+  // What people press
+  document.addEventListener("click", (ev) => {
+    const t = ev.target.closest("button, a");
+    if (!t) return;
+    if (t.matches(".copy")) {
+      const row = t.closest(".row");
+      const code = row && [...row.querySelectorAll("code")].find((c) => c.offsetParent !== null);
+      send("copy", code ? code.textContent.trim() : "");
+    } else if (t.matches(".bubble-btn, .pill, .copy-msg")) {
+      const say = t.closest(".msg.me") && !t.matches(".pill") ? t.closest(".msg.me").querySelector(".bubble-btn .say") : t.querySelector(".say");
+      send("phrase", say ? say.textContent.trim() : "");
+    } else if (t.closest(".cmd-tabs")) send("tab", t.textContent.trim());
+    else if (t.matches("[data-set-os]")) send("os", t.dataset.setOs);
+    else if (t.matches("[data-set-ai]")) send("ai", t.dataset.setAi);
+    else if (t.matches("[data-share]")) send("share");
+    else if (t.closest("#club") && t.matches("a.button")) send("club");
+    else if (t.matches("a[href*='t.me/rufinlog']")) send("tg");
+    else if (t.matches("a[href^='http']")) send("link", new URL(t.href).hostname);
+  }, true);
+})();
