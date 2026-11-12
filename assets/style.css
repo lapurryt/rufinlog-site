@@ -714,3 +714,7 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 
 /* Claude command card on one line: "Bash  $ git add -A" */
 .mac .tool-row { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; padding: 7px 11px; }
+
+/* nav scrolls away with the page (author 2026-11-12: the bar that stays on top while scrolling «не убирается, я её
+   не люблю»). It stays the first thing on the page, it just no longer sticks */
+.nav { position: relative; }
