@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prompt Master для Claude | rufinlog</title>
+<meta name="description" content="Бесплатный скилл Prompt Master для Claude: превращает корявую фразу в нормальный промпт, и лимита хватает дольше. Установка за 5 минут">
+<meta property="og:title" content="Prompt Master для Claude">
+<meta property="og:description" content="Один нормальный запрос вместо пяти переспрашиваний. Как поставить бесплатный скилл за 5 минут">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/limit-cover.jpg">
+<meta property="og:image:width" content="1448">
+<meta property="og:image:height" content="1086">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=21">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-ai="claude" data-ai-lock="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Prompt Master для Claude</h1>
+    <p class="sub">Один нормальный запрос вместо пяти переспрашиваний</p>
+    <p class="meta">5 минут, удобнее с компьютера</p>
+  </header>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Аккаунт Claude. Скиллы есть на всех тарифах, даже на бесплатном</li>
+      <li>Компьютер: claude.ai в браузере или приложение Claude</li>
+      <li>Сам скилл бесплатный, лицензия MIT</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Скачай скилл</h2>
+    <ol class="how">
+      <li>Открой <a href="https://github.com/nidhinjs/prompt-master" target="_blank" rel="noopener">Prompt Master на GitHub</a></li>
+      <li>Нажми зелёную кнопку Code, потом Download ZIP</li>
+    </ol>
+    <figure class="shot">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>github.com</span></div>
+      <img src="../assets/img/limit-download.webp" width="1120" height="782" loading="lazy" alt="Страница Prompt Master на GitHub: меню Code открыто, пункт Download ZIP обведён синим">
+    </figure>
+    <div class="group">
+      <div class="row result">Скачается файл <code>prompt-master-main.zip</code>. Распаковывать не нужно</div>
+    </div>
+    <a class="button dl" href="https://github.com/nidhinjs/prompt-master/archive/refs/heads/main.zip">Скачать ZIP сразу</a>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Разреши Claude работать с файлами</h2>
+    <ol class="how">
+      <li>Открой <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> или приложение Claude</li>
+      <li>Зайди в Settings, раздел Capabilities</li>
+      <li>Включи Code execution and file creation. В новом меню он называется Create and edit files</li>
+    </ol>
+    <div class="group">
+      <div class="row note">Без этого скиллы в Claude не работают. В рабочем аккаунте Team или Enterprise это включает администратор</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Загрузи скилл в Claude</h2>
+    <ol class="how">
+      <li>В меню слева открой Customize, потом Skills</li>
+      <li>Нажми «+», затем Create skill и Upload a skill</li>
+      <li>Выбери скачанный <code>prompt-master-main.zip</code></li>
+    </ol>
+    <div class="group">
+      <div class="row result">Prompt Master появится в списке скиллов. Переключатель рядом с ним должен быть включён</div>
+    </div>
+
+    <details class="group disclosure">
+      <summary>В Claude Code через терминал</summary>
+      <div class="row note">На Mac, в Терминале</div>
+      <div class="row cmd"><code>git clone https://github.com/nidhinjs/prompt-master.git ~/.claude/skills/prompt-master</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">На Windows, в PowerShell</div>
+      <div class="row cmd"><code>git clone https://github.com/nidhinjs/prompt-master.git &quot;$HOME\.claude\skills\prompt-master&quot;</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Нужен установленный Git. Потом начни новую сессию Claude Code, и скилл подхватится</div>
+    </details>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Пиши запрос через /prompt-master</h2>
+    <p class="lead-in">Начни сообщение с /prompt-master и опиши задачу как есть, можно коряво. Если чего-то не хватает, Claude задаст не больше трёх вопросов и выдаст готовый промпт. Выбери пример над окном</p>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры запросов через Prompt Master">
+      <div class="cmd-tabs" role="group" aria-label="Пример">
+        <button type="button" aria-pressed="true">Сайт</button>
+        <button type="button" aria-pressed="false">Пост</button>
+        <button type="button" aria-pressed="false">Картинка</button>
+        <button type="button" aria-pressed="false">Код</button>
+        <button type="button" aria-pressed="false">Свой</button>
+      </div>
+      <p class="caption" aria-live="polite">Когда в запросе чего-то не хватает</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">Claude</span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Когда в запросе чего-то не хватает" data-caption="Когда в запросе чего-то не хватает">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни</p></div><div class="msg ai"><p class="bubble-ai">Готово: шапка, меню и контакты внизу</p></div><div class="msg me"><p class="bubble-me">Нет, не так. Добавь что-то другое</p></div><div class="msg ai"><p class="bubble-ai">Что именно добавить?</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /prompt-master сделай сайт для кофейни"><span class="say">/prompt-master сделай сайт для кофейни</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /prompt-master сделай сайт для кофейни"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю скилл"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">prompt-master</span></code></p></div><div class="msg ai" data-status="Смотрю, чего не хватает"><div class="bubble-ai">Уточню три вещи:<ol class="pm-q"><li>Где делаешь: Claude или конструктор?</li><li>Что нужно: меню, цены, запись?</li><li>Какой стиль: уютный или строгий?</li></ol></div></div><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Claude, меню с ценами и запись, уютный"><span class="say">Claude, меню с ценами и запись, уютный</span></button><span class="status" aria-hidden="true"></span></div><div class="msg ai" data-status="Собираю промпт"><div class="bubble-ai"><span class="pm-block">Сайт кофейни «Зерно» в уютном стиле: меню с ценами, запись на столик, контакты<br>Готово, когда форма записи принимает имя, время и телефон</span><span class="pm-meta">🎯 Target: Claude, 💡 добавил разделы и критерий «готово»</span></div></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Текст для Telegram или Instagram" data-caption="Текст для Telegram или Instagram">
+              <div class="history"><div class="msg me"><p class="bubble-me">Напиши пост про мой курс</p></div><div class="msg ai"><p class="bubble-ai">Друзья, рад представить вам мой новый курс…</p></div><div class="msg me"><p class="bubble-me">Слишком официально</p></div><div class="msg ai"><p class="bubble-ai">Сделаю проще</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /prompt-master пост в Telegram про мой курс по рисованию"><span class="say">/prompt-master пост в Telegram про мой курс по рисованию</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /prompt-master пост в Telegram про мой курс по рисованию"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю скилл"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">prompt-master</span></code></p></div><div class="msg ai" data-status="Собираю промпт"><div class="bubble-ai"><span class="pm-block">Напиши пост для Telegram-канала про курс рисования на планшете<br>Аудитория: [AUDIENCE]. Тон: [TONE]<br>Первая строка про боль читателя, дальше 3 пункта, что даст курс, в конце призыв записаться<br>До 600 знаков, без хештегов</span><span class="pm-meta">🎯 Target: Claude, 💡 задал аудиторию, объём и структуру вместо «напиши пост»</span></div></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 5: Промпт для генератора картинок" data-caption="Промпт для генератора картинок">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай меню для кофейни</p></div><div class="msg ai"><p class="bubble-ai">Готово, меню с ценами теперь на главной</p></div><div class="msg me"><p class="bubble-me">Помоги с логотипом для кофейни</p></div><div class="msg ai"><p class="bubble-ai">Могу предложить идеи или написать промпт для генератора картинок</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /prompt-master логотип кофейни для Midjourney"><span class="say">/prompt-master логотип кофейни для Midjourney</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /prompt-master логотип кофейни для Midjourney"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю скилл"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">prompt-master</span></code></p></div><div class="msg ai" data-status="Собираю промпт"><div class="bubble-ai"><span class="pm-block">minimal flat logo of a coffee bean shaped like a heart, warm brown and cream palette, clean vector style, centered on a plain light background --ar 1:1</span><span class="pm-meta">🎯 Target: Midjourney, 💡 описал стиль и цвета, формат задал параметром</span></div></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Задача для Claude Code без лишних правок" data-caption="Задача для Claude Code без лишних правок">
+              <div class="history"><div class="msg me"><p class="bubble-me">Добавь оплату на сайт</p></div><div class="msg ai"><p class="bubble-ai">Добавил оплату, заодно переписал меню и поменял шрифты</p></div><div class="msg me"><p class="bubble-me">Я просил только оплату</p></div><div class="msg ai"><p class="bubble-ai">Понял, верну меню как было</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /prompt-master промпт для Claude Code: добавь оплату на сайт"><span class="say">/prompt-master промпт для Claude Code: добавь оплату на сайт</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /prompt-master промпт для Claude Code: добавь оплату на сайт"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю скилл"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">prompt-master</span></code></p></div><div class="msg ai" data-status="Собираю промпт"><div class="bubble-ai"><span class="pm-block">Добавь на страницу заказа оплату картой<br>Меняй только order.html и payment.js, остальные файлы не трогай<br>Готово, когда тестовая оплата проходит и после неё открывается страница «Спасибо»</span><span class="pm-meta">🎯 Target: Claude Code, 💡 ограничил файлы и задал проверку, чтобы он не переделывал лишнее</span></div></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Улучшить промпт, который у тебя уже есть" data-caption="Улучшить промпт, который у тебя уже есть">
+              <div class="history"><div class="msg me"><p class="bubble-me">Напиши текст для главной страницы кофейни</p></div><div class="msg ai"><p class="bubble-ai">Добро пожаловать в нашу уютную кофейню…</p></div><div class="msg me"><p class="bubble-me">Скучно, не продаёт</p></div><div class="msg ai"><p class="bubble-ai">Попробую ещё раз</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /prompt-master улучши промпт: сделай текст красиво и чтобы продавал"><span class="say">/prompt-master улучши промпт: сделай текст красиво и чтобы продавал</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /prompt-master улучши промпт: сделай текст красиво и чтобы продавал"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю скилл"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">prompt-master</span></code></p></div><div class="msg ai" data-status="Собираю промпт"><div class="bubble-ai"><span class="pm-block">Перепиши текст главной страницы кофейни так, чтобы гостю захотелось зайти<br>Тон: тёплый, без рекламных штампов<br>Объём: заголовок до 6 слов и 2 предложения под ним<br>Дай 3 варианта на выбор</span><span class="pm-meta">🎯 Target: Claude, 💡 убрал расплывчатое «красиво», добавил тон, объём и варианты</span></div></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph">Reply to Claude…</span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span></span><span>Opus 5.5</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+    <p class="done">Готово. Теперь один запрос вместо пяти переспрашиваний, и лимита хватает дольше</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Закрытый клуб</p>
+      <div class="sketch">
+        <div class="ipad"><div class="ipad-screen">
+              <svg viewBox="0 0 360 220" role="img" aria-label="Схема урока: задача, ИИ, результат, время и деньги">
+                <text class="hand small" x="22" y="36" style="--d:.0s">Урок 1</text>
+                <path class="ink orange" pathLength="1" style="--d:.15s;--t:.35s" d="M20 44 C 50 47, 80 41, 108 45"/>
+                <path class="ink" pathLength="1" style="--d:.45s" d="M16 92 C 15 82, 22 78, 32 79 L 86 78 C 96 78, 100 84, 99 94 L 99 118 C 99 127, 94 131, 85 131 L 30 132 C 20 132, 15 126, 16 117 Z"/>
+                <text class="hand" x="57" y="111" text-anchor="middle" style="--d:.75s">Задача</text>
+                <path class="ink" pathLength="1" style="--d:.95s;--t:.3s" d="M104 106 C 114 104, 124 107, 134 105 M 126 99 L 135 105 L 126 112"/>
+                <path class="ink blue" pathLength="1" style="--d:1.2s;--t:.55s" d="M178 79 C 205 78, 220 92, 219 106 C 218 122, 200 134, 177 133 C 153 132, 138 120, 139 105 C 140 90, 155 79, 180 80"/>
+                <text class="hand" x="179" y="112" text-anchor="middle" style="--d:1.6s">ИИ</text>
+                <path class="ink" pathLength="1" style="--d:1.8s;--t:.3s" d="M224 106 C 234 104, 244 107, 254 105 M 246 99 L 255 105 L 246 112"/>
+                <path class="ink" pathLength="1" style="--d:2.05s" d="M262 90 C 261 81, 267 78, 276 78 L 336 79 C 345 79, 348 85, 347 94 L 347 119 C 347 127, 342 131, 334 131 L 276 132 C 267 132, 262 127, 262 118 Z"/>
+                <text class="hand" x="305" y="111" text-anchor="middle" style="--d:2.35s">Результат</text>
+                <text class="hand green" x="305" y="168" text-anchor="middle" style="--d:2.6s">время + деньги</text>
+                <path class="ink green" pathLength="1" style="--d:2.8s;--t:.4s" d="M245 176 C 280 180, 320 174, 356 178"/>
+              </svg>
+            </div></div>
+      </div>
+      <p>Раз в неделю живой урок на планшете, задание и чат участников</p>
+      <p>Первые 30 платят 500 ₽ в месяц, и цена остаётся навсегда</p>
+      <a class="button" href="https://t.me/+-mXj2macD3szNjVi" target="_blank" rel="noopener">Записаться в лист ожидания</a>
+      <p class="fine">Запись бесплатная. Открою, когда наберётся 30 человек</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>При загрузке ошибка: Upload failed или Plugin validation failed</summary>
+        <p>Скачай <a href="prompt-master.zip" download>запасной архив</a>: в нём те же файлы, только папка называется prompt-master, как просит Claude. Загрузи его так же, через Upload a skill</p></details>
+      <details class="row fix"><summary>В Customize нет раздела Skills</summary>
+        <p>Включи Code execution and file creation в Settings, раздел Capabilities (шаг 2). В рабочем аккаунте скиллы включает администратор</p></details>
+      <details class="row fix"><summary>Скачалась папка, а не ZIP</summary>
+        <p>Так делает Safari на Mac. Нажми на папку правой кнопкой и выбери «Сжать», получится ZIP</p></details>
+      <details class="row fix"><summary>/prompt-master не срабатывает</summary>
+        <p>Проверь, что переключатель рядом с Prompt Master в Customize, раздел Skills, включён, и начни новый чат</p></details>
+      <details class="row fix"><summary>Claude сразу пишет промпт, без вопросов</summary>
+        <p>Так и должно быть, если в запросе всё понятно. Вопросы он задаёт, только когда чего-то не хватает, и не больше трёх</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Скилл <a href="https://github.com/nidhinjs/prompt-master" target="_blank" rel="noopener">Prompt Master</a> сделал Nidhin Joseph Nelson, лицензия MIT. Проверено по официальной документации 14 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=21" defer></script>
+</body>
+</html>

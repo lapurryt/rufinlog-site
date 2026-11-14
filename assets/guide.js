@@ -107,7 +107,8 @@
       b.setAttribute("aria-pressed", String(b.dataset.setAi === ai));
     });
   }
-  setAI(store.get("rufinlog-ai") || "claude");
+  // a guide for one AI only (data-ai-lock, e.g. Prompt Master is a Claude skill) ignores the choice remembered from other guides
+  setAI(document.body.dataset.aiLock || store.get("rufinlog-ai") || "claude");
   document.querySelectorAll("[data-set-ai]").forEach((b) => {
     b.addEventListener("click", () => { setAI(b.dataset.setAi); store.set("rufinlog-ai", b.dataset.setAi); });
   });

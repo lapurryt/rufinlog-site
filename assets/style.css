@@ -718,3 +718,17 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 /* nav scrolls away with the page (author 2026-11-12: the bar that stays on top while scrolling «не убирается, я её
    не люблю»). It stays the first thing on the page, it just no longer sticks */
 .nav { position: relative; }
+
+/* ---------- «ЛИМИТ» (Prompt Master, 14.11): what the skill returns inside Claude's answer ----------
+   the skill step is a row like the Bash card but without "$ ", the clarifying questions are a short numbered list,
+   the ready prompt is a quiet card (monospace, keeps line breaks), «🎯 Target …» goes under it in secondary grey */
+.mac .tool-row.skill code::before { content: none; }
+.mac .pm-q { margin: 4px 0 0; padding-left: 1.25em; }
+.mac .pm-q li { margin: 2px 0; padding-left: 2px; }
+.mac .pm-block {
+  display: block; margin: 2px 0 7px; padding: 9px 11px; border: 1px solid var(--w-line); border-radius: 10px;
+  background: var(--w-field); color: var(--w-ink); font: 400 .7353rem/1.5 var(--mono); letter-spacing: 0;
+  white-space: pre-line; overflow-wrap: anywhere;
+}
+.mac .pm-meta { display: block; color: var(--w-ink2); font-size: .7647rem; line-height: 1.45; }
+.dl { margin-top: 16px; }
