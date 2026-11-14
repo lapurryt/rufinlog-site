@@ -732,3 +732,7 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 }
 .mac .pm-meta { display: block; color: var(--w-ink2); font-size: .7647rem; line-height: 1.45; }
 .dl { margin-top: 16px; }
+.prompt-row { display: block; padding-top: 14px; padding-bottom: 16px; } /* zakon: the prompt card, text then a full-width copy button */
+.prompt-row .say.prompt { display: block; white-space: pre-line; font-size: .9412rem; line-height: 1.5; color: var(--text); }
+.prompt-row .copy.button { display: flex; width: 100%; margin-top: 14px; }
+.prompt-row .copy.button.done { color: #fff; background: var(--ok); }

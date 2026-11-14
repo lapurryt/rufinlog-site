@@ -68,9 +68,10 @@
         || btn.parentElement.querySelector("code, .say");
       const ok = await copyText(code.textContent.trim());
       if (ok) {
+        const label = btn.dataset.label || (btn.dataset.label = btn.textContent); // «Скопировать промпт» comes back as it was
         btn.textContent = "Скопировано";
         btn.classList.add("done");
-        setTimeout(() => { btn.textContent = "Скопировать"; btn.classList.remove("done"); }, 1800);
+        setTimeout(() => { btn.textContent = label; btn.classList.remove("done"); }, 1800);
       } else {
         selectNode(code);
         toast("Текст выделен, скопируй его вручную");

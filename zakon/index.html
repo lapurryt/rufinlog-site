@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Сайт по закону: проверка | rufinlog</title>
+<meta name="description" content="Пять вещей, за которые штрафуют сайты почти в любой стране, и один промпт для Claude или ChatGPT, который проверит твой сайт и сам всё исправит">
+<meta property="og:title" content="Сайт по закону: проверка">
+<meta property="og:description" content="5 ошибок, за которые штрафуют сайты, сделанные с ИИ, и промпт, который их исправит">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/zakon-cover.jpg">
+<meta property="og:image:width" content="1448">
+<meta property="og:image:height" content="1086">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=22">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-ai="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Сайт по закону: проверка</h1>
+    <p class="sub">Пять ошибок, за которые штрафуют, и один промпт, который их исправит</p>
+    <p class="meta">10 минут, удобнее с компьютера</p>
+  </header>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Где делал сайт</span>
+        <div class="segmented" role="group" aria-label="В каком ИИ делал сайт">
+          <button type="button" data-set-ai="claude" aria-pressed="true">Claude</button>
+          <button type="button" data-set-ai="codex" aria-pressed="false">ChatGPT</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Сайт, который ты сделал с ИИ, и его проект: там, где ИИ правит код</li>
+      <li data-ai-only="claude">Claude Code: он есть в подписке Claude Pro и выше. В бесплатном claude.ai его нет</li>
+      <li data-ai-only="codex">Codex: он есть в любом аккаунте ChatGPT, даже бесплатном</li>
+      <li>Сделал сайт в Lovable, Bolt или v0? Подойдёт их чат, ничего ставить не нужно</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Открой проект сайта</h2>
+    <ol class="how">
+      <li data-ai-only="claude">Открой приложение Claude, вкладку Code, и выбери папку сайта. Или запусти Claude Code в терминале в этой папке</li>
+      <li data-ai-only="codex">Открой приложение ChatGPT, выбери Codex и открой папку сайта</li>
+      <li>Если сайт в Lovable, Bolt или v0, просто открой проект там</li>
+    </ol>
+    <div class="group">
+      <div class="row note">В обычном чате на claude.ai или chatgpt.com ИИ не видит файлы сайта. Там приложи архив с кодом, и он напишет, что исправить</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Отправь промпт</h2>
+    <p class="lead-in">Скопируй промпт, вставь в чат проекта и отправь</p>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Проверь мой сайт по пяти пунктам, которые обязательны почти в любой стране, и исправь всё, что не так. Сначала покажи список проблем, потом исправляй по одному пункту и после каждого коротко пиши, что поменял
+
+1. Формы. Везде, где сайт собирает почту, телефон или имя, нужны галочка согласия на обработку персональных данных (по умолчанию пустая) и ссылка на политику конфиденциальности. Без галочки форма не отправляется. Если политики нет, создай страницу: какие данные собираем и зачем, где и сколько храним, кому передаём, как их удалить и куда писать
+
+2. Возраст. Если сайтом могут пользоваться дети, добавь галочку «Мне уже есть 16 лет» или вопрос о возрасте. Данные тех, кто младше, не собирай без согласия родителей
+
+3. Рассылки. Подписка только по отдельной галочке. В каждом письме ссылка «Отписаться», которая срабатывает в один клик, без входа в аккаунт
+
+4. База данных. Проверь, может ли посторонний прочитать или скачать чужие данные: секретные ключи и пароли не лежат в коде страницы, у всех таблиц включены правила доступа (в Supabase это Row Level Security), запросы без входа не отдают чужие записи. Покажи, что нашёл, и закрой доступ
+
+5. Картинки, шрифты и иконки. Составь список с источником и лицензией каждого. Всё, где лицензия непонятна или запрещает коммерческое использование, замени на свободное, например фото с Unsplash и шрифты с открытой лицензией из Google Fonts
+
+В конце дай короткий отчёт: что было не так, что исправил и что мне нужно сделать руками, например вписать в политику своё имя и почту. Если что-то не можешь проверить сам, скажи, как проверить мне</span><button type="button" class="copy button" aria-label="Скопировать промпт">Скопировать промпт</button></div>
+    </div>
+    <div class="group">
+      <div class="row result">Сначала ИИ покажет список проблем по пяти пунктам, а исправлять начнёт, когда ты разрешишь</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Разреши исправить</h2>
+    <p class="lead-in">Отвечай короткими фразами, ИИ сам найдёт нужные файлы и поправит их. Выбери пример над окном</p>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры: что ИИ находит и как исправляет">
+      <div class="cmd-tabs" role="group" aria-label="Пункт">
+        <button type="button" aria-pressed="true">Согласие</button>
+        <button type="button" aria-pressed="false">Возраст</button>
+        <button type="button" aria-pressed="false">Отписка</button>
+        <button type="button" aria-pressed="false">База</button>
+        <button type="button" aria-pressed="false">Картинки</button>
+      </div>
+      <p class="caption" aria-live="polite">Форма без галочки и политики</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">my-site</span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Форма без галочки и политики" data-caption="Форма без галочки и политики">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Проверь мой сайт по пяти пунктам…</p></div><div class="msg ai"><p class="bubble-ai">Нашёл 5 проблем: форма, возраст, письма, база, картинки. Начать с формы?</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да, исправь форму регистрации"><span class="say">Да, исправь форму регистрации</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Да, исправь форму регистрации"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Правлю форму"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Edit</span><span data-ai-only="codex">Edited</span></span><code><span class="tok">src/pages/Signup.tsx</span></code></p></div><div class="msg ai tool" data-status="Пишу политику"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Write</span><span data-ai-only="codex">Added</span></span><code><span class="tok">src/pages/Privacy.tsx</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Под формой теперь галочка «Согласен на обработку персональных данных», по умолчанию пустая, и ссылка на политику. Без галочки кнопка не нажимается. Политику создал на странице /privacy, впиши туда своё имя и почту</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Нет вопроса про возраст" data-caption="Нет вопроса про возраст">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Да, исправь форму регистрации</p></div><div class="msg ai"><p class="bubble-ai">Готово, галочка согласия и политика на месте</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Добавь проверку возраста"><span class="say">Добавь проверку возраста</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Добавь проверку возраста"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Добавляю проверку"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Edit</span><span data-ai-only="codex">Edited</span></span><code><span class="tok">src/pages/Signup.tsx</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Добавил галочку «Мне уже есть 16 лет». Без неё регистрация не проходит. Если хочешь пускать младше, нужна форма согласия родителей, могу сделать</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 5: Рассылка без «Отписаться»" data-caption="Рассылка без «Отписаться»">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Добавь проверку возраста</p></div><div class="msg ai"><p class="bubble-ai">Готово, без галочки «Мне уже есть 16 лет» регистрация не проходит</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Проверь письма рассылки"><span class="say">Проверь письма рассылки</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Проверь письма рассылки"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Ищу отписку"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Grep</span><span data-ai-only="codex">Searched</span></span><code><span class="tok">unsubscribe</span></code></p></div><div class="msg ai tool" data-status="Правлю письмо"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Edit</span><span data-ai-only="codex">Edited</span></span><code><span class="tok">emails/launch.html</span></code></p></div><div class="msg ai tool" data-status="Делаю отписку"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Write</span><span data-ai-only="codex">Added</span></span><code><span class="tok">api/unsubscribe.ts</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">В письме «Мы запустились!» не было ссылки «Отписаться». Добавил её во все письма: одно нажатие, без входа в аккаунт, и адрес сразу пропадает из рассылки</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Чужие данные может скачать любой" data-caption="Чужие данные может скачать любой">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Проверь письма рассылки</p></div><div class="msg ai"><p class="bubble-ai">Готово, «Отписаться» теперь в каждом письме</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Проверь, может ли кто-то скачать мою базу"><span class="say">Проверь, может ли кто-то скачать мою базу</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Проверь, может ли кто-то скачать мою базу"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Ищу ключи в коде"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">grep</span> <span class="tok">-rn</span> <span class="tok">&quot;service_role&quot;</span> <span class="tok">src</span></code></p></div><div class="msg ai tool" data-status="Закрываю доступ"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Write</span><span data-ai-only="codex">Added</span></span><code><span class="tok">supabase/migrations/enable_rls.sql</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Нашёл две дыры: секретный ключ базы лежал в коде страницы, а у таблиц users и orders не было правил доступа. Ключ убрал на сервер, правила включил. Теперь каждый видит только свои записи</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Чужие картинки и шрифты" data-caption="Чужие картинки и шрифты">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Проверь, может ли кто-то скачать мою базу</p></div><div class="msg ai"><p class="bubble-ai">Готово, ключ убран, правила доступа включены</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Составь список картинок и шрифтов с лицензиями"><span class="say">Составь список картинок и шрифтов с лицензиями</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Составь список картинок и шрифтов с лицензиями"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Ищу картинки и шрифты"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Glob</span><span data-ai-only="codex">Searched</span></span><code><span class="tok">public/**/*.{jpg,png,svg,woff2}</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">hero.jpg: найдена в интернете, автор неизвестен ✕ заменил на фото с Unsplash<br>logo.png: похож на чужой логотип ✕ нужен свой, могу нарисовать<br>Шрифт Inter: открытая лицензия OFL ✓<br>Иконки: открытая лицензия ✓</p></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph"><span data-ai-only="claude">Type / for commands</span><span data-ai-only="codex">Ask Codex anything</span></span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span><span data-ai-only="claude">Auto</span><span data-ai-only="codex">Local</span></span><span><span data-ai-only="claude">Opus 5.5</span><span data-ai-only="codex" class="mc-branch"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="4" cy="3.5" r="1.8"/><circle cx="4" cy="12.5" r="1.8"/><circle cx="12" cy="5.5" r="1.8"/><path d="M4 5.3v5.4M12 7.3c0 3-4.5 2.4-7.4 4"/></svg>main</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Проверь сам по чеклисту</h2>
+    <p class="lead-in">Открой сайт как обычный посетитель и пройди по пунктам</p>
+    <ul class="group">
+      <li><b>Форма.</b> Галочка согласия пустая, рядом ссылка на политику. Без галочки форма не отправляется</li>
+      <li><b>Возраст.</b> Есть галочка «Мне уже есть 16 лет» или вопрос о возрасте</li>
+      <li><b>Рассылка.</b> В каждом письме есть «Отписаться», и она работает без входа в аккаунт</li>
+      <li><b>База.</b> Открой сайт в режиме инкогнито и попробуй открыть чужой профиль или заказ по ссылке. Не должно получиться</li>
+      <li><b>Картинки и шрифты.</b> У каждого есть источник и лицензия, чужое заменено</li>
+    </ul>
+    <div class="group">
+      <div class="row note">Детали в разных странах отличаются, например возраст: от 13 до 16 лет. 16 подходит почти везде. Если сайт уже приносит деньги, покажи результат юристу</div>
+    </div>
+    <p class="done">Готово. Теперь первые деньги останутся твоими, а не уйдут на штраф</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Закрытый клуб</p>
+      <div class="sketch">
+        <div class="ipad"><div class="ipad-screen">
+              <svg viewBox="0 0 360 220" role="img" aria-label="Схема урока: задача, ИИ, результат, время и деньги">
+                <text class="hand small" x="22" y="36" style="--d:.0s">Урок 1</text>
+                <path class="ink orange" pathLength="1" style="--d:.15s;--t:.35s" d="M20 44 C 50 47, 80 41, 108 45"/>
+                <path class="ink" pathLength="1" style="--d:.45s" d="M16 92 C 15 82, 22 78, 32 79 L 86 78 C 96 78, 100 84, 99 94 L 99 118 C 99 127, 94 131, 85 131 L 30 132 C 20 132, 15 126, 16 117 Z"/>
+                <text class="hand" x="57" y="111" text-anchor="middle" style="--d:.75s">Задача</text>
+                <path class="ink" pathLength="1" style="--d:.95s;--t:.3s" d="M104 106 C 114 104, 124 107, 134 105 M 126 99 L 135 105 L 126 112"/>
+                <path class="ink blue" pathLength="1" style="--d:1.2s;--t:.55s" d="M178 79 C 205 78, 220 92, 219 106 C 218 122, 200 134, 177 133 C 153 132, 138 120, 139 105 C 140 90, 155 79, 180 80"/>
+                <text class="hand" x="179" y="112" text-anchor="middle" style="--d:1.6s">ИИ</text>
+                <path class="ink" pathLength="1" style="--d:1.8s;--t:.3s" d="M224 106 C 234 104, 244 107, 254 105 M 246 99 L 255 105 L 246 112"/>
+                <path class="ink" pathLength="1" style="--d:2.05s" d="M262 90 C 261 81, 267 78, 276 78 L 336 79 C 345 79, 348 85, 347 94 L 347 119 C 347 127, 342 131, 334 131 L 276 132 C 267 132, 262 127, 262 118 Z"/>
+                <text class="hand" x="305" y="111" text-anchor="middle" style="--d:2.35s">Результат</text>
+                <text class="hand green" x="305" y="168" text-anchor="middle" style="--d:2.6s">время + деньги</text>
+                <path class="ink green" pathLength="1" style="--d:2.8s;--t:.4s" d="M245 176 C 280 180, 320 174, 356 178"/>
+              </svg>
+            </div></div>
+      </div>
+      <p>Раз в неделю живой урок на планшете, задание и чат участников</p>
+      <p>Первые 30 платят 500 ₽ в месяц, и цена остаётся навсегда</p>
+      <a class="button" href="https://t.me/+m3QK1UWmZcphM2Fi" target="_blank" rel="noopener">Записаться в лист ожидания</a>
+      <p class="fine">Запись бесплатная. Открою, когда наберётся 30 человек</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>ИИ пишет, что не видит файлы сайта</summary>
+        <p>Ты в обычном чате. Открой проект в <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span> или приложи архив с кодом сайта</p></details>
+      <details class="row fix"><summary>ИИ спрашивает разрешение изменить файл или выполнить команду</summary>
+        <p>Это нормально. Прочитай, что он хочет сделать, и разреши. Без твоего согласия он ничего не меняет</p></details>
+      <details class="row fix"><summary>Сайт в Tilda, Wix или другом конструкторе без кода</summary>
+        <p>Галочка согласия и ссылка на политику включаются в настройках формы. Текст политики попроси составить ИИ и вставь его на отдельную страницу</p></details>
+      <details class="row fix"><summary>У меня нет компании, что писать в политике</summary>
+        <p>Своё имя и почту для связи. Остальной текст ИИ составит сам</p></details>
+      <details class="row fix"><summary>База не в Supabase</summary>
+        <p>Промпт работает с любой базой. ИИ сам найдёт, где она и кто может её читать</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Это не юридическая консультация. Проверено по официальным источникам 14 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=22" defer></script>
+</body>
+</html>
