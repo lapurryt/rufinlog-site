@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Где снято фото: проверка | rufinlog</title>
+<meta name="description" content="Бесплатный скилл geo-sleuth для Claude Code и Codex находит, где снято фото, по горам, мостам и теням. Как его поставить и проверить свои фото перед публикацией">
+<meta property="og:title" content="Где снято фото: проверка">
+<meta property="og:description" content="Как поставить бесплатный скилл и проверить свои фото перед публикацией">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/foto-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=23">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-os="win" data-ai="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Где снято фото: проверка</h1>
+    <p class="sub">Узнай, что твоё фото выдаёт о месте, до того как выложишь</p>
+    <p class="meta">15 минут на установку, удобнее с компьютера</p>
+  </header>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+      <div class="row setup-row">
+        <span class="setup-label">ИИ</span>
+        <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
+          <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
+          <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Компьютер на Windows 10, 11 или Mac</li>
+      <li data-ai-only="claude">Claude Code. Он есть в подписке Claude Pro и выше, на бесплатном тарифе его нет</li>
+      <li data-ai-only="codex">Codex. Хватит любого аккаунта ChatGPT, даже бесплатного</li>
+      <li>Оригинал фото с телефона, а не скриншот: скиллу нужны детали</li>
+      <li>Время: полная проверка идёт около часа. В примерах автора скилла от 32 до 72 минут</li>
+      <li>Сам скилл <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">geo-sleuth</a> бесплатный, лицензия MIT</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Поставь Node.js и uv</h2>
+    <ol class="how">
+      <li data-only="win">Открой PowerShell: нажми Пуск и набери «PowerShell»</li>
+      <li data-only="mac">Открой Терминал: Cmd + Пробел и набери «Терминал»</li>
+      <li>Вставь по очереди две команды. Node.js нужен установщику скилла, uv запускает его скрипты</li>
+    </ol>
+    <p class="label">Node.js</p>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">winget install --id OpenJS.NodeJS.LTS -e</code><code data-only="mac">brew install node</code><button type="button" class="copy">Скопировать</button></div>
+    </div>
+    <p class="foot-note" data-only="mac">Если пишет «command not found: brew», скачай установщик для Mac на <a href="https://nodejs.org/en/download" target="_blank" rel="noopener">nodejs.org</a></p>
+    <p class="label">uv</p>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">winget install --id=astral-sh.uv -e</code><code data-only="mac">curl -LsSf https://astral.sh/uv/install.sh | sh</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Python ставить не нужно: uv скачает его сам, когда понадобится</div>
+    </div>
+
+    <p class="label">Проверка: закрой терминал и открой заново</p>
+    <div class="group">
+      <div class="row cmd"><code>node -v</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится строка вида <code>v26.13.1</code>. Подойдёт любая версия от 22.20</div>
+      <div class="row cmd"><code>uv --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится строка вида <code>uv 0.13.8</code>. Цифры могут быть другими</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Поставь скилл</h2>
+    <ol class="how">
+      <li>В том же терминале вставь команду</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code data-only="win" data-ai-only="claude">npx.cmd skills add Oldcircle/geo-sleuth -g -a claude-code -y</code><code data-only="mac" data-ai-only="claude">npx skills add Oldcircle/geo-sleuth -g -a claude-code -y</code><code data-only="win" data-ai-only="codex">npx.cmd skills add Oldcircle/geo-sleuth -g -a codex -y</code><code data-only="mac" data-ai-only="codex">npx skills add Oldcircle/geo-sleuth -g -a codex -y</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Спросит «Ok to proceed? (y)»: нажми y и Enter</div>
+      <div class="row note" data-only="win">На Windows именно <code>npx.cmd</code>: так команда сработает в PowerShell без лишних настроек</div>
+      <div class="row result">В конце появятся <code>Installed 1 skill</code> и <code>Done!</code></div>
+      <div class="row note" data-only="win">Жёлтая строка Symlinks failed не ошибка: файлы просто скопировались</div>
+    </div>
+    <p class="foot-note"><span data-ai-only="claude">Потом открой новый чат в Claude Code</span><span data-ai-only="codex">Потом закрой и снова открой Codex</span>, чтобы ИИ увидел скилл</p>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Проверь, что всё готово</h2>
+    <ol class="how">
+      <li>Создай папку <code>photo-check</code> и открой её в <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span></li>
+      <li>Отправь фразу ниже</li>
+    </ol>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Запусти doctor.py из скилла geo-sleuth и поставь всё, чего не хватает"><span class="say">Запусти doctor.py из скилла geo-sleuth и поставь всё, чего не хватает</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <div class="group">
+      <div class="row result">ИИ проверит Python, uv, curl и браузер, а чего нет, поставит сам. Всё готово, когда в конце написано <code>No failed checks</code></div>
+      <div class="row note">Нет Chrome? ИИ поставит Chromium: через него скилл ищет похожие фото</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Проверь своё фото</h2>
+    <p class="lead-in">Положи фото в папку <code>photo-check</code> и напиши <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением. Выбери ситуацию над окном</p>
+    <div class="group">
+      <div class="row note">Проверяй свои фото или те, на которые тебе дали разрешение. Искать людей, которые этого не хотят, нельзя: так написано и в правилах скилла</div>
+    </div>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с ИИ">
+      <div class="cmd-tabs" role="group" aria-label="Ситуация">
+        <button type="button" aria-pressed="true">Где снято</button>
+        <button type="button" aria-pressed="false">Что выдаёт</button>
+        <button type="button" aria-pressed="false">GPS</button>
+        <button type="button" aria-pressed="false">Без поиска</button>
+      </div>
+      <p class="caption" aria-live="polite">Найти, где снято фото</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">photo-check</span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 4: Найти, где снято фото" data-caption="Найти, где снято фото">
+              <div class="history"><div class="msg me"><p class="bubble-me">Запусти doctor.py из скилла geo-sleuth и поставь всё, чего не хватает</p></div><div class="msg ai"><p class="bubble-ai">Готово: поставил Chromium, все проверки прошли</p></div></div>
+              <div class="exchange"><div class="msg me"><img class="att" src="../assets/img/foto-oven.webp" alt="Фото: белая печь у края убранного рисового поля, за полем виадук и гора" width="560" height="420" decoding="async"><button type="button" class="bubble-btn" aria-label="Скопировать: Найди, где снято это фото"><span class="say">Найди, где снято это фото</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Найди, где снято это фото"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю фото"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">uv</span> <span class="tok">run</span> <span class="path"><span data-ai-only="claude">~/.claude/skills</span><span data-ai-only="codex">~/.agents/skills</span>/<wbr><span class="tok">geo-sleuth</span>/scripts/<wbr>intake.py</span> <span class="tok">photo.jpg</span> <span class="tok">--out-dir</span> <span class="tok">intake</span></code></p></div><div class="msg ai" data-status="Сравниваю горы и мосты с картой"><p class="bubble-ai">Нашёл: Цинъюань, провинция Гуандун в Китае. Ты стоял у края рисового поля и снимал на восток, точность ±2 м. Карту с точкой съёмки положил в папку</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 4: Узнать, что выдаёт место, до публикации" data-caption="Узнать, что выдаёт место, до публикации">
+              <div class="history"><div class="msg me"><p class="bubble-me">Запусти doctor.py из скилла geo-sleuth</p></div><div class="msg ai"><p class="bubble-ai">Готово, все проверки прошли</p></div><div class="msg me"><p class="bubble-me">Найди, где снято это фото</p></div><div class="msg ai"><p class="bubble-ai">Нашёл: Цинъюань, Китай, точность ±2 м</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Место не ищи. Посмотри balcony.jpg и скажи, что на нём выдаёт, где я живу"><span class="say">Место не ищи. Посмотри balcony.jpg и скажи, что на нём выдаёт, где я живу</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Место не ищи. Посмотри balcony.jpg и скажи, что на нём выдаёт, где я живу"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю фото"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">uv</span> <span class="tok">run</span> <span class="path"><span data-ai-only="claude">~/.claude/skills</span><span data-ai-only="codex">~/.agents/skills</span>/<wbr><span class="tok">geo-sleuth</span>/scripts/<wbr>intake.py</span> <span class="tok">balcony.jpg</span> <span class="tok">--out-dir</span> <span class="tok">intake</span> <span class="tok">--no-rev</span></code></p></div><div class="msg ai" data-status="Ищу улики на фото"><p class="bubble-ai">Выдают три вещи: вывеска аптеки в доме напротив, номер дома на углу и телебашня на горизонте. По ним двор найдут и без скилла. Обрежь правый край или размой вывеску и номер</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 4: Проверить, есть ли в файле координаты" data-caption="Проверить, есть ли в файле координаты">
+              <div class="history"><div class="msg me"><p class="bubble-me">Найди, где снято это фото</p></div><div class="msg ai"><p class="bubble-ai">Нашёл: Цинъюань, Китай, точность ±2 м</p></div><div class="msg me"><p class="bubble-me">Скажи, что на balcony.jpg выдаёт, где я живу</p></div><div class="msg ai"><p class="bubble-ai">Вывеска аптеки и номер дома на углу. Лучше обрезать</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Есть ли в balcony.jpg координаты и время съёмки?"><span class="say">Есть ли в balcony.jpg координаты и время съёмки?</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Есть ли в balcony.jpg координаты и время съёмки?"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю данные файла"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">uv</span> <span class="tok">run</span> <span class="path"><span data-ai-only="claude">~/.claude/skills</span><span data-ai-only="codex">~/.agents/skills</span>/<wbr><span class="tok">geo-sleuth</span>/scripts/<wbr>exif.py</span> <span class="tok">balcony.jpg</span></code></p></div><div class="msg ai" data-status="Думаю"><p class="bubble-ai">Да: в файле записаны координаты GPS и время, 14 ноября 18:42. Кто получит этот файл, увидит точку на карте. На iPhone при отправке нажми «Параметры» и выключи «Геопозиция»</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 4: Проверить, не отправляя фото в поиск" data-caption="Проверить, не отправляя фото в поиск">
+              <div class="history"><div class="msg me"><p class="bubble-me">Найди, где снято это фото</p></div><div class="msg ai"><p class="bubble-ai">Нашёл: Цинъюань, Китай, точность ±2 м</p></div><div class="msg me"><p class="bubble-me">Скажи, что на balcony.jpg выдаёт, где я живу</p></div><div class="msg ai"><p class="bubble-ai">Вывеска аптеки и номер дома на углу. Лучше обрезать</p></div><div class="msg me"><p class="bubble-me">Есть ли в photo.jpg координаты?</p></div><div class="msg ai"><p class="bubble-ai">Нет, геопозиции в файле нет</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Найди, где снято photo.jpg, но без поиска по картинкам"><span class="say">Найди, где снято photo.jpg, но без поиска по картинкам</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Найди, где снято photo.jpg, но без поиска по картинкам"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю фото"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">uv</span> <span class="tok">run</span> <span class="path"><span data-ai-only="claude">~/.claude/skills</span><span data-ai-only="codex">~/.agents/skills</span>/<wbr><span class="tok">geo-sleuth</span>/scripts/<wbr>intake.py</span> <span class="tok">photo.jpg</span> <span class="tok">--out-dir</span> <span class="tok">intake</span> <span class="tok">--no-rev</span></code></p></div><div class="msg ai" data-status="Думаю"><p class="bubble-ai">Хорошо, ищу только по карте, рельефу и спутнику. В поиск по картинкам Яндекса и Baidu фото не уйдёт</p></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph"><span data-ai-only="claude">Type / for commands</span><span data-ai-only="codex">Ask Codex anything</span></span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span><span data-ai-only="claude">Auto</span><span data-ai-only="codex">Local</span></span><span><span data-ai-only="claude">Opus 5.5</span><span data-ai-only="codex" class="mc-branch"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="4" cy="3.5" r="1.8"/><circle cx="4" cy="12.5" r="1.8"/><circle cx="12" cy="5.5" r="1.8"/><path d="M4 5.3v5.4M12 7.3c0 3-4.5 2.4-7.4 4"/></svg>main</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+
+    <figure class="shot">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>Итог проверки</span></div>
+      <img src="../assets/img/foto-evidence.webp" width="1000" height="745" loading="lazy" alt="Спутниковая карта: красная точка съёмки с подписью ±2 м и жёлтый сектор, куда смотрела камера">
+      <figcaption>Итог из примера автора скилла: точка съёмки и сектор, куда смотрела камера. Подписи остаются на языке источника, ИИ их переведёт</figcaption>
+    </figure>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что на фоне выдаёт место</h2>
+    <p class="lead-in">По этим уликам ищет скилл. Проверь их на своём фото перед публикацией</p>
+    <ul class="group">
+      <li>Вывески, названия магазинов и любой текст. Их читают первыми</li>
+      <li>Номера машин и домов: по ним узнают страну, регион и улицу</li>
+      <li>Горы, мосты и линии электропередачи на горизонте. Их силуэт сравнивают с картой рельефа</li>
+      <li>Тени: по ним считают время съёмки и стороны света</li>
+      <li>Деревья и фонари на улице. В некоторых городах есть открытые базы всех деревьев</li>
+      <li>Геопозиция в самом файле. На iPhone при отправке нажми «Параметры» и выключи «Геопозиция»</li>
+      <li>Фото уже есть в интернете: тогда место находят поиском похожих картинок</li>
+    </ul>
+    <p class="done">Готово. Теперь ты узнаешь, что фото говорит о месте, раньше всех, кто его увидит</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Закрытый клуб</p>
+      <div class="sketch">
+        <div class="ipad"><div class="ipad-screen">
+              <svg viewBox="0 0 360 220" role="img" aria-label="Схема урока: задача, ИИ, результат, время и деньги">
+                <text class="hand small" x="22" y="36" style="--d:.0s">Урок 1</text>
+                <path class="ink orange" pathLength="1" style="--d:.15s;--t:.35s" d="M20 44 C 50 47, 80 41, 108 45"/>
+                <path class="ink" pathLength="1" style="--d:.45s" d="M16 92 C 15 82, 22 78, 32 79 L 86 78 C 96 78, 100 84, 99 94 L 99 118 C 99 127, 94 131, 85 131 L 30 132 C 20 132, 15 126, 16 117 Z"/>
+                <text class="hand" x="57" y="111" text-anchor="middle" style="--d:.75s">Задача</text>
+                <path class="ink" pathLength="1" style="--d:.95s;--t:.3s" d="M104 106 C 114 104, 124 107, 134 105 M 126 99 L 135 105 L 126 112"/>
+                <path class="ink blue" pathLength="1" style="--d:1.2s;--t:.55s" d="M178 79 C 205 78, 220 92, 219 106 C 218 122, 200 134, 177 133 C 153 132, 138 120, 139 105 C 140 90, 155 79, 180 80"/>
+                <text class="hand" x="179" y="112" text-anchor="middle" style="--d:1.6s">ИИ</text>
+                <path class="ink" pathLength="1" style="--d:1.8s;--t:.3s" d="M224 106 C 234 104, 244 107, 254 105 M 246 99 L 255 105 L 246 112"/>
+                <path class="ink" pathLength="1" style="--d:2.05s" d="M262 90 C 261 81, 267 78, 276 78 L 336 79 C 345 79, 348 85, 347 94 L 347 119 C 347 127, 342 131, 334 131 L 276 132 C 267 132, 262 127, 262 118 Z"/>
+                <text class="hand" x="305" y="111" text-anchor="middle" style="--d:2.35s">Результат</text>
+                <text class="hand green" x="305" y="168" text-anchor="middle" style="--d:2.6s">время + деньги</text>
+                <path class="ink green" pathLength="1" style="--d:2.8s;--t:.4s" d="M245 176 C 280 180, 320 174, 356 178"/>
+              </svg>
+            </div></div>
+      </div>
+      <p>Раз в неделю живой урок на планшете, задание и чат участников</p>
+      <p>Первые 30 платят 500 ₽ в месяц, и цена остаётся навсегда</p>
+      <a class="button" href="https://t.me/+TNeaIWL3sHE4MDcy" target="_blank" rel="noopener">Записаться в лист ожидания</a>
+      <p class="fine">Запись бесплатная. Открою, когда наберётся 30 человек</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Имя "npx" не распознано или command not found: npx</summary>
+        <p>Node.js не поставился или терминал открыт до установки. Закрой терминал, открой заново и проверь <code>node -v</code>. Если пусто, повтори шаг 1</p></details>
+      <details class="row fix"><summary>Ошибка про версию Node.js или Unsupported engine</summary>
+        <p>Нужен Node.js 22.20 или новее. Поставь свежий командой из шага 1, закрой и открой терминал</p></details>
+      <details class="row fix" data-only="win"><summary>Выполнение сценариев отключено в этой системе</summary>
+        <p>Команда начата с <code>npx</code> без <code>.cmd</code>. Скопируй её из шага 2, там уже <code>npx.cmd</code></p></details>
+      <details class="row fix"><summary>ИИ не знает про geo-sleuth</summary>
+        <p><span data-ai-only="claude">Открой новый чат в Claude Code.</span><span data-ai-only="codex">Закрой и снова открой Codex.</span> Скиллы подхватываются при запуске</p></details>
+      <details class="row fix"><summary>doctor.py пишет FAIL</summary>
+        <p>Напиши ИИ: «Исправь всё, что doctor.py отметил FAIL, и запусти его ещё раз». Под каждым FAIL есть строка Next с подсказкой, ИИ её прочитает</p></details>
+      <details class="row fix"><summary>Поиск по картинкам: 403, 429 или капча</summary>
+        <p>Яндекс или Baidu временно не пускают. Попробуй позже или попроси искать без поиска по картинкам</p></details>
+      <details class="row fix"><summary>Проверка идёт уже полчаса</summary>
+        <p>Так и должно быть: скилл перебирает тысячи мест на карте. В примерах автора скилла от 32 до 72 минут</p></details>
+      <details class="row fix"><summary>Нашёл не то место</summary>
+        <p>Каждый прогон немного разный, автор скилла пишет об этом сам. Дай подсказку, например страну или город, и попроси проверить ещё раз</p></details>
+      <details class="row fix"><summary>ИИ спрашивает, чьё это фото и зачем</summary>
+        <p>Так устроен скилл: если фото не твоё или на нём дом и дети, он сначала спросит, для чего проверка. Ответь как есть</p></details>
+      <details class="row fix"><summary>ИИ спрашивает разрешение выполнить команду</summary>
+        <p>Это нормально: он показывает команду, которую хочет запустить. Разреши</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Скилл <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">geo-sleuth</a> сделал Oldcircle, лицензия MIT. Фото и карта в примере взяты из его описания. Проверено по официальной документации 14 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=23" defer></script>
+</body>
+</html>
