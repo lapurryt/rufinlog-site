@@ -351,6 +351,8 @@
 
   // Where the person came from: ?src=… from our links, else a guess from the referrer. Kept for the whole visit.
   const params = new URLSearchParams(location.search);
+  // ?me=<token> comes only in links the bot sends the author (or his /me link): the bot then leaves this browser out
+  const meTok = params.get("me");
   let src = params.get("src") || params.get("utm_source");
   if (!src) {
     const ref = document.referrer;
@@ -359,8 +361,8 @@
   }
   src = src.toLowerCase().slice(0, 40);
   store(sessionStorage, "rufinlog-src", src);
-  if (params.has("src") || params.has("utm_source")) {      // clean address: shared links don't carry the source
-    params.delete("src"); params.delete("utm_source");
+  if (params.has("src") || params.has("utm_source") || meTok) {      // clean address: shared links don't carry the source
+    params.delete("src"); params.delete("utm_source"); params.delete("me");
     const q = params.toString();
     history.replaceState(history.state, "", location.pathname + (q ? "?" + q : "") + location.hash);
   }
@@ -369,6 +371,13 @@
     try { navigator.sendBeacon(ENDPOINT, JSON.stringify({ v: vid, p: page, s: src, e, d, n })); } catch (err) { /* offline */ }
   };
   send("view", document.referrer ? new URL(document.referrer).hostname : "");
+  if (meTok) send("me", meTok.slice(0, 64));
+
+  // The call card button takes this visitor id to the bot (?start=call_<guide>_<vid>), so a request is matched to its
+  // visit: where the person came from and what they read. Without the id the button still works.
+  document.querySelectorAll("#club a.button[href*='start=call_']").forEach((a) => {
+    a.href = a.href.replace(/start=call_([a-z]+)(?:_[A-Za-z0-9-]+)?/, "start=call_$1_" + vid);
+  });
 
   // Which parts of the guide people actually reach
   const seen = new Set();
