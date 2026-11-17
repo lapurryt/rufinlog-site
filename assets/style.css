@@ -736,3 +736,20 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 .prompt-row .say.prompt { display: block; white-space: pre-line; font-size: .9412rem; line-height: 1.5; color: var(--text); }
 .prompt-row .copy.button { display: flex; width: 100%; margin-top: 14px; }
 .prompt-row .copy.button.done { color: #fff; background: var(--ok); }
+
+/* goal picker («ЮТУБ», 18.11): choices with a checkmark like an iOS settings list (HIG lists-and-tables › «a table that
+   lists options … adding a checkmark»); the prompt card under it follows the choice in place, nothing opens or jumps */
+.picker .pick {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px;
+  border: 0; border-radius: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer;
+  -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
+}
+.picker .pick:first-child { border-radius: var(--r-card) var(--r-card) 0 0; }
+.picker .pick:last-child { border-radius: 0 0 var(--r-card) var(--r-card); }
+.picker .pick:active { background: var(--code-bg); }
+.picker .pick:focus-visible { outline: 2px solid var(--link); outline-offset: -3px; }
+.picker .pick .check { flex: none; width: 18px; height: 18px; color: var(--link); visibility: hidden; }
+.picker .pick[aria-checked="true"] .check { visibility: visible; }
+.prompt-row .say.prompt.swap { animation: pick-in .18s ease-out; }
+@keyframes pick-in { from { opacity: .25; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .prompt-row .say.prompt.swap { animation: none; } }

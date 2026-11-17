@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YouTube-продюсер в Claude Code | rufinlog</title>
+<meta name="description" content="Бесплатный скилл claude-youtube на 14 команд: хуки, обложки, идеи, конкуренты и план роликов на месяц. Как поставить в Claude Code за 10 минут">
+<meta property="og:title" content="YouTube-продюсер в Claude Code">
+<meta property="og:description" content="Бесплатный скилл на 14 команд: хуки, обложки, идеи и конкуренты. Пошагово, с компьютера">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/yutub-post-producer.jpg">
+<meta property="og:image:width" content="1672">
+<meta property="og:image:height" content="941">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=25">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-os="win" data-ai="claude" data-ai-lock="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>YouTube-продюсер в Claude Code</h1>
+    <p class="sub">Бесплатный скилл на 14 команд: хуки, обложки, идеи и конкуренты</p>
+    <p class="meta">10 минут, с компьютера</p>
+  </header>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что он умеет</h2>
+    <ul class="group">
+      <li>Пишет 5 хуков к ролику и оценивает риск, что зритель пролистнёт</li>
+      <li>Придумывает 3 варианта обложки и названия к ним</li>
+      <li>Находит топ-10 роликов твоих конкурентов и темы, которых у них ещё нет</li>
+      <li>Даёт 10 идей с хуком и обложкой под твой канал</li>
+      <li>Расписывает ролики на месяц вперёд</li>
+    </ul>
+    <div class="group">
+      <div class="row note">Скилл бесплатный, код открыт на GitHub. Ключи и API не нужны: цифры канала можно просто вставить в чат</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Claude Code. Он входит в тарифы Pro, Max, Ultra, Team и Enterprise, на бесплатном его нет</li>
+      <li>Компьютер на Windows или Mac: приложение Claude или Claude Code в терминале</li>
+      <li>Git: через него скилл скачивается с GitHub. Как поставить, в шаге 1</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Проверь Git</h2>
+    <ol class="how">
+      <li data-only="win">Открой PowerShell: нажми «Пуск», напиши PowerShell и открой его</li>
+      <li data-only="mac">Открой Терминал: нажми Cmd+Пробел, напиши Терминал и открой его</li>
+      <li>Вставь команду и нажми Enter</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code>git --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится строка вида <code>git version 2.56.1</code>. Цифры могут быть другими, значит Git уже есть</div>
+    </div>
+
+    <p class="label">Пишет, что git не найден? Поставь его</p>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">winget install --id Git.Git -e --source winget</code><code data-only="mac">xcode-select --install</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note" data-only="mac">Откроется окно установки инструментов разработчика, нажми «Установить»</div>
+      <div class="row note">Потом закрой окно терминала, открой заново и проверь ещё раз</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Открой Claude Code</h2>
+    <ol class="how">
+      <li>Открой приложение Claude и перейди на вкладку Code вверху слева</li>
+      <li>Под полем ввода выбери Local, затем Open folder… и любую папку, например новую папку youtube</li>
+    </ol>
+    <div class="group">
+      <div class="row note">Работаешь в терминале? Набери <code>claude</code> в любой папке</div>
+      <div class="row note">Если вместо чата Claude просит сменить тариф, значит на твоём тарифе Claude Code нет</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Скинь ссылку на скилл</h2>
+    <p class="lead-in">Скопируй фразу, вставь в Claude Code и отправь. Он сам скачает скилл и положит его в папку со скиллами</p>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Установи скилл https://github.com/AgriciDaniel/claude-youtube: скачай репозиторий и скопируй папку skills/claude-youtube в ~/.claude/skills/youtube</span><button type="button" class="copy button" aria-label="Скопировать фразу">Скопировать фразу</button></div>
+      <div class="row result">Claude попросит разрешение на команды, разреши. В конце он напишет, что скилл установлен</div>
+    </div>
+
+    <details class="group disclosure">
+      <summary>Через терминал, если привык</summary>
+      <div class="row cmd"><code data-only="win">irm https://github.com/AgriciDaniel/claude-youtube/raw/main/install.ps1 | iex</code><code data-only="mac">curl -fsSL https://github.com/AgriciDaniel/claude-youtube/raw/main/install.sh | bash</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Это установщик автора скилла из того же репозитория. Он кладёт скилл в ту же папку</div>
+    </details>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Проверь, что скилл на месте</h2>
+    <ol class="how">
+      <li>В поле ввода Claude Code набери <code>/</code> и начни писать youtube</li>
+      <li>В списке появится youtube. Значит, всё готово</li>
+    </ol>
+    <div class="group">
+      <div class="row note">Не появился? Отправь <code>/reload-skills</code> и набери ещё раз</div>
+    </div>
+
+    <p class="label">Попробуй команды</p>
+    <p class="lead-in">Пиши <code>/youtube</code>, название команды и пару слов о своём канале. Выбери пример над окном</p>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры: что делает скилл youtube в Claude Code">
+      <div class="cmd-tabs" role="group" aria-label="Пример">
+        <button type="button" aria-pressed="true">Аудит</button>
+        <button type="button" aria-pressed="false">Хуки</button>
+        <button type="button" aria-pressed="false">Конкуренты</button>
+        <button type="button" aria-pressed="false">Идеи</button>
+      </div>
+      <p class="caption" aria-live="polite">Разобрать канал целиком</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">youtube</span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 4: Разобрать канал целиком" data-caption="Разобрать канал целиком">
+              <div class="history"><div class="msg me"><p class="bubble-me">Установи скилл https://github.com/AgriciDaniel/claude-youtube…</p></div><div class="msg ai"><p class="bubble-ai">Готово, скилл youtube лежит в ~/.claude/skills/youtube. Набери /youtube и команду</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /youtube audit канал про ИИ на русском, 2 400 подписчиков, ролики раз в неделю, хочу больше просмотров. Отвечай по-русски"><span class="say">/youtube audit канал про ИИ на русском, 2 400 подписчиков, ролики раз в неделю, хочу больше просмотров. Отвечай по-русски</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /youtube audit канал про ИИ на русском, 2 400 подписчиков, ролики раз в неделю, хочу больше просмотров. Отвечай по-русски"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл youtube"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">youtube</span> <span class="tok">audit</span></code></p></div><div class="msg ai tool" data-status="Смотрю нишу и похожие каналы"><p class="bubble-ai tool-row skill"><span class="tool-name">WebSearch</span><code><span class="tok">ИИ</span> <span class="tok">нейросети</span> <span class="tok">YouTube</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Разобрал по 4 частям: поиск, просмотры, контент, монетизация. Главное: в названиях нет слов, которые ищут, а обложки не обещают результат. Начни с трёх правок, они в начале отчёта</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 4: Хуки к новому ролику" data-caption="Хуки к новому ролику">
+              <div class="history"><div class="msg me"><p class="bubble-me">/youtube audit канал про ИИ на русском…</p></div><div class="msg ai"><p class="bubble-ai">Разобрал по 4 частям. Начни с трёх правок, они в начале отчёта</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /youtube hook ролик: как поставить Claude Code за 10 минут"><span class="say">/youtube hook ролик: как поставить Claude Code за 10 минут</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /youtube hook ролик: как поставить Claude Code за 10 минут"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл youtube"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">youtube</span> <span class="tok">hook</span></code></p></div><div class="msg ai" data-status="Пишу хуки"><p class="bubble-ai">5 хуков, у каждого риск, что зритель пролистнёт. Самый безопасный: «Ты платишь за Claude и не пользуешься половиной. Вот что ставится за 10 минут», риск низкий. Шок и история рискованнее, их лучше проверить на Shorts</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 4: Разобрать конкурентов" data-caption="Разобрать конкурентов">
+              <div class="history"><div class="msg me"><p class="bubble-me">/youtube hook ролик: как поставить Claude Code за 10 минут</p></div><div class="msg ai"><p class="bubble-ai">5 хуков, у каждого риск, что зритель пролистнёт</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /youtube competitor вот три канала, на которые я равняюсь: (вставь ссылки)"><span class="say">/youtube competitor вот три канала, на которые я равняюсь: (вставь ссылки)</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /youtube competitor вот три канала, на которые я равняюсь: (вставь ссылки)"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Ищу топ-10 роликов каждого канала"><p class="bubble-ai tool-row skill"><span class="tool-name">WebSearch</span><code><span class="tok">самые</span> <span class="tok">популярные</span> <span class="tok">видео</span> <span class="tok">канала</span></code></p></div><div class="msg ai" data-status="Сравниваю названия, обложки и темы"><p class="bubble-ai">Собрал топ-10 у каждого. В названиях у них цифры и «за N минут», на обложках лицо и два-три слова. Нашёл 6 тем, которые у них заходят, но твоей версии ещё нет. Первая в списке собирает больше всего просмотров</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 4: Идеи под твой канал" data-caption="Идеи под твой канал">
+              <div class="history"><div class="msg me"><p class="bubble-me">/youtube competitor вот три канала…</p></div><div class="msg ai"><p class="bubble-ai">Нашёл 6 тем, которые у них заходят, но твоей версии ещё нет</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: /youtube ideate возьми темы из разбора конкурентов"><span class="say">/youtube ideate возьми темы из разбора конкурентов</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: /youtube ideate возьми темы из разбора конкурентов"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл youtube"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">youtube</span> <span class="tok">ideate</span></code></p></div><div class="msg ai" data-status="Подбираю идеи"><p class="bubble-ai">10 идей по порядку: у каждой хук, обложка и ключевые слова. Первая: «Claude Code для новичков: первый проект за вечер», на обложке твоё лицо и «ЗА ВЕЧЕР». Расписать их на месяц через /youtube calendar?</p></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph"><span data-ai-only="claude">Type / for commands</span><span data-ai-only="codex">Ask Codex anything</span></span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span><span data-ai-only="claude">Auto</span><span data-ai-only="codex">Local</span></span><span><span data-ai-only="claude">Opus 5.5</span><span data-ai-only="codex" class="mc-branch"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="4" cy="3.5" r="1.8"/><circle cx="4" cy="12.5" r="1.8"/><circle cx="12" cy="5.5" r="1.8"/><path d="M4 5.3v5.4M12 7.3c0 3-4.5 2.4-7.4 4"/></svg>main</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+
+    <p class="label">С чего начать</p>
+    <p class="lead-in">Выбери, что нужно каналу, и отправь фразу в Claude Code. Про сам канал скилл спросит сам</p>
+    <div class="group picker" role="radiogroup" aria-label="Что нужно каналу" data-picker="yt">
+      <button type="button" class="row pick" role="radio" aria-checked="true" data-say="/youtube ideate дай 10 идей для моего канала. Отвечай по-русски">Не знаю, что снимать<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
+      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube audit разбери мой канал, хочу больше просмотров. Отвечай по-русски">Мало просмотров<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
+      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube hook напиши хуки к моему следующему ролику. Отвечай по-русски">Уходят в первые секунды<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
+      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube thumbnail придумай обложку и название к моему ролику. Отвечай по-русски">Не кликают обложки<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
+      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube competitor разбери моих конкурентов и найди темы, которых у них нет. Отвечай по-русски">Хочу обойти конкурентов<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
+      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube calendar распиши мои ролики на месяц вперёд. Отвечай по-русски">Нет плана на месяц<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
+    </div>
+    <div class="group">
+      <div class="row prompt-row" data-picker-out="yt"><span class="say prompt" aria-live="polite">/youtube ideate дай 10 идей для моего канала. Отвечай по-русски</span><button type="button" class="copy button" aria-label="Скопировать фразу">Скопировать фразу</button></div>
+    </div>
+
+    <details class="group disclosure">
+      <summary>Все 14 команд</summary>
+      <div class="row"><code>/youtube audit</code> аудит канала: поиск, просмотры, контент и монетизация</div>
+      <div class="row"><code>/youtube hook</code> 5 хуков с риском, что зритель пролистнёт</div>
+      <div class="row"><code>/youtube thumbnail</code> 3 варианта обложки с цветами и раскладкой</div>
+      <div class="row"><code>/youtube seo</code> 3 названия, описание, теги, таймкоды и хэштеги</div>
+      <div class="row"><code>/youtube script</code> сценарий ролика, который держит внимание</div>
+      <div class="row"><code>/youtube shorts</code> сценарий Shorts, описание и прогноз</div>
+      <div class="row"><code>/youtube repurpose</code> куски для Shorts из длинного ролика, пост, рассылка и подкаст</div>
+      <div class="row"><code>/youtube analyze</code> разбор аналитики канала и что поправить в первую очередь</div>
+      <div class="row"><code>/youtube calendar</code> план роликов на месяц вперёд</div>
+      <div class="row"><code>/youtube strategy</code> позиционирование, рубрики и план на 30, 60 и 90 дней</div>
+      <div class="row"><code>/youtube competitor</code> топ-видео конкурентов и темы, которых у них нет</div>
+      <div class="row"><code>/youtube ideate</code> 10 идей с хуком, обложкой и ключевыми словами</div>
+      <div class="row"><code>/youtube metadata</code> всё для загрузки: названия, описание, теги, конечные заставки</div>
+      <div class="row"><code>/youtube monetize</code> как зарабатывать на канале: 7 источников и прайс для рекламы</div>
+    </details>
+    <p class="done">Готово. У тебя в Claude Code свой YouTube-продюсер: пиши /youtube и команду</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_yutub" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Нет вкладки Code или Claude просит сменить тариф</summary>
+        <p>Claude Code есть в тарифах Pro, Max, Ultra, Team и Enterprise. На бесплатном тарифе его нет</p></details>
+      <details class="row fix"><summary>Пишет, что git не найден</summary>
+        <p>Поставь Git, как в шаге 1, закрой окно терминала или Claude и открой заново</p></details>
+      <details class="row fix"><summary>После / нет youtube</summary>
+        <p>Отправь <code>/reload-skills</code>. Если не помогло, отправь Claude: «Проверь, что в ~/.claude/skills/youtube есть файл SKILL.md, и если нет, поставь скилл заново»</p></details>
+      <details class="row fix"><summary>Ответ пришёл на английском</summary>
+        <p>Допиши в конце сообщения: «Отвечай по-русски»</p></details>
+      <details class="row fix"><summary>Вместо картинок обложек только описание</summary>
+        <p>Так и задумано: рисовать картинки скилл умеет только с ключом Gemini через NanoBanana. Без него отдай описание обложки в ChatGPT, и он её нарисует</p></details>
+      <details class="row fix"><summary>Хочу, чтобы он сам смотрел цифры канала</summary>
+        <p>Для этого нужен ключ YouTube Data API, как получить, написано в <a href="https://github.com/AgriciDaniel/claude-youtube#optional-youtube-api-for-live-channel-data" target="_blank" rel="noopener">README скилла</a>. Без ключа просто вставь цифры из YouTube Studio в чат</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Проверено 18 ноября 2026 по <a href="https://github.com/AgriciDaniel/claude-youtube" target="_blank" rel="noopener">README скилла claude-youtube</a> и документации Claude Code: <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Skills</a> и <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">Setup</a></p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=25" defer></script>
+</body>
+</html>

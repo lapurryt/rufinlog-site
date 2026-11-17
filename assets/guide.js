@@ -451,3 +451,28 @@
     else if (t.matches("a[href^='http']")) send("link", new URL(t.href).hostname);
   }, true);
 })();
+
+// Goal picker (radiogroup of .pick buttons → the prompt card with the same data-picker-out). Additive: pages without
+// [data-picker] are untouched. Arrow keys move the choice like a native radio group.
+(() => {
+  document.querySelectorAll("[data-picker]").forEach((group) => {
+    const out = document.querySelector(`[data-picker-out="${group.dataset.picker}"] .say`);
+    const picks = [...group.querySelectorAll(".pick")];
+    const choose = (btn, focus) => {
+      picks.forEach((b) => { const on = b === btn; b.setAttribute("aria-checked", String(on)); b.tabIndex = on ? 0 : -1; });
+      if (out && out.textContent !== btn.dataset.say) {
+        out.textContent = btn.dataset.say;
+        out.classList.remove("swap"); void out.offsetWidth; out.classList.add("swap");
+      }
+      if (focus) btn.focus();
+    };
+    picks.forEach((b, i) => {
+      b.tabIndex = b.getAttribute("aria-checked") === "true" ? 0 : -1;
+      b.addEventListener("click", () => choose(b));
+      b.addEventListener("keydown", (e) => {
+        const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (d) { e.preventDefault(); choose(picks[(i + d + picks.length) % picks.length], true); }
+      });
+    });
+  });
+})();
