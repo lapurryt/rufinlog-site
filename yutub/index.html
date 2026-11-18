@@ -38,6 +38,10 @@
     <p class="meta">10 минут, с компьютера</p>
   </header>
 
+  <figure class="clip reveal">
+    <video data-clip src="../assets/img/yutub-grid.mp4" poster="../assets/img/yutub-grid.webp" width="720" height="720" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: 14 команд скилла появляются одна за другой, у каждой своя работа: аудит, SEO, сценарий, хуки, обложки и другие"></video>
+  </figure>
+
   <section class="setup reveal" aria-label="Настрой гайд под себя">
     <div class="group">
       <div class="row setup-row">
@@ -53,6 +57,9 @@
 
   <section class="section reveal">
     <h2>Что он умеет</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/yutub-hooks.mp4" poster="../assets/img/yutub-hooks.webp" width="1080" height="540" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: скилл пишет хук к ролику и предлагает три обложки"></video>
+    </figure>
     <ul class="group">
       <li>Пишет 5 хуков к ролику и оценивает риск, что зритель пролистнёт</li>
       <li>Придумывает 3 варианта обложки и названия к ним</li>
@@ -112,6 +119,10 @@
     <p class="step">Шаг 3 из 4</p>
     <h2>Скинь ссылку на скилл</h2>
     <p class="lead-in">Скопируй фразу, вставь в Claude Code и отправь. Он сам скачает скилл и положит его в папку со скиллами</p>
+    <figure class="shot">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>github.com/AgriciDaniel/claude-youtube</span></div>
+      <img src="../assets/img/yutub-github.webp" width="1120" height="315" loading="lazy" alt="Страница скилла claude-youtube на GitHub: папка skills/claude-youtube обведена синим, её Claude и скопирует">
+    </figure>
     <div class="group">
       <div class="row prompt-row"><span class="say prompt">Установи скилл https://github.com/AgriciDaniel/claude-youtube: скачай репозиторий и скопируй папку skills/claude-youtube в ~/.claude/skills/youtube</span><button type="button" class="copy button" aria-label="Скопировать фразу">Скопировать фразу</button></div>
       <div class="row result">Claude попросит разрешение на команды, разреши. В конце он напишет, что скилл установлен</div>
@@ -180,22 +191,8 @@
     </div>
     <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
 
-    <p class="label">С чего начать</p>
-    <p class="lead-in">Выбери, что нужно каналу, и отправь фразу в Claude Code. Про сам канал скилл спросит сам</p>
-    <div class="group picker" role="radiogroup" aria-label="Что нужно каналу" data-picker="yt">
-      <button type="button" class="row pick" role="radio" aria-checked="true" data-say="/youtube ideate дай 10 идей для моего канала. Отвечай по-русски">Не знаю, что снимать<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
-      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube audit разбери мой канал, хочу больше просмотров. Отвечай по-русски">Мало просмотров<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
-      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube hook напиши хуки к моему следующему ролику. Отвечай по-русски">Уходят в первые секунды<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
-      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube thumbnail придумай обложку и название к моему ролику. Отвечай по-русски">Не кликают обложки<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
-      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube competitor разбери моих конкурентов и найди темы, которых у них нет. Отвечай по-русски">Хочу обойти конкурентов<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
-      <button type="button" class="row pick" role="radio" aria-checked="false" data-say="/youtube calendar распиши мои ролики на месяц вперёд. Отвечай по-русски">Нет плана на месяц<svg class="check" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button>
-    </div>
+    <p class="label">Все 14 команд</p>
     <div class="group">
-      <div class="row prompt-row" data-picker-out="yt"><span class="say prompt" aria-live="polite">/youtube ideate дай 10 идей для моего канала. Отвечай по-русски</span><button type="button" class="copy button" aria-label="Скопировать фразу">Скопировать фразу</button></div>
-    </div>
-
-    <details class="group disclosure">
-      <summary>Все 14 команд</summary>
       <div class="row"><code>/youtube audit</code> аудит канала: поиск, просмотры, контент и монетизация</div>
       <div class="row"><code>/youtube hook</code> 5 хуков с риском, что зритель пролистнёт</div>
       <div class="row"><code>/youtube thumbnail</code> 3 варианта обложки с цветами и раскладкой</div>
@@ -210,7 +207,7 @@
       <div class="row"><code>/youtube ideate</code> 10 идей с хуком, обложкой и ключевыми словами</div>
       <div class="row"><code>/youtube metadata</code> всё для загрузки: названия, описание, теги, конечные заставки</div>
       <div class="row"><code>/youtube monetize</code> как зарабатывать на канале: 7 источников и прайс для рекламы</div>
-    </details>
+    </div>
     <p class="done">Готово. У тебя в Claude Code свой YouTube-продюсер: пиши /youtube и команду</p>
   </section>
 

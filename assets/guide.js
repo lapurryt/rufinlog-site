@@ -452,27 +452,23 @@
   }, true);
 })();
 
-// Goal picker (radiogroup of .pick buttons → the prompt card with the same data-picker-out). Additive: pages without
-// [data-picker] are untouched. Arrow keys move the choice like a native radio group.
+// Looping clips (<video data-clip>): muted inline autoplay, paused while off screen; with reduced motion they stay on the
+// poster frame. Additive: pages without [data-clip] are untouched.
 (() => {
-  document.querySelectorAll("[data-picker]").forEach((group) => {
-    const out = document.querySelector(`[data-picker-out="${group.dataset.picker}"] .say`);
-    const picks = [...group.querySelectorAll(".pick")];
-    const choose = (btn, focus) => {
-      picks.forEach((b) => { const on = b === btn; b.setAttribute("aria-checked", String(on)); b.tabIndex = on ? 0 : -1; });
-      if (out && out.textContent !== btn.dataset.say) {
-        out.textContent = btn.dataset.say;
-        out.classList.remove("swap"); void out.offsetWidth; out.classList.add("swap");
-      }
-      if (focus) btn.focus();
-    };
-    picks.forEach((b, i) => {
-      b.tabIndex = b.getAttribute("aria-checked") === "true" ? 0 : -1;
-      b.addEventListener("click", () => choose(b));
-      b.addEventListener("keydown", (e) => {
-        const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-        if (d) { e.preventDefault(); choose(picks[(i + d + picks.length) % picks.length], true); }
-      });
-    });
+  const vids = [...document.querySelectorAll("video[data-clip]")];
+  if (!vids.length) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const seen = new Set();
+  const sync = () => vids.forEach((v) => {
+    if (reduce.matches || !seen.has(v)) { v.pause(); return; }
+    v.muted = true;
+    const p = v.play();
+    if (p && p.catch) p.catch(() => {});
   });
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((es) => { es.forEach((e) => (e.isIntersecting ? seen.add(e.target) : seen.delete(e.target))); sync(); });
+    vids.forEach((v) => io.observe(v));
+  } else vids.forEach((v) => seen.add(v));
+  if (reduce.addEventListener) reduce.addEventListener("change", sync);
+  sync();
 })();

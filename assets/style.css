@@ -737,19 +737,9 @@ button, a, summary { -webkit-tap-highlight-color: transparent; }
 .prompt-row .copy.button { display: flex; width: 100%; margin-top: 14px; }
 .prompt-row .copy.button.done { color: #fff; background: var(--ok); }
 
-/* goal picker («ЮТУБ», 18.11): choices with a checkmark like an iOS settings list (HIG lists-and-tables › «a table that
-   lists options … adding a checkmark»); the prompt card under it follows the choice in place, nothing opens or jumps */
-.picker .pick {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px;
-  border: 0; border-radius: 0; background: none; color: var(--text); font: inherit; text-align: left; cursor: pointer;
-  -webkit-appearance: none; appearance: none; -webkit-tap-highlight-color: transparent;
-}
-.picker .pick:first-child { border-radius: var(--r-card) var(--r-card) 0 0; }
-.picker .pick:last-child { border-radius: 0 0 var(--r-card) var(--r-card); }
-.picker .pick:active { background: var(--code-bg); }
-.picker .pick:focus-visible { outline: 2px solid var(--link); outline-offset: -3px; }
-.picker .pick .check { flex: none; width: 18px; height: 18px; color: var(--link); visibility: hidden; }
-.picker .pick[aria-checked="true"] .check { visibility: visible; }
-.prompt-row .say.prompt.swap { animation: pick-in .18s ease-out; }
-@keyframes pick-in { from { opacity: .25; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .prompt-row .say.prompt.swap { animation: none; } }
+/* looping clips from the reel («ЮТУБ», 18.11; author: «больше дизайна: фото, гифки»): a muted inline video in a rounded card,
+   like Apple product pages; with reduced motion it stays on the poster frame (guide.js) */
+.clip { margin: 14px 0 18px; border-radius: var(--r-card); overflow: hidden; background: #EFEDEA; isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black); box-shadow: 0 0 0 1px rgba(0, 0, 0, .06), 0 12px 30px -16px rgba(0, 0, 0, .3); }
+.clip video, .clip img { display: block; width: 100%; height: auto; }
+@media (prefers-color-scheme: dark) { .clip { box-shadow: 0 0 0 1px rgba(255, 255, 255, .08), 0 12px 30px -16px rgba(0, 0, 0, .6); } }
