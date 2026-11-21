@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MarkItDown для Claude | rufinlog</title>
+<meta name="description" content="Бесплатный MarkItDown от Microsoft переводит PDF, Word, Excel и презентации в Markdown. Claude тратит меньше токенов и отвечает точнее. Установка за 10 минут">
+<meta property="og:title" content="MarkItDown для Claude">
+<meta property="og:description" content="PDF в Claude без лишних токенов: как поставить бесплатный MarkItDown от Microsoft и подключить его к Claude">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/markdown-og-temp.jpg">
+<meta property="og:image:width" content="1620">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=29">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-os="win" data-ai="claude" data-ai-lock="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>MarkItDown для Claude</h1>
+    <p class="sub">PDF в Claude без лишних токенов</p>
+    <p class="meta">10 минут, нужен компьютер</p>
+  </header>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Зачем переводить файлы в Markdown</h2>
+    <ul class="group">
+      <li>Claude читает PDF дважды: текстом и картинкой каждой страницы. На страницу уходит от 1&nbsp;500 до 3&nbsp;000 токенов текста и до 1&nbsp;568 на картинку</li>
+      <li>В Markdown только текст и структура: заголовки, списки, таблицы. Картинок страниц нет, поэтому токенов уходит меньше</li>
+      <li>MarkItDown переводит PDF, Word, Excel, PowerPoint, HTML, CSV и ссылки на YouTube</li>
+    </ul>
+    <figure class="clip">
+      <video data-clip src="../assets/img/markdown-pdf2md.mp4" poster="../assets/img/markdown-pdf2md.webp" width="1080" height="1320" muted loop playsinline autoplay preload="auto" aria-label="Сверху отчёт в PDF: по странице проходит сканер, Claude получает текст и картинку каждой страницы. Снизу тот же отчёт после markitdown: только строки текста"></video>
+    </figure>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Компьютер на Windows или Mac</li>
+      <li>Python 3.14. Поставим в шаге 1</li>
+      <li>Claude Code, чтобы Claude переводил файлы сам (шаг 4). Без него перевод работает с любым Claude</li>
+      <li>MarkItDown бесплатный, его сделали в Microsoft, лицензия MIT</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Поставь Python 3.14</h2>
+    <p class="lead-in">Нужна именно 3.14: на самой новой версии, 3.15, MarkItDown пока не ставится</p>
+    <ol class="how">
+      <li data-only="win">Скачай <a href="https://www.python.org/ftp/python/3.14.10/python-3.14.10-amd64.exe">Python 3.14 для Windows</a></li>
+      <li data-only="win">Запусти скачанный файл</li>
+      <li data-only="win">Внизу окна поставь галочку Add python.exe to PATH</li>
+      <li data-only="win">Нажми Install Now</li>
+      <li data-only="mac">Скачай <a href="https://www.python.org/ftp/python/3.14.10/python-3.14.10-macos11.pkg">Python 3.14 для Mac</a></li>
+      <li data-only="mac">Открой скачанный файл</li>
+      <li data-only="mac">Нажимай «Продолжить», пока установка не закончится</li>
+    </ol>
+    <p class="label" data-only="win">Или одной командой в PowerShell</p>
+    <div class="group" data-only="win">
+      <div class="row cmd"><code>winget install -e --id Python.Python.3.14</code><button type="button" class="copy">Скопировать</button></div>
+    </div>
+    <p class="label">Проверка</p>
+    <ol class="how">
+      <li data-only="win">Открой PowerShell: нажми «Пуск» и набери PowerShell</li>
+      <li data-only="mac">Открой Терминал: нажми Cmd и пробел, набери Терминал</li>
+      <li>Вставь команду и нажми Enter</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">python --version</code><code data-only="mac">python3 --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится <code>Python 3.14.10</code>. Последняя цифра может быть другой</div>
+      <div class="row note" data-only="win">Видишь 3.15? Значит, раньше уже стоял новый Python. Тогда в следующих командах пиши <code>py -3.14 -m pip</code> вместо <code>pip</code></div>
+      <div class="row note" data-only="mac">Видишь 3.15? Значит, раньше уже стоял новый Python. Тогда в следующих командах пиши <code>python3.14 -m pip</code> вместо <code>pip3</code></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Поставь MarkItDown</h2>
+    <figure class="shot">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>github.com</span></div>
+      <img src="../assets/img/markdown-github.webp" width="1170" height="700" loading="lazy" alt="Страница MarkItDown на GitHub: автор microsoft и 197,4 тысячи звёзд обведены синим">
+    </figure>
+    <p class="foot-note">Его сделали в Microsoft, у проекта 197 тысяч звёзд на GitHub</p>
+    <ol class="how">
+      <li>Вставь команду в то же окно</li>
+      <li>Нажми Enter и подожди пару минут</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">pip install &quot;markitdown[all]&quot;</code><code data-only="mac">pip3 install &quot;markitdown[all]&quot;</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Строк будет много, это нормально</div>
+    </div>
+    <p class="label">Проверка</p>
+    <div class="group">
+      <div class="row cmd"><code>markitdown --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится строка вида <code>markitdown 0.1.9</code>. Цифры могут быть новее</div>
+      <div class="row note" data-only="win">Пишет, что команда не найдена? Закрой PowerShell и открой снова</div>
+      <div class="row note" data-only="mac">Пишет command not found? Закрой Терминал и открой новое окно</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Переведи файл и отдай Claude</h2>
+    <ol class="how">
+      <li>Напиши в том же окне <code>markitdown</code> и пробел</li>
+      <li>Перетащи PDF в окно: путь к файлу допишется сам</li>
+      <li>Допиши пробел и <code>-o otchet.md</code></li>
+      <li>Нажми Enter</li>
+      <li>Прикрепи otchet.md в чат Claude вместо PDF</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code>markitdown otchet.pdf -o otchet.md</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Команда ничего не пишет в ответ. Файл otchet.md появится в <span data-only="win">папке C:\Users\твоё_имя</span><span data-only="mac">папке пользователя, в Finder это папка с домиком</span></div>
+      <div class="row note">Так же переводятся Word, Excel, PowerPoint и ссылки на YouTube</div>
+    </div>
+    <figure class="term">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>otchet.md</span></div>
+      <pre aria-label="Пример файла после перевода"><span class="t-dim"># то, что получит Claude</span>
+Отчёт о продажах за октябрь
+
+Кофейня «Зерно», три точки в городе
+
+Главное
+Выручка выросла на 12%
+Лучший день: суббота
+Новая точка окупилась за 4 месяца</pre>
+      <figcaption>Пример. Только текст, без картинок страниц</figcaption>
+    </figure>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Подключи MarkItDown к Claude Code</h2>
+    <p class="lead-in">Тогда Claude сам переводит файл, когда ты даёшь путь к нему или ссылку</p>
+    <p class="label">Поставь сервер</p>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">pip install markitdown-mcp</code><code data-only="mac">pip3 install markitdown-mcp</code><button type="button" class="copy">Скопировать</button></div>
+    </div>
+    <p class="label">Подключи к Claude Code</p>
+    <div class="group">
+      <div class="row cmd"><code>claude mcp add --scope user markitdown -- markitdown-mcp</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится строка, которая начинается с Added. Сервер подключится во всех твоих проектах</div>
+    </div>
+    <p class="label">Проверка</p>
+    <div class="group">
+      <div class="row cmd"><code>claude mcp list</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Рядом с markitdown будет <code>✔ Connected</code></div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что писать Claude</h2>
+    <p class="lead-in">Пиши обычным сообщением, с путём к файлу или ссылкой. Выбери ситуацию над окном</p>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с Claude">
+      <div class="cmd-tabs" role="group" aria-label="Ситуация">
+        <button type="button" aria-pressed="true">PDF</button>
+        <button type="button" aria-pressed="false">Excel</button>
+        <button type="button" aria-pressed="false">YouTube</button>
+        <button type="button" aria-pressed="false">Папка</button>
+      </div>
+      <p class="caption" aria-live="polite">Выжимка из отчёта в PDF</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">Документы</span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 4: Выжимка из отчёта в PDF" data-caption="Выжимка из отчёта в PDF">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сколько токенов уйдёт на отчёт в 20 страниц?</p></div><div class="msg ai"><p class="bubble-ai">Если дать PDF, от 30&nbsp;000 до 60&nbsp;000 только на текст, и ещё картинки страниц сверху</p></div><div class="msg me"><p class="bubble-me">Посмотри отчёт за октябрь</p></div><div class="msg ai"><p class="bubble-ai">Пришли путь к файлу, и я его прочитаю</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Переведи через markitdown файл Downloads/otchet.pdf и сделай выжимку"><span class="say">Переведи через markitdown файл Downloads/otchet.pdf и сделай выжимку</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Переведи через markitdown файл Downloads/otchet.pdf и сделай выжимку"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Перевожу файл в Markdown"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">file:///Users/ilya/Downloads/otchet.pdf</span></code></p></div><div class="msg ai" data-status="Читаю отчёт"><p class="bubble-ai">Главное из отчёта: выручка выросла на 12%, лучший день суббота, новая точка окупилась за 4 месяца</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 4: Разобрать таблицу Excel" data-caption="Разобрать таблицу Excel">
+              <div class="history"><div class="msg me"><p class="bubble-me">У меня три кофейни в городе</p></div><div class="msg ai"><p class="bubble-ai">Понял. С чем помочь?</p></div><div class="msg me"><p class="bubble-me">Нужен разбор продаж по точкам</p></div><div class="msg ai"><p class="bubble-ai">Сделаю, понадобится таблица с цифрами</p></div><div class="msg me"><p class="bubble-me">Сколько мы заработали в октябре?</p></div><div class="msg ai"><p class="bubble-ai">Скажи, где лежит таблица с продажами</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Переведи через markitdown таблицу Downloads/prodazhi.xlsx и скажи, какая точка отстаёт"><span class="say">Переведи через markitdown таблицу Downloads/prodazhi.xlsx и скажи, какая точка отстаёт</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Переведи через markitdown таблицу Downloads/prodazhi.xlsx и скажи, какая точка отстаёт"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Перевожу таблицу в Markdown"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">file:///Users/ilya/Downloads/prodazhi.xlsx</span></code></p></div><div class="msg ai" data-status="Считаю по точкам"><p class="bubble-ai">Отстаёт «Вокзал»: 710&nbsp;000&nbsp;₽ за месяц, это почти вдвое меньше, чем в центре</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 4: Выжимка из видео YouTube" data-caption="Выжимка из видео YouTube">
+              <div class="history"><div class="msg me"><p class="bubble-me">Ты умеешь смотреть видео на YouTube?</p></div><div class="msg ai"><p class="bubble-ai">Смотреть нет, но могу прочитать расшифровку, если она у видео есть</p></div><div class="msg me"><p class="bubble-me">Есть длинное видео про продажи, смотреть некогда</p></div><div class="msg ai"><p class="bubble-ai">Пришли ссылку, сделаю выжимку</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Переведи через markitdown видео и выпиши 5 главных мыслей: "><span class="say">Переведи через markitdown видео и выпиши 5 главных мыслей: youtu.be/…</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Переведи через markitdown видео и выпиши 5 главных мыслей: "><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Забираю расшифровку видео"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">https://youtu.be/…</span></code></p></div><div class="msg ai" data-status="Выбираю главное"><p class="bubble-ai">Пять мыслей: перезванивай в первые 5 минут, начинай с вопроса, а не с цены, называй одну цену, а не три, записывай возражения, заканчивай звонок следующим шагом</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 4: Сравнить несколько файлов" data-caption="Сравнить несколько файлов">
+              <div class="history"><div class="msg me"><p class="bubble-me">Скоро продлевать аренду трёх точек</p></div><div class="msg ai"><p class="bubble-ai">Пришли договоры, сравню сроки и суммы</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Переведи через markitdown все PDF из папки Downloads/dogovory и сравни сроки оплаты"><span class="say">Переведи через markitdown все PDF из папки Downloads/dogovory и сравни сроки оплаты</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Переведи через markitdown все PDF из папки Downloads/dogovory и сравни сроки оплаты"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Перевожу договоры в Markdown"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">file:///…/dogovory/centr.pdf</span></code></p></div><div class="msg ai tool" data-status="Перевожу договоры в Markdown"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">file:///…/dogovory/park.pdf</span></code></p></div><div class="msg ai tool" data-status="Перевожу договоры в Markdown"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">file:///…/dogovory/vokzal.pdf</span></code></p></div><div class="msg ai" data-status="Сравниваю сроки"><p class="bubble-ai">В «Центре» и «Парке» оплата до 5 числа, на «Вокзале» до 10. Пени за просрочку есть только у «Парка»</p></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph">Type / for commands</span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span>Auto</span><span>Opus 5.5</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+    <p class="done">Готово. Теперь Claude читает текст, а не картинки страниц, и лимита хватает дольше</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_markdown" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Could not find a version that satisfies the requirement markitdown</summary>
+        <p>MarkItDown не ставится на Python 3.15. Поставь Python 3.14 (шаг 1) и ставь через него: <code data-only="win">py -3.14 -m pip install &quot;markitdown[all]&quot;</code><code data-only="mac">python3.14 -m pip install &quot;markitdown[all]&quot;</code></p></details>
+      <details class="row fix"><summary>«pip» не является внутренней или внешней командой</summary>
+        <p>Python поставился без галочки Add python.exe to PATH. Запусти установщик ещё раз, выбери Modify и включи эту галочку. Или поставь так: <code>py -3.14 -m pip install &quot;markitdown[all]&quot;</code></p></details>
+      <details class="row fix"><summary>error: externally-managed-environment</summary>
+        <p>Так отвечает Python из Homebrew на Mac. Поставь Python 3.14 с python.org (шаг 1) и повтори: <code>python3.14 -m pip install &quot;markitdown[all]&quot;</code></p></details>
+      <details class="row fix"><summary>Файл .md пустой или почти пустой</summary>
+        <p>Скорее всего, это скан: в PDF нет текста, только картинки страниц. MarkItDown читает текст, распознавать сканы он умеет только через плагин markitdown-ocr с платным ключом OpenAI</p></details>
+      <details class="row fix"><summary>Таблицы из PDF пришли сплошным текстом</summary>
+        <p>Так MarkItDown читает PDF. Если у тебя есть исходник в Word или Excel, переведи его: из них структура выходит точнее</p></details>
+      <details class="row fix"><summary>В claude mcp list у markitdown Failed to connect</summary>
+        <p>Закрой окно терминала, открой новое и снова запусти <code>claude mcp list</code>. Если не помогло, подключи через Python: <code>claude mcp add --scope user markitdown -- python -m markitdown_mcp</code><span data-only="mac">, на Mac вместо python напиши python3</span></p></details>
+      <details class="row fix"><summary>Claude прочитал файл сам, без markitdown</summary>
+        <p>Файлы из скрепки в чате Claude читает сам, сервер их не перехватывает. Чтобы файл ушёл через MarkItDown, напиши «через markitdown» и дай путь к файлу или ссылку, как в примерах выше</p></details>
+      <details class="row fix"><summary>Claude спрашивает разрешение вызвать markitdown</summary>
+        <p>Это нормально: он показывает, какой файл хочет перевести. Разреши</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p><a href="https://github.com/microsoft/markitdown" target="_blank" rel="noopener">MarkItDown</a> сделали в Microsoft, лицензия MIT. Проверено по официальной документации 21 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=29" defer></script>
+</body>
+</html>
