@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MarkItDown для Claude | rufinlog</title>
-<meta name="description" content="Бесплатный MarkItDown от Microsoft переводит PDF, Word, Excel и презентации в Markdown. Claude тратит меньше токенов и отвечает точнее. Установка за 10 минут">
-<meta property="og:title" content="MarkItDown для Claude">
-<meta property="og:description" content="PDF в Claude без лишних токенов: как поставить бесплатный MarkItDown от Microsoft и подключить его к Claude">
+<title>MarkItDown для Claude и ChatGPT | rufinlog</title>
+<meta name="description" content="Бесплатный MarkItDown от Microsoft переводит PDF, Word, Excel и презентации в Markdown. Claude и ChatGPT тратят меньше токенов. Установка за 10 минут">
+<meta property="og:title" content="MarkItDown для Claude и ChatGPT">
+<meta property="og:description" content="PDF в ИИ без лишних токенов: как поставить бесплатный MarkItDown от Microsoft и подключить его к Claude Code или Codex">
 <meta property="og:type" content="article">
-<meta property="og:image" content="https://rufinlog.ru/assets/img/markdown-og-temp.jpg">
-<meta property="og:image:width" content="1620">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/markdown-post-limit.jpg">
+<meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="color-scheme" content="light dark">
@@ -18,10 +18,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
-<link rel="stylesheet" href="../assets/style.css?v=29">
+<link rel="stylesheet" href="../assets/style.css?v=30">
 <script>document.documentElement.className = "js";</script>
 </head>
-<body data-os="win" data-ai="claude" data-ai-lock="claude">
+<body data-os="win" data-ai="claude">
 
 <nav class="nav">
   <div class="nav-in">
@@ -33,8 +33,8 @@
 <main>
 
   <header class="hero">
-    <h1>MarkItDown для Claude</h1>
-    <p class="sub">PDF в Claude без лишних токенов</p>
+    <h1>MarkItDown для Claude и ChatGPT</h1>
+    <p class="sub">PDF в ИИ без лишних токенов</p>
     <p class="meta">10 минут, нужен компьютер</p>
   </header>
 
@@ -47,6 +47,13 @@
           <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
         </div>
       </div>
+      <div class="row setup-row">
+        <span class="setup-label">ИИ</span>
+        <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
+          <button type="button" data-set-ai="claude" aria-pressed="true">Claude</button>
+          <button type="button" data-set-ai="codex" aria-pressed="false">ChatGPT</button>
+        </div>
+      </div>
     </div>
     <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
   </section>
@@ -54,12 +61,16 @@
   <section class="section reveal">
     <h2>Зачем переводить файлы в Markdown</h2>
     <ul class="group">
-      <li>Claude читает PDF дважды: текстом и картинкой каждой страницы. На страницу уходит от 1&nbsp;500 до 3&nbsp;000 токенов текста и до 1&nbsp;568 на картинку</li>
+      <li data-ai-only="claude">Claude читает PDF дважды: текстом и картинкой каждой страницы. На страницу уходит от 1&nbsp;500 до 3&nbsp;000 токенов текста и до 1&nbsp;568 на картинку</li>
+      <li data-ai-only="codex">ChatGPT читает в PDF и текст, и картинки: графики, схемы. Через API OpenAI в модель уходят текст и картинка каждой страницы</li>
       <li>В Markdown только текст и структура: заголовки, списки, таблицы. Картинок страниц нет, поэтому токенов уходит меньше</li>
       <li>MarkItDown переводит PDF, Word, Excel, PowerPoint, HTML, CSV и ссылки на YouTube</li>
     </ul>
-    <figure class="clip">
+    <figure class="clip" data-ai-only="claude">
       <video data-clip src="../assets/img/markdown-pdf2md.mp4" poster="../assets/img/markdown-pdf2md.webp" width="1080" height="1320" muted loop playsinline autoplay preload="auto" aria-label="Сверху отчёт в PDF: по странице проходит сканер, Claude получает текст и картинку каждой страницы. Снизу тот же отчёт после markitdown: только строки текста"></video>
+    </figure>
+    <figure class="clip" data-ai-only="codex">
+      <video data-clip src="../assets/img/markdown-pdf2md-gpt.mp4" poster="../assets/img/markdown-pdf2md-gpt.webp" width="1080" height="1320" muted loop playsinline autoplay preload="metadata" aria-label="Сверху отчёт в PDF: по странице проходит сканер, ChatGPT получает текст и картинку каждой страницы. Снизу тот же отчёт после markitdown: только строки текста"></video>
     </figure>
   </section>
 
@@ -68,7 +79,8 @@
     <ul class="group">
       <li>Компьютер на Windows или Mac</li>
       <li>Python 3.14. Поставим в шаге 1</li>
-      <li>Claude Code, чтобы Claude переводил файлы сам (шаг 4). Без него перевод работает с любым Claude</li>
+      <li data-ai-only="claude">Claude Code, чтобы Claude переводил файлы сам (шаг 4). Без него перевод работает с любым Claude</li>
+      <li data-ai-only="codex">Codex, чтобы он переводил файлы сам (шаг 4). Он есть даже в бесплатном ChatGPT. Без него перевод работает с любым ChatGPT</li>
       <li>MarkItDown бесплатный, его сделали в Microsoft, лицензия MIT</li>
     </ul>
   </section>
@@ -131,13 +143,13 @@
 
   <section class="section reveal">
     <p class="step">Шаг 3 из 4</p>
-    <h2>Переведи файл и отдай Claude</h2>
+    <h2>Переведи файл и отдай <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span></h2>
     <ol class="how">
       <li>Напиши в том же окне <code>markitdown</code> и пробел</li>
       <li>Перетащи PDF в окно: путь к файлу допишется сам</li>
       <li>Допиши пробел и <code>-o otchet.md</code></li>
       <li>Нажми Enter</li>
-      <li>Прикрепи otchet.md в чат Claude вместо PDF</li>
+      <li>Прикрепи otchet.md в чат <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span> вместо PDF</li>
     </ol>
     <div class="group">
       <div class="row cmd"><code>markitdown otchet.pdf -o otchet.md</code><button type="button" class="copy">Скопировать</button></div>
@@ -146,7 +158,7 @@
     </div>
     <figure class="term">
       <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>otchet.md</span></div>
-      <pre aria-label="Пример файла после перевода"><span class="t-dim"># то, что получит Claude</span>
+      <pre aria-label="Пример файла после перевода"><span class="t-dim"># то, что получит <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span></span>
 Отчёт о продажах за октябрь
 
 Кофейня «Зерно», три точки в городе
@@ -167,29 +179,39 @@
 
   <section class="section reveal">
     <p class="step">Шаг 4 из 4</p>
-    <h2>Подключи MarkItDown к Claude Code</h2>
-    <p class="lead-in">Тогда Claude сам переводит файл, когда ты даёшь путь к нему или ссылку</p>
+    <h2>Подключи MarkItDown к <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span></h2>
+    <p class="lead-in" data-ai-only="claude">Тогда Claude сам переводит файл, когда ты даёшь путь к нему или ссылку</p>
+    <p class="lead-in" data-ai-only="codex">Codex входит в ChatGPT: это ИИ-агент от OpenAI. Подключишь MarkItDown, и он сам переводит файл, когда ты даёшь путь к нему или ссылку</p>
     <p class="label">Поставь сервер</p>
     <div class="group">
       <div class="row cmd"><code data-only="win">pip install markitdown-mcp</code><code data-only="mac">pip3 install markitdown-mcp</code><button type="button" class="copy">Скопировать</button></div>
     </div>
-    <p class="label">Подключи к Claude Code</p>
-    <div class="group">
+    <p class="label">Подключи к <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span></p>
+    <div class="group" data-ai-only="claude">
       <div class="row cmd"><code>claude mcp add --scope user markitdown -- markitdown-mcp</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row result">Появится строка, которая начинается с Added. Сервер подключится во всех твоих проектах</div>
     </div>
+    <div class="group" data-ai-only="codex">
+      <div class="row cmd"><code>codex mcp add markitdown -- markitdown-mcp</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Появится <code>Added global MCP server 'markitdown'</code>. Сервер подключится во всех твоих проектах</div>
+      <div class="row note">Эту настройку берёт и Codex в приложении ChatGPT на компьютере</div>
+    </div>
     <p class="label">Проверка</p>
-    <div class="group">
+    <div class="group" data-ai-only="claude">
       <div class="row cmd"><code>claude mcp list</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row result">Рядом с markitdown будет <code>✔ Connected</code></div>
+    </div>
+    <div class="group" data-ai-only="codex">
+      <div class="row cmd"><code>codex mcp list</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">В строке markitdown будет <code>enabled</code></div>
     </div>
   </section>
 
   <section class="section reveal">
-    <h2>Что писать Claude</h2>
+    <h2>Что писать <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span></h2>
     <p class="lead-in">Пиши обычным сообщением, с путём к файлу или ссылкой. Выбери ситуацию над окном</p>
 
-    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с Claude">
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с ИИ">
       <div class="cmd-tabs" role="group" aria-label="Ситуация">
         <button type="button" aria-pressed="true">PDF</button>
         <button type="button" aria-pressed="false">Excel</button>
@@ -201,7 +223,7 @@
         <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">Документы</span></div>
           <div class="slides" tabindex="0">
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 4: Выжимка из отчёта в PDF" data-caption="Выжимка из отчёта в PDF">
-              <div class="history"><div class="msg me"><p class="bubble-me">Сколько токенов уйдёт на отчёт в 20 страниц?</p></div><div class="msg ai"><p class="bubble-ai">Если дать PDF, от 30&nbsp;000 до 60&nbsp;000 только на текст, и ещё картинки страниц сверху</p></div><div class="msg me"><p class="bubble-me">Посмотри отчёт за октябрь</p></div><div class="msg ai"><p class="bubble-ai">Пришли путь к файлу, и я его прочитаю</p></div></div>
+              <div class="history"><div class="msg me"><p class="bubble-me">Сколько токенов уйдёт на отчёт в 20 страниц?</p></div><div class="msg ai"><p class="bubble-ai"><span data-ai-only="claude">Если дать PDF, от 30&nbsp;000 до 60&nbsp;000 только на текст, и ещё картинки страниц сверху</span><span data-ai-only="codex">Если дать PDF, уйдут и текст, и картинки страниц. В Markdown только текст, выйдет дешевле</span></p></div><div class="msg me"><p class="bubble-me">Посмотри отчёт за октябрь</p></div><div class="msg ai"><p class="bubble-ai">Пришли путь к файлу, и я его прочитаю</p></div></div>
               <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Переведи через markitdown файл Downloads/otchet.pdf и сделай выжимку"><span class="say">Переведи через markitdown файл Downloads/otchet.pdf и сделай выжимку</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Переведи через markitdown файл Downloads/otchet.pdf и сделай выжимку"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Перевожу файл в Markdown"><p class="bubble-ai tool-row skill"><span class="tool-name">markitdown</span><code><span class="tok">convert_to_markdown</span> <span class="tok">file:///Users/ilya/Downloads/otchet.pdf</span></code></p></div><div class="msg ai" data-status="Читаю отчёт"><p class="bubble-ai">Главное из отчёта: выручка выросла на 12%, лучший день суббота, новая точка окупилась за 4 месяца</p></div></div>
             </div>
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 4: Разобрать таблицу Excel" data-caption="Разобрать таблицу Excel">
@@ -218,13 +240,13 @@
             </div>
           </div>
         <div class="mac-composer" aria-hidden="true">
-          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph">Type / for commands</span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
-          <div class="mc-foot"><span>Auto</span><span>Opus 5.5</span></div>
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph"><span data-ai-only="claude">Type / for commands</span><span data-ai-only="codex">Ask Codex anything</span></span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span><span data-ai-only="claude">Auto</span><span data-ai-only="codex">Local</span></span><span><span data-ai-only="claude">Opus 5.5</span><span data-ai-only="codex" class="mc-branch"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="4" cy="3.5" r="1.8"/><circle cx="4" cy="12.5" r="1.8"/><circle cx="12" cy="5.5" r="1.8"/><path d="M4 5.3v5.4M12 7.3c0 3-4.5 2.4-7.4 4"/></svg>main</span></span></div>
         </div>
       </div>
     </div>
     <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
-    <p class="done">Готово. Теперь Claude читает текст, а не картинки страниц, и лимита хватает дольше</p>
+    <p class="done">Готово. Теперь <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span> читает текст, а не картинки страниц, и лимита хватает дольше</p>
   </section>
 
   <div class="glow reveal" id="club">
@@ -249,11 +271,15 @@
         <p>Скорее всего, это скан: в PDF нет текста, только картинки страниц. MarkItDown читает текст, распознавать сканы он умеет только через плагин markitdown-ocr с платным ключом OpenAI</p></details>
       <details class="row fix"><summary>Таблицы из PDF пришли сплошным текстом</summary>
         <p>Так MarkItDown читает PDF. Если у тебя есть исходник в Word или Excel, переведи его: из них структура выходит точнее</p></details>
-      <details class="row fix"><summary>В claude mcp list у markitdown Failed to connect</summary>
+      <details class="row fix" data-ai-only="codex"><summary>Терминал пишет, что команды codex нет</summary>
+        <p>Значит, Codex в терминале ещё не стоит. Поставь его по <a href="https://developers.openai.com/codex/cli" target="_blank" rel="noopener">инструкции OpenAI</a>, войди своим аккаунтом ChatGPT и повтори шаг 4</p></details>
+      <details class="row fix" data-ai-only="codex"><summary>Codex прочитал файл сам, без markitdown</summary>
+        <p>Codex умеет открывать файлы и без сервера. Чтобы файл ушёл через MarkItDown, напиши «через markitdown» и дай путь к файлу или ссылку, как в примерах выше</p></details>
+      <details class="row fix" data-ai-only="claude"><summary>В claude mcp list у markitdown Failed to connect</summary>
         <p>Закрой окно терминала, открой новое и снова запусти <code>claude mcp list</code>. Если не помогло, подключи через Python: <code>claude mcp add --scope user markitdown -- python -m markitdown_mcp</code><span data-only="mac">, на Mac вместо python напиши python3</span></p></details>
-      <details class="row fix"><summary>Claude прочитал файл сам, без markitdown</summary>
+      <details class="row fix" data-ai-only="claude"><summary>Claude прочитал файл сам, без markitdown</summary>
         <p>Файлы из скрепки в чате Claude читает сам, сервер их не перехватывает. Чтобы файл ушёл через MarkItDown, напиши «через markitdown» и дай путь к файлу или ссылку, как в примерах выше</p></details>
-      <details class="row fix"><summary>Claude спрашивает разрешение вызвать markitdown</summary>
+      <details class="row fix" data-ai-only="claude"><summary>Claude спрашивает разрешение вызвать markitdown</summary>
         <p>Это нормально: он показывает, какой файл хочет перевести. Разреши</p></details>
     </div>
   </section>
@@ -267,6 +293,6 @@
 
 <div class="toast" role="status" aria-live="polite" hidden></div>
 <div class="vh" id="sr-live" role="status" aria-live="polite"></div>
-<script src="../assets/guide.js?v=29" defer></script>
+<script src="../assets/guide.js?v=30" defer></script>
 </body>
 </html>
