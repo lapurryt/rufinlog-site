@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Graphify для Claude Code и Codex | rufinlog</title>
+<meta name="description" content="Бесплатный Graphify один раз строит карту проекта, и Claude Code или Codex перестают перечитывать все файлы в каждой сессии. Установка за 10 минут для Windows и Mac">
+<meta property="og:title" content="Graphify для Claude Code и Codex">
+<meta property="og:description" content="Карта проекта вместо перечитывания всех файлов: лимит уходит медленнее. Пошагово для Windows и Mac">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/repo-post.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=31">
+<script>document.documentElement.className = "js";</script>
+<style>
+/* «РЕПО» only (24.11): graphics between the text like «СКОРОСТЬ» and «ИНСТА». Icon tiles from skorost, our tokens only;
+   shared style.css untouched */
+.ig-ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: #007AFF; }
+.ig-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-ico.green { background: #34C759; } .ig-ico.orange { background: #FF9500; } .ig-ico.purple { background: #AF52DE; }
+.ig-ico.red { background: #FF3B30; } .ig-ico.grey { background: #8E8E93; }
+ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 16px; }
+.ig-list b { display: block; font-weight: 600; }
+.ig-list small { display: block; color: var(--text-2); font-size: .8235rem; line-height: 1.4; }
+</style>
+</head>
+<body data-os="win" data-ai="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Graphify для Claude Code и Codex</h1>
+    <p class="sub">ИИ перестаёт перечитывать весь проект в каждой сессии, и лимит уходит медленнее</p>
+    <p class="meta">10 минут, с компьютера</p>
+  </header>
+
+  <figure class="clip reveal">
+    <video data-clip src="../assets/img/repo-graph.mp4" poster="../assets/img/repo-graph.webp" width="720" height="534" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: граф проекта собирается узел за узлом, группы api, db, auth, ui, workers и payments связываются линиями"></video>
+  </figure>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+      <div class="row setup-row">
+        <span class="setup-label">ИИ</span>
+        <div class="segmented" role="group" aria-label="Твой ИИ">
+          <button type="button" data-set-ai="claude" aria-pressed="true">Claude</button>
+          <button type="button" data-set-ai="codex" aria-pressed="false">ChatGPT</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Зачем он нужен</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/repo-files.mp4" poster="../assets/img/repo-files.webp" width="720" height="486" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: Claude Code на просьбу «почини вход через Google» открывает файл за файлом, полоса контекста растёт"></video>
+    </figure>
+    <ul class="group ig-list">
+      <li><span class="ig-ico red" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span><span><b>Без графа</b><small>В каждой новой сессии <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> заново открывает файлы проекта, и на это уходит лимит</small></span></li>
+      <li><span class="ig-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="8" r="2.5"/><circle cx="9" cy="18" r="2.5"/><path d="M8.3 7.1l7.4.6M7.1 8.2l1.4 7.4M16.6 10l-5.6 6.4"/></svg></span><span><b>Карта проекта</b><small>Graphify один раз разбирает твои файлы и связи между ними и сохраняет граф</small></span></li>
+      <li><span class="ig-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg></span><span><b>Дальше по карте</b><small>ИИ находит нужное в графе и открывает только файлы под твою задачу</small></span></li>
+      <li><span class="ig-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span><span><b>Код остаётся у тебя</b><small>Graphify разбирает код на твоём компьютере, наружу ничего не уходит</small></span></li>
+    </ul>
+    <div class="group">
+      <div class="row note">Graphify бесплатный, код открыт на GitHub. Чем больше проект, тем заметнее экономия: маленький проект и так целиком помещается в контекст</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li data-ai-only="claude">Claude Code. Он входит в тарифы Pro, Max, Ultra, Team и Enterprise, на бесплатном его нет</li>
+      <li data-ai-only="codex">Codex. Он входит в ChatGPT, даже в бесплатный</li>
+      <li>Компьютер на Windows или Mac и твой проект в папке: код, заметки или документы</li>
+      <li>Менеджер uv, через него ставится Graphify. Как поставить, в шаге 1</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Поставь uv</h2>
+    <ol class="how">
+      <li data-only="win">Открой PowerShell: нажми «Пуск», напиши PowerShell и открой его</li>
+      <li data-only="mac">Открой Терминал: нажми Cmd+Пробел, напиши Терминал и открой его</li>
+      <li>Вставь команду и нажми Enter</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">winget install astral-sh.uv</code><code data-only="mac">curl -LsSf https://astral.sh/uv/install.sh | sh</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Потом закрой окно терминала и открой заново</div>
+    </div>
+    <p class="label">Проверь</p>
+    <div class="group">
+      <div class="row cmd"><code>uv --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">Придёт строка: uv и номер версии. Python отдельно ставить не нужно, uv скачает подходящий сам</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Поставь Graphify</h2>
+    <p class="lead-in">В том же окне по очереди две команды. Первая скачивает Graphify, вторая подключает его к <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span></p>
+    <div class="group">
+      <div class="row cmd"><code>uv tool install graphifyy</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row cmd"><code data-ai-only="claude">graphify install</code><code data-ai-only="codex">graphify install --platform codex</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">В названии пакета две «y»: graphifyy. Это официальный. Другие пакеты с похожими названиями к Graphify отношения не имеют</div>
+      <div class="row note">Если терминал пишет, что graphify не найден, отправь <code>uv tool update-shell</code> и открой терминал заново</div>
+    </div>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Построй граф</h2>
+    <ol class="how">
+      <li data-ai-only="claude">Открой приложение Claude, вкладку Code. Под полем ввода выбери Local, затем Open folder… и папку проекта</li>
+      <li data-ai-only="codex">Открой терминал в папке проекта и набери <code>codex</code>. Или открой Codex в приложении ChatGPT на компьютере и выбери папку проекта</li>
+      <li>Отправь команду</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code data-ai-only="claude">/graphify .</code><code data-ai-only="codex">$graphify .</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">В проекте появится папка graphify-out. Открой в ней graph.html в браузере: это весь проект картой, по узлам можно нажимать и искать</div>
+      <div class="row note">Рядом лежит GRAPH_REPORT.md: главные узлы проекта и неочевидные связи между ними</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Работай как обычно</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/repo-path.mp4" poster="../assets/img/repo-path.webp" width="720" height="534" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: по графу подсвечивается путь от coupons.ts через wallet.ts и seed.ts к verify.ts, открывается только нужный файл"></video>
+    </figure>
+    <p class="lead-in">Ставь задачи так же, как раньше. <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> сам заглядывает в граф. А если хочешь, спроси граф напрямую</p>
+    <div class="group">
+      <div class="row cmd"><code data-ai-only="claude">/graphify query "что связывает авторизацию с базой данных?"</code><code data-ai-only="codex">$graphify query "что связывает авторизацию с базой данных?"</code><button type="button" class="copy">Скопировать</button></div>
+    </div>
+
+    <p class="label">Чтобы граф не устаревал</p>
+    <div class="group">
+      <div class="row cmd"><code>graphify hook install</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Отправь в терминале в папке проекта. Граф будет сам обновляться после каждого коммита Git</div>
+      <div class="row note">Без Git обнови граф вручную: <code data-ai-only="claude">/graphify . --update</code><code data-ai-only="codex">$graphify . --update</code>, он пересоберёт только изменённые файлы</div>
+    </div>
+
+    <p class="label">Честно про экономию</p>
+    <div class="group">
+      <div class="row note">На graphify.com пользователь пишет про токенов в 79 раз меньше. Это отзыв, а не замер, и у тебя цифра будет своя</div>
+      <div class="row note">Сам Graphify бесплатный. Платное у них только облако Graphify Cloud, для обычной работы оно не нужно</div>
+    </div>
+    <p class="done">Готово. Теперь <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> ходит по карте проекта, а не перечитывает его целиком</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_repo" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Пишет, что graphify не найден</summary>
+        <p>Отправь <code>uv tool update-shell</code>, закрой терминал и открой заново</p></details>
+      <details class="row fix"><summary>Пишет, что uv не найден</summary>
+        <p>Закрой окно терминала и открой заново. Если не помогло, поставь uv ещё раз, как в шаге 1</p></details>
+      <details class="row fix" data-ai-only="claude"><summary>Нет вкладки Code или Claude просит сменить тариф</summary>
+        <p>Claude Code есть в тарифах Pro, Max, Ultra, Team и Enterprise. На бесплатном тарифе его нет</p></details>
+      <details class="row fix" data-ai-only="claude"><summary>Claude не знает команду /graphify</summary>
+        <p>Отправь <code>/reload-skills</code>. Если не помогло, снова выполни в терминале <code>graphify install</code></p></details>
+      <details class="row fix" data-ai-only="codex"><summary>Codex не понимает $graphify</summary>
+        <p>Выполни в терминале <code>graphify install --platform codex</code> и перезапусти Codex. В Codex команда пишется через $, а не через /</p></details>
+      <details class="row fix"><summary>Поставился не тот пакет</summary>
+        <p>Официальный пакет пишется с двумя «y»: graphifyy. Код и инструкции лежат на <a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">github.com/Graphify-Labs/graphify</a></p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Проверено 24 ноября 2026 по <a href="https://github.com/Graphify-Labs/graphify" target="_blank" rel="noopener">README Graphify</a>, сайту <a href="https://graphify.com" target="_blank" rel="noopener">graphify.com</a> и документации <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">Claude Code</a></p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=31" defer></script>
+</body>
+</html>

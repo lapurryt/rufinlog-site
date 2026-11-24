@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Instagram-агент в Claude Code | rufinlog</title>
+<meta name="description" content="13 бесплатных скиллов для Claude Code: рилсы по формулам хуков, подписи, залетевшие рилсы ниши, ответы на комментарии и план на неделю. Как поставить за 10 минут">
+<meta property="og:title" content="Instagram-агент в Claude Code">
+<meta property="og:description" content="13 бесплатных скиллов: рилсы, подписи, залетевшие рилсы ниши и план на неделю. Пошагово, с компьютера">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/insta-github.webp">
+<meta property="og:image:width" content="854">
+<meta property="og:image:height" content="382">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=31">
+<script>document.documentElement.className = "js";</script>
+<style>
+/* «ИНСТА» only (24.11): graphics between the text like «СКОРОСТЬ» (author: «не хватает в гайде визуала, в соседнем гайде
+   это было сделано»). Icon tiles copied from skorost, our tokens only; shared style.css untouched */
+.ig-ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: #007AFF; }
+.ig-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-ico.green { background: #34C759; } .ig-ico.orange { background: #FF9500; } .ig-ico.purple { background: #AF52DE; }
+.ig-ico.red { background: #FF3B30; } .ig-ico.teal { background: #30B0C7; }
+ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 16px; }
+.ig-list b { display: block; font-weight: 600; }
+.ig-list small { display: block; color: var(--text-2); font-size: .8235rem; line-height: 1.4; }
+</style>
+</head>
+<body data-os="win" data-ai="claude" data-ai-lock="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Instagram-агент в Claude Code</h1>
+    <p class="sub">13 бесплатных скиллов: пишут твои рилсы и подписи, находят, что залетает в нише, и планируют неделю</p>
+    <p class="meta">10 минут, с компьютера</p>
+  </header>
+
+  <figure class="clip reveal">
+    <video data-clip src="../assets/img/insta-autopilot.mp4" poster="../assets/img/insta-autopilot.webp" width="720" height="314" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: карточка аккаунта ilya.rufin с включённым автопилотом, три задачи на день отмечаются галочками: выложить рилс, прокомментировать 8 постов, ответить на 12 комментариев"></video>
+  </figure>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что он умеет</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/insta-skills.mp4" poster="../assets/img/insta-skills.webp" width="720" height="318" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: скиллы появляются один за другим: посты, комментарии, ответы, профиль, план недели, виральность, рилсы, карусели"></video>
+    </figure>
+    <ul class="group ig-list">
+      <li><span class="ig-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 7l3 3"/></svg></span><span><b>Рилс из сырой идеи</b><small>Три хука по 29 формулам с оценкой, сценарий и надписи по секундам</small></span></li>
+      <li><span class="ig-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></span><span><b>Залетевшие рилсы ниши</b><small>Находит их и объясняет, почему они залетели</small></span></li>
+      <li><span class="ig-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 11h16M4 16h9"/></svg></span><span><b>Подпись</b><small>Показывает, что видно в ленте до «… ещё»</small></span></li>
+      <li><span class="ig-ico teal" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><b>Комментарии и ответы</b><small>Под чужими постами и под твоими, по делу</small></span></li>
+      <li><span class="ig-ico purple" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><span><b>Профиль и неделя</b><small>Оценка профиля из 100 и план: что выложить, когда и с кем общаться</small></span></li>
+    </ul>
+    <div class="group">
+      <div class="row note">Скилл бесплатный и на русском. Ключи, API и регистрация тебе не понадобятся</div>
+      <div class="row note">Тексты готовят скиллы. Выкладываешь их ты, когда тебе всё нравится</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>Claude Code. Он входит в тарифы Pro, Max, Ultra, Team и Enterprise, на бесплатном его нет</li>
+      <li>Компьютер на Windows или Mac: приложение Claude или Claude Code в терминале</li>
+      <li>Git, чтобы скачать скилл с GitHub, и Python для оценки хуков и подписей. Как проверить, в шаге 1</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Проверь Git и Python</h2>
+    <ol class="how">
+      <li data-only="win">Открой PowerShell: нажми «Пуск», напиши PowerShell и открой его</li>
+      <li data-only="mac">Открой Терминал: нажми Cmd+Пробел, напиши Терминал и открой его</li>
+      <li>Вставь по очереди две команды, после каждой нажми Enter</li>
+    </ol>
+    <div class="group">
+      <div class="row cmd"><code>git --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row cmd"><code data-only="win">python --version</code><code data-only="mac">python3 --version</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row result">В ответ придут строки вида <code>git version 2.56.1</code> и <code>Python 3.15.2</code>. Цифры могут быть другими, главное, что ошибки нет</div>
+    </div>
+
+    <p class="label">Если git не найден</p>
+    <div class="group">
+      <div class="row cmd"><code data-only="win">winget install --id Git.Git -e --source winget</code><code data-only="mac">xcode-select --install</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note" data-only="mac">Откроется окно установки инструментов разработчика, нажми «Установить»</div>
+    </div>
+
+    <p class="label">Если Python не найден</p>
+    <div class="group">
+      <div class="row cmd" data-only="win"><code>winget install 9NQ7512CXL7T -e --accept-package-agreements --disable-interactivity</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note" data-only="win">Это официальный установщик Python для Windows</div>
+      <div class="row note" data-only="mac">Скачай установщик для macOS на <a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python.org/downloads</a> и открой его</div>
+      <div class="row note">Потом закрой окно терминала, открой заново и проверь ещё раз</div>
+      <div class="row note">Без Python скиллы всё равно пишут. Не будет только оценки хука и проверки подписи</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Открой Claude Code</h2>
+    <ol class="how">
+      <li>Открой приложение Claude и перейди на вкладку Code вверху слева</li>
+      <li>Под полем ввода выбери Local, затем Open folder… и любую папку, например новую папку instagram</li>
+    </ol>
+    <div class="group">
+      <div class="row note">Если работаешь в терминале, набери <code>claude</code> в любой папке</div>
+      <div class="row note">Если вместо чата Claude просит сменить тариф, значит на твоём тарифе Claude Code нет</div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Скинь ссылку на скилл</h2>
+    <p class="lead-in">Скопируй фразу, вставь в Claude Code и отправь. Он сам скачает скилл и проверит, что всё работает</p>
+    <figure class="shot">
+      <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>github.com/lapurryt/instagram-agent-skill-ru</span></div>
+      <img src="../assets/img/insta-github.webp" width="854" height="382" loading="lazy" alt="Начало описания скилла на GitHub: Instagram Agent Skill на русском, тринадцать скиллов Claude, которые ведут аккаунт в Instagram">
+    </figure>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Установи скилл ig-ru из https://github.com/lapurryt/instagram-agent-skill-ru в ~/.claude/skills/ig-ru и проверь, что ig-ru:ig-reel работает</span><button type="button" class="copy button" aria-label="Скопировать фразу">Скопировать фразу</button></div>
+      <div class="row result">Claude попросит разрешение на команды, разреши. В конце он напишет, что скилл установлен и ig-ru:ig-reel работает</div>
+    </div>
+
+    <details class="group disclosure">
+      <summary>Через терминал, если так удобнее</summary>
+      <div class="row cmd"><code data-only="win">git clone https://github.com/lapurryt/instagram-agent-skill-ru "$HOME\.claude\skills\ig-ru"</code><code data-only="mac">git clone https://github.com/lapurryt/instagram-agent-skill-ru ~/.claude/skills/ig-ru</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Команда кладёт скилл в ту же папку, что и фраза выше</div>
+    </details>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Научи его своему голосу и пробуй</h2>
+    <p class="lead-in">Сначала дай Claude три своих рилса. По ним он соберёт файл с твоим голосом. Дальше каждый скилл пишет твоими словами, с твоими оборотами и длиной фраз</p>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Вот тексты трёх моих рилсов: (вставь). Напиши мой voice.md по ним для ig-ru и сохрани в ~/.claude/instagram/voice.md</span><button type="button" class="copy button" aria-label="Скопировать фразу">Скопировать фразу</button></div>
+      <div class="row result">Claude сохранит файл. Поправить его можно в любой момент, это обычный текст</div>
+    </div>
+
+    <figure class="clip">
+      <video data-clip src="../assets/img/insta-week.mp4" poster="../assets/img/insta-week.webp" width="720" height="286" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: план на неделю, по дням рилсы, карусели, сторис и посты, семь из семи запланировано"></video>
+    </figure>
+
+    <p class="label">Попробуй скиллы</p>
+    <p class="lead-in">Пиши обычными словами и называй скилл. Примеры над окном, нажми на любой</p>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры: что делает скилл ig-ru в Claude Code">
+      <div class="cmd-tabs" role="group" aria-label="Пример">
+        <button type="button" aria-pressed="true">Рилс</button>
+        <button type="button" aria-pressed="false">Залетевшие</button>
+        <button type="button" aria-pressed="false">Подпись</button>
+        <button type="button" aria-pressed="false">Неделя</button>
+      </div>
+      <p class="caption" aria-live="polite">Рилс из сырой идеи</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">instagram</span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 4: Рилс из сырой идеи" data-caption="Рилс из сырой идеи">
+              <div class="history"><div class="msg me"><p class="bubble-me">Установи скилл ig-ru с GitHub</p></div><div class="msg ai"><p class="bubble-ai">Готово, ig-ru лежит в ~/.claude/skills/ig-ru, ig-ru:ig-reel работает</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Сделай рилс по ig-ru:ig-reel: как я за вечер собрал сайт с Claude и не написал ни строчки кода"><span class="say">Сделай рилс по ig-ru:ig-reel: как я за вечер собрал сайт с Claude и не написал ни строчки кода</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Сделай рилс по ig-ru:ig-reel: как я за вечер собрал сайт с Claude и не написал ни строчки кода"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл ig-reel"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">ig-ru:ig-reel</span></code></p></div><div class="msg ai tool" data-status="Оцениваю хуки"><p class="bubble-ai tool-row"><span class="tool-name">Bash</span><code><span class="tok">python</span> <span class="tok">hookscore_ru.py</span> <span class="tok">hooks.txt</span></code></p></div><div class="msg ai" data-status="Пишу сценарий"><p class="bubble-ai">Три хука с оценкой, сильнейший: «Я собрал сайт за вечер и не написал ни строчки кода». Ниже сценарий с надписями на экране и биты по секундам. Хук ты скажешь за 2,8 с, в три секунды укладываешься</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 4: Что залетает в нише" data-caption="Что залетает в нише">
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай рилс по ig-ru:ig-reel про сайт за вечер</p></div><div class="msg ai"><p class="bubble-ai">Три хука с оценкой, под ними сценарий</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Найди по ig-ru:ig-viral, что сейчас залетает в моей нише. Вот 6 аккаунтов: (вставь ники)"><span class="say">Найди по ig-ru:ig-viral, что сейчас залетает в моей нише. Вот 6 аккаунтов: (вставь ники)</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Найди по ig-ru:ig-viral, что сейчас залетает в моей нише. Вот 6 аккаунтов: (вставь ники)"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл ig-viral"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">ig-ru:ig-viral</span></code></p></div><div class="msg ai tool" data-status="Смотрю рилсы в браузере"><p class="bubble-ai tool-row"><span class="tool-name">Browser</span><code><span class="tok">instagram.com</span></code></p></div><div class="msg ai tool" data-status="Собираю свайп-файл"><p class="bubble-ai tool-row"><span class="tool-name">Bash</span><code><span class="tok">python</span> <span class="tok">swipe_ru.py</span> <span class="tok">captured.tsv</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Посмотрел по 12 рилсов у каждого. Отсортировал по тому, во сколько раз рилс обогнал свой аккаунт, у каждого назвал формулу хука. Свайп-файл в ~/.claude/instagram/swipe.md, по нему можно снимать</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 4: Подпись к рилсу" data-caption="Подпись к рилсу">
+              <div class="history"><div class="msg me"><p class="bubble-me">Найди по ig-ru:ig-viral, что сейчас залетает в нише</p></div><div class="msg ai"><p class="bubble-ai">Свайп-файл в ~/.claude/instagram/swipe.md</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Напиши подпись к этому рилсу по ig-ru:ig-caption, кодовое слово САЙТ"><span class="say">Напиши подпись к этому рилсу по ig-ru:ig-caption, кодовое слово САЙТ</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Напиши подпись к этому рилсу по ig-ru:ig-caption, кодовое слово САЙТ"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл ig-caption"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">ig-ru:ig-caption</span></code></p></div><div class="msg ai tool" data-status="Проверяю подпись"><p class="bubble-ai tool-row"><span class="tool-name">Bash</span><code><span class="tok">python</span> <span class="tok">caption_ru.py</span> <span class="tok">caption.txt</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Первая строка влезает в окно до «… ещё», в ней цифра и выгода. Призыв один: написать САЙТ в комментариях. Хештегов три, лимит Instagram сейчас пять</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 4: План на неделю" data-caption="План на неделю">
+              <div class="history"><div class="msg me"><p class="bubble-me">Напиши подпись к этому рилсу по ig-ru:ig-caption</p></div><div class="msg ai"><p class="bubble-ai">Первая строка влезает в окно до «… ещё», призыв один</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Спланируй мне неделю в Instagram по ig-ru:ig-plan"><span class="say">Спланируй мне неделю в Instagram по ig-ru:ig-plan</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Спланируй мне неделю в Instagram по ig-ru:ig-plan"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Открываю скилл ig-plan"><p class="bubble-ai tool-row skill"><span class="tool-name">Skill</span><code><span class="tok">ig-ru:ig-plan</span></code></p></div><div class="msg ai" data-status="Расписываю неделю"><p class="bubble-ai">Расписал неделю по дням: рилсы, карусели и сторис, у каждого формат и время. Внизу 10 аккаунтов, под которыми стоит оставлять комментарии на этой неделе</p></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph"><span data-ai-only="claude">Type / for commands</span><span data-ai-only="codex">Ask Codex anything</span></span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span><span data-ai-only="claude">Auto</span><span data-ai-only="codex">Local</span></span><span><span data-ai-only="claude">Opus 5.5</span><span data-ai-only="codex" class="mc-branch"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><circle cx="4" cy="3.5" r="1.8"/><circle cx="4" cy="12.5" r="1.8"/><circle cx="12" cy="5.5" r="1.8"/><path d="M4 5.3v5.4M12 7.3c0 3-4.5 2.4-7.4 4"/></svg>main</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+
+    <p class="label">Все 13 скиллов</p>
+    <div class="group">
+      <div class="row"><code>ig-reel</code> рилс из идеи: три хука с оценкой, сценарий, надписи и биты по секундам</div>
+      <div class="row"><code>ig-viral</code> залетевшие рилсы ниши, отсортированные по тому, во сколько раз обогнали свой аккаунт</div>
+      <div class="row"><code>ig-caption</code> подпись с проверкой: что видно до «… ещё», один призыв, до пяти хештегов</div>
+      <div class="row"><code>ig-carousel</code> карусель: обложка, текст слайдов и файлы 1080×1350</div>
+      <div class="row"><code>ig-story</code> сторис на день: кадры по порядку и стикеры</div>
+      <div class="row"><code>ig-profile</code> оценка профиля из 100 и что переписать первым</div>
+      <div class="row"><code>ig-plan</code> неделя: что выкладывать, в каком формате, когда и с кем общаться</div>
+      <div class="row"><code>ig-human</code> убирает из текста штампы, длинные тире и невидимые символы</div>
+      <div class="row"><code>ig-comment</code> комментарии под чужими постами, по делу, без пустых эмодзи</div>
+      <div class="row"><code>ig-reply</code> ответы на комментарии под твоими постами, по важности</div>
+      <div class="row"><code>ig-dm</code> сообщения в директ: выдача по кодовому слову, первое сообщение, два дожима</div>
+      <div class="row"><code>ig-repurpose</code> одно видео или подкаст в неделю рилсов и каруселей</div>
+      <div class="row"><code>ig-audit</code> разбор того, что уже выложено: что сработало и почему</div>
+    </div>
+    <p class="done">Готово. У тебя в Claude Code свой Instagram-агент: пиши задачу и называй скилл</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_insta" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Нет вкладки Code или Claude просит сменить тариф</summary>
+        <p>Claude Code есть в тарифах Pro, Max, Ultra, Team и Enterprise. На бесплатном тарифе его нет</p></details>
+      <details class="row fix"><summary>Пишет, что git или python не найден</summary>
+        <p>Поставь их, как в шаге 1, закрой окно терминала или Claude и открой заново</p></details>
+      <details class="row fix"><summary>Claude не видит скилл ig-ru</summary>
+        <p>Отправь <code>/reload-skills</code>. Если не помогло, отправь Claude: «Проверь, что в ~/.claude/skills/ig-ru есть файл SKILL.md и папка skills, и если нет, поставь скилл заново»</p></details>
+      <details class="row fix"><summary>Для залетевших рилсов просит войти в Instagram</summary>
+        <p>Claude смотрит рилсы в браузере. В Instagram входишь ты, пароль ему не давай. Он смотрит около десяти аккаунтов по дюжине рилсов, не больше: массовый сбор Instagram запрещает</p></details>
+      <details class="row fix"><summary>Ответ пришёл на английском</summary>
+        <p>Допиши в конце сообщения: «Отвечай по-русски»</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Проверено 24 ноября 2026 по <a href="https://github.com/lapurryt/instagram-agent-skill-ru" target="_blank" rel="noopener">README скилла ig-ru</a>, документации Claude Code (<a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">Skills</a>, <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">Setup</a>) и <a href="https://docs.python.org/3/using/windows.html" target="_blank" rel="noopener">Python на Windows</a></p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=31" defer></script>
+</body>
+</html>
