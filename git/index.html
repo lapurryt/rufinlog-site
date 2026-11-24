@@ -20,6 +20,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
 <link rel="stylesheet" href="../assets/style.css?v=32">
 <script>document.documentElement.className = "js";</script>
+<style>
+/* «ГИТ» (26.11, before the re-post): graphics between the text like «СКОРОСТЬ», «ИНСТА», «РЕПО». Icon tiles from
+   skorost, our tokens only; shared style.css untouched */
+.ig-ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: #007AFF; }
+.ig-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-ico.green { background: #34C759; } .ig-ico.orange { background: #FF9500; } .ig-ico.grey { background: #8E8E93; }
+ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 16px; }
+</style>
 </head>
 <body data-os="win" data-ai="claude">
 
@@ -37,6 +45,10 @@
     <p class="sub">Проект сломался? Вернёшь одной фразой</p>
     <p class="meta">20 минут, удобнее с компьютера</p>
   </header>
+
+  <figure class="clip reveal">
+    <video data-clip src="../assets/img/git-commits.mp4" poster="../assets/img/git-commits.webp" width="1320" height="1088" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: каждое сохранение проекта становится коммитом, на линии времени появляются версии c5bd59e, 9e63e54, ffa0d4b и 74a72a3"></video>
+  </figure>
 
   <section class="setup reveal" aria-label="Настрой гайд под себя">
     <div class="group">
@@ -59,11 +71,11 @@
 
   <section class="section reveal">
     <h2>Что понадобится</h2>
-    <ul class="group">
-      <li>Компьютер на Windows 10, 11 или Mac</li>
-      <li data-ai-only="claude">Для Claude Code нужна подписка Claude Pro или выше. На бесплатном тарифе его нет</li>
-      <li data-ai-only="codex">Для Codex хватит любого аккаунта ChatGPT, даже бесплатного</li>
-      <li>Папка с проектом. Если проекта ещё нет, создай пустую папку, например my-app</li>
+    <ul class="group ig-list">
+      <li><span class="ig-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span>Компьютер на Windows 10, 11 или Mac</span></li>
+      <li data-ai-only="claude"><span class="ig-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg></span><span>Для Claude Code нужна подписка Claude Pro или выше. На бесплатном тарифе его нет</span></li>
+      <li data-ai-only="codex"><span class="ig-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12h7M12 8.5v7"/></svg></span><span>Для Codex хватит любого аккаунта ChatGPT, даже бесплатного</span></li>
+      <li><span class="ig-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><span>Папка с проектом. Если проекта ещё нет, создай пустую папку, например my-app</span></li>
     </ul>
   </section>
 
@@ -188,6 +200,10 @@ Press Enter to open https://github.com/login/device in your browser...
     <h2>Фразы вместо команд Git</h2>
     <p class="lead-in">Пиши их <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением, команды Git он наберёт сам. Выбери ситуацию над окном</p>
 
+    <figure class="clip">
+      <video data-clip src="../assets/img/git-rollback.mp4" poster="../assets/img/git-rollback.webp" width="1320" height="1130" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: в Claude Code пишут «вернуться к последнему коммиту, где всё работало», Claude находит версию 74a72a3 и возвращает проект к ней"></video>
+    </figure>
+
     <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с ИИ">
       <div class="cmd-tabs" role="group" aria-label="Ситуация">
         <button type="button" aria-pressed="true">Версия</button>
@@ -281,6 +297,11 @@ Press Enter to open https://github.com/login/device in your browser...
       </div>
     </div>
     <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+
+    <p class="label">Ветка: попробовать новое и ничего не сломать</p>
+    <figure class="clip">
+      <video data-clip src="../assets/img/git-branch.mp4" poster="../assets/img/git-branch.webp" width="1320" height="1246" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: от основной линии версий отходит ветка dark-mode, на ней пробуют тёмную тему, ветку сливают обратно, а неудачную ветку confetti удаляют"></video>
+    </figure>
     <p class="done">Готово: ИИ сохраняет версии проекта, к любой вернёшься одной фразой</p>
   </section>
 
