@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Быстрый Wi-Fi с Claude Code и Codex | rufinlog</title>
+<meta name="description" content="Claude Code или Codex находит, что тормозит домашний Wi-Fi, исправляет по одному пункту с твоего согласия и показывает чужие устройства в сети. Пошагово для Windows и Mac">
+<meta property="og:title" content="Быстрый Wi-Fi с Claude Code и Codex">
+<meta property="og:description" content="Два промпта: найти, что тормозит Wi-Fi, и кто подключён к твоей сети. Пошагово для Windows и Mac">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/skorost-post-temp.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=31">
+<script>document.documentElement.className = "js";</script>
+<style>
+/* «СКОРОСТЬ» only (24.11): graphics between the text. Author: «стиль оставляем наш но графикой разбавляем», so every
+   block is built from the site's own tokens: cards, radius 18, system blue, SF. Candidates for style.css are listed
+   in the round 2 report */
+.nw { white-space: nowrap; }
+.sk-ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: #007AFF; }
+.sk-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.sk-ico.green { background: #34C759; } .sk-ico.orange { background: #FF9500; } .sk-ico.grey { background: #8E8E93; }
+.sk-ico.red { background: #FF3B30; } .sk-ico.teal { background: #30B0C7; }
+.sk-hero { margin: 0 0 28px; }
+.sk-hero img { aspect-ratio: 16 / 9; }
+.sk-kicker { color: var(--text-2); font-size: .8824rem; margin: 0 0 6px; }
+
+/* start here: one prompt that walks through everything */
+.sk-start { padding: 22px 20px 8px; }
+.sk-start h2 { font: 700 1.4118rem/1.18 var(--font-display); letter-spacing: -.025em; margin: 0 0 8px; }
+.sk-start .sk-lead { margin: 0 0 16px; color: var(--text-2); font-size: .9412rem; }
+.sk-prompt { background: var(--code-bg); border-radius: 14px; padding: 14px 16px 16px; }
+.sk-prompt .say { display: block; font-size: .9412rem; line-height: 1.5; }
+.sk-prompt .copy.button { display: flex; width: 100%; margin: 14px 0 0; }
+.sk-prompt .copy.button.done { color: #fff; background: var(--ok); }
+.sk-mini { display: flex; flex-wrap: wrap; gap: 10px 18px; list-style: none; margin: 16px 0 6px; padding: 0; font-size: .8824rem; }
+.sk-mini li { display: flex; align-items: center; gap: 8px; }
+.sk-n { flex: none; display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%;
+  background: var(--button); color: #fff; font: 600 .7647rem/1 var(--font); letter-spacing: 0; }
+.sk-alt { display: flex; align-items: center; justify-content: center; min-height: 48px; margin: 8px -20px 0; border-top: 1px solid var(--sep); font-size: .9412rem; }
+
+/* plan: four numbered rows that jump to the steps */
+.sk-plan a.row { display: flex; align-items: center; gap: 14px; color: var(--text); padding: 12px 44px 12px 16px; position: relative; min-height: 60px; }
+.sk-plan a.row:hover { text-decoration: none; background: var(--code-bg); }
+.sk-plan a.row:active { background: var(--code-bg); }
+.sk-plan a.row::after { content: ""; position: absolute; right: 22px; top: 50%; width: 8px; height: 8px; margin-top: -4px;
+  border-right: 2px solid var(--text-2); border-top: 2px solid var(--text-2); transform: rotate(45deg); }
+.sk-plan .sk-n { width: 28px; height: 28px; font-size: .8824rem; }
+.sk-plan b, .sk-list b, .sk-flow b, .sk-dev b, .sk-tip b { display: block; font-weight: 600; }
+.sk-plan small, .sk-list small, .sk-flow small { display: block; color: var(--text-2); font-size: .8235rem; line-height: 1.4; }
+
+/* lists with an icon tile, like Settings */
+ul.group.sk-list li { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 16px; }
+
+/* step 1: the path of clicks */
+.sk-path { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; list-style: none; margin: 0 0 18px; padding: 0; }
+.sk-path li { display: inline-flex; align-items: center; gap: 6px; }
+.sk-path li + li::before { content: "›"; color: var(--text-2); font-size: 1.1rem; line-height: 1; }
+.sk-chip { display: inline-flex; align-items: center; min-height: 34px; padding: 0 14px; border-radius: 999px;
+  background: var(--card); box-shadow: inset 0 0 0 1px var(--sep); font-size: .8824rem; font-weight: 500; white-space: nowrap; }
+
+/* step 2: computer → router → neighbours */
+.sk-flow { list-style: none; margin: 0 0 22px; padding: 0; display: grid; gap: 20px; }
+.sk-flow li { position: relative; display: flex; align-items: center; gap: 14px; background: var(--card);
+  border-radius: var(--r-card); padding: 14px 16px; }
+.sk-flow li + li::before { content: ""; position: absolute; left: 30px; top: -20px; width: 2px; height: 20px; background: var(--sep); }
+@media (min-width: 640px) {
+  .sk-flow { grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .sk-flow li { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .sk-flow li + li::before { left: -22px; top: 50%; width: 22px; height: 2px; }
+}
+
+/* step 3: before / after */
+.sk-speed { padding: 18px 18px 16px; }
+.sk-bars { display: grid; gap: 14px; }
+.sk-bar-row { display: grid; grid-template-columns: 60px 1fr auto; align-items: center; gap: 12px; font-size: .8824rem; }
+.sk-bar { height: 10px; border-radius: 5px; background: var(--code-bg); overflow: hidden; }
+.sk-bar i { display: block; height: 100%; width: var(--w); border-radius: 5px; background: #8E8E93; }
+.sk-bar-row.after .sk-bar i { background: var(--button); }
+.sk-mbps { font: 700 1.2941rem/1 var(--font-display); letter-spacing: -.02em; font-variant-numeric: tabular-nums; text-align: right; min-width: 4.6em; }
+.sk-mbps small { font: 500 .7059rem/1 var(--font); color: var(--text-2); letter-spacing: 0; }
+@property --n { syntax: "<integer>"; inherits: false; initial-value: 0; }
+.sk-count { --n: var(--to); counter-reset: n var(--n); }
+.sk-count::before { content: counter(n); }
+@media (prefers-reduced-motion: no-preference) {
+  .js .sk-speed:not(.seen) .sk-bar i { width: 0; }
+  .js .sk-speed.seen .sk-bar i { transition: width 1.2s cubic-bezier(.2, .8, .2, 1) .2s; }
+  .js .sk-speed.seen .sk-count { animation: sk-count 1.2s cubic-bezier(.2, .8, .2, 1) .2s both; }
+}
+@keyframes sk-count { from { --n: 0; } to { --n: var(--to); } }
+
+/* step 4: what the AI shows */
+ul.group.sk-dev li { display: flex; align-items: center; gap: 12px; padding: 11px 16px; }
+.sk-dev .sk-what { flex: 1; min-width: 0; }
+.sk-dev .sk-what small { display: block; color: var(--text-2); font: 500 .7647rem/1.4 var(--mono); letter-spacing: 0; }
+.sk-tag { flex: none; padding: 4px 10px; border-radius: 999px; font-size: .7647rem; font-weight: 600; }
+.sk-tag.mine { color: #1C7531; background: rgba(52, 199, 89, .16); }
+.sk-tag.unknown { color: #A84800; background: rgba(255, 149, 0, .16); }
+@media (prefers-color-scheme: dark) {
+  .sk-tag.mine { color: #30D158; background: rgba(48, 209, 88, .18); }
+  .sk-tag.unknown { color: #FF9F0A; background: rgba(255, 159, 10, .18); }
+}
+
+/* tip callout */
+.sk-tip { display: flex; align-items: flex-start; gap: 14px; padding: 16px 18px; margin: 16px 0; }
+.sk-tip p { margin: 0; font-size: .9412rem; }
+
+/* clips and captions */
+.sk-clip { margin-bottom: 8px; }
+.sk-cap { margin: 0 4px 18px; }
+.sk-ref .say { flex: 1; min-width: 0; padding: 10px 0; font-size: .9412rem; }
+@media (prefers-contrast: more) { .sk-flow li { box-shadow: 0 0 0 1px var(--sep); } }
+</style>
+</head>
+<body data-os="win" data-ai="claude">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+    <button class="nav-pill" type="button" data-share aria-label="Отправить ссылку на гайд себе, чтобы открыть на компьютере">Отправить себе</button>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Быстрый <span class="nw">Wi-Fi</span> с&nbsp;Claude Code и&nbsp;Codex</h1>
+    <p class="sub">ИИ найдёт, что тормозит <span class="nw">Wi-Fi</span>, и&nbsp;покажет, кто сидит в&nbsp;твоей сети</p>
+    <p class="meta">15 минут, нужен компьютер в домашнем <span class="nw">Wi-Fi</span></p>
+  </header>
+
+  <!-- HERO: the picture the author picked («Го 3 где пиксельное оно», 24.11). To swap it, replace
+       assets/img/skorost-hero.webp (16:9, up to 1200 px wide) and keep width/height in step with the file -->
+  <figure class="clip sk-hero">
+    <img src="../assets/img/skorost-hero.webp" width="1200" height="675" fetchpriority="high" alt="Пиксельная картинка: на столе ноутбук со спидометром на экране, рядом белый роутер с волнами Wi-Fi, телефон и маленький гаджет с вопросительными знаками">
+  </figure>
+
+  <section class="setup reveal" aria-label="Настрой гайд под себя">
+    <div class="group">
+      <div class="row setup-row">
+        <span class="setup-label">Компьютер</span>
+        <div class="segmented" role="group" aria-label="Твой компьютер">
+          <button type="button" data-set-os="win" aria-pressed="true">Windows</button>
+          <button type="button" data-set-os="mac" aria-pressed="false">Mac</button>
+        </div>
+      </div>
+      <div class="row setup-row">
+        <span class="setup-label">ИИ</span>
+        <div class="segmented" role="group" aria-label="С каким ИИ работаешь">
+          <button type="button" data-set-ai="claude" aria-pressed="true">Claude Code</button>
+          <button type="button" data-set-ai="codex" aria-pressed="false">Codex</button>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
+  </section>
+
+  <section class="section reveal" aria-labelledby="start-title">
+    <div class="group sk-start">
+      <p class="sk-kicker">Начни здесь · 15 минут</p>
+      <h2 id="start-title">Один промпт, и ИИ проведёт по всем шагам</h2>
+      <p class="sk-lead">Он сам проверит сеть, предложит исправления и покажет устройства. Перед каждым изменением спросит тебя</p>
+      <div class="sk-prompt"><span class="say">Помоги ускорить мой <span class="nw">Wi-Fi</span> и проверить, кто к нему подключён. Веди меня по шагам. Сначала найди роутер, замерь скорость, посмотри, какие программы качают в фоне и мешают ли сети соседей. Потом покажи список исправлений и делай их по одному: перед каждым скажи, что изменится и как это вернуть, и жди моего «да». После исправлений замерь скорость ещё раз. В конце покажи все устройства в моей сети и пометь незнакомые. Пароль от роутера я введу сам на его странице, в чате его не спрашивай</span><button type="button" class="copy button" aria-label="Скопировать промпт">Скопировать промпт</button></div>
+      <ol class="sk-mini">
+        <li><span class="sk-n" aria-hidden="true">1</span>Скопируй</li>
+        <li><span class="sk-n" aria-hidden="true">2</span><span>Открой <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span></span></li>
+        <li><span class="sk-n" aria-hidden="true">3</span>Вставь и отправь</li>
+      </ol>
+      <a class="sk-alt" href="#plan">Или пройди по шагам сам ↓</a>
+    </div>
+  </section>
+
+  <section class="section reveal" id="plan">
+    <h2>План · 4 шага</h2>
+    <div class="group sk-plan">
+      <a class="row" href="#step-1" data-ai-only="claude"><span class="sk-n" aria-hidden="true">1</span><span><b>Открой Claude Code</b><small>Режим Manual, пустая папка</small></span></a>
+      <a class="row" href="#step-1x" data-ai-only="codex"><span class="sk-n" aria-hidden="true">1</span><span><b>Открой Codex</b><small>Режим Ask for approval, пустая папка</small></span></a>
+      <a class="row" href="#step-2"><span class="sk-n" aria-hidden="true">2</span><span><b>Найди, что тормозит <span class="nw">Wi-Fi</span></b><small>Первый промпт: скорость, фон, соседи</small></span></a>
+      <a class="row" href="#step-3"><span class="sk-n" aria-hidden="true">3</span><span><b>Исправь по одному и замерь снова</b><small>Каждое изменение только после «да»</small></span></a>
+      <a class="row" href="#step-4"><span class="sk-n" aria-hidden="true">4</span><span><b>Проверь, кто в твоей сети</b><small>Второй промпт, трюк для приватности</small></span></a>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group sk-list">
+      <li><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span><b>Компьютер в домашнем <span class="nw">Wi-Fi</span></b><small>Windows 10, 11 или Mac, подключённый к сети, которую ускоряем</small></span></li>
+      <li data-ai-only="claude"><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span><span><b>Подписка Claude Pro или выше</b><small>На бесплатном тарифе Claude Code нет</small></span></li>
+      <li data-ai-only="codex"><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg></span><span><b>Любой аккаунт ChatGPT</b><small>Даже бесплатный: Codex входит во все тарифы</small></span></li>
+      <li><span class="sk-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l9-9M16.5 6.5l3 3M14 9l2 2"/></svg></span><span><b>Пароль от настроек роутера</b><small>Обычно он на наклейке снизу или сзади роутера</small></span></li>
+    </ul>
+    <p class="label">Что важно знать</p>
+    <ul class="group sk-list">
+      <li><span class="sk-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span><span><b>Пароль вводишь ты сам</b><small>На странице роутера. В чат его не пиши</small></span></li>
+      <li data-ai-only="claude"><span class="sk-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><span><b>ИИ спрашивает перед изменениями</b><small>В режиме Manual Claude спрашивает разрешение перед каждой командой, которая что-то меняет</small></span></li>
+      <li data-ai-only="codex"><span class="sk-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg></span><span><b>ИИ спрашивает перед изменениями</b><small>В режиме Ask for approval Codex спрашивает, прежде чем выйти в интернет или поменять файлы вне папки. Остальное запрещает промпт</small></span></li>
+      <li><span class="sk-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 20h14"/></svg></span><span><b>Ничего не ставится без спроса</b><small>Если для замера нужна программа, ИИ сначала спросит</small></span></li>
+      <li><span class="sk-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2.5 9a14 14 0 0 1 19 0M5.5 12.5a9.5 9.5 0 0 1 13 0M8.5 16a5 5 0 0 1 7 0M4 4l16 16"/></svg></span><span><b>Интернет может пропасть на минуту</b><small>Когда меняются настройки роутера. Это нормально</small></span></li>
+    </ul>
+  </section>
+
+  <section class="section" data-ai-only="claude" id="step-1">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Открой Claude Code</h2>
+    <ul class="sk-path" aria-label="Путь по кнопкам">
+      <li><span class="sk-chip">Code</span></li><li><span class="sk-chip">Local</span></li><li><span class="sk-chip">Open folder…</span></li><li><span class="sk-chip">Manual</span></li>
+    </ul>
+    <ol class="how">
+      <li>Скачай приложение Claude на <a href="https://claude.com/download" target="_blank" rel="noopener">claude.com/download</a> и войди</li>
+      <li>Нажми вкладку Code вверху боковой панели</li>
+      <li>Под полем ввода выбери Local, потом Open folder… и пустую папку <span class="nw">home-wifi</span></li>
+      <li>Там же выбери режим Manual</li>
+    </ol>
+    <details class="group disclosure">
+      <summary>Через терминал, если привык</summary>
+      <div class="row cmd"><code data-only="win">irm https://claude.ai/install.ps1 | iex</code><code data-only="mac">curl -fsSL https://claude.ai/install.sh | bash</code><button type="button" class="copy">Скопировать</button></div>
+      <div class="row note">Потом открой терминал в папке <span class="nw">home-wifi</span> и запусти <code>claude</code></div>
+    </details>
+  </section>
+
+  <section class="section" data-ai-only="codex" id="step-1x">
+    <p class="step">Шаг 1 из 4</p>
+    <h2>Открой Codex</h2>
+    <ul class="sk-path" aria-label="Путь по кнопкам">
+      <li><span class="sk-chip">Codex</span></li><li><span class="sk-chip">Папка <span class="nw">home-wifi</span></span></li><li><span class="sk-chip">Ask for approval</span></li>
+    </ul>
+    <ol class="how">
+      <li>Скачай приложение ChatGPT для компьютера на <a href="https://learn.chatgpt.com/docs/quickstart" target="_blank" rel="noopener">официальной странице</a> и войди своим аккаунтом ChatGPT</li>
+      <li>Выбери Codex в выпадающем списке ChatGPT</li>
+      <li>Открой пустую папку <span class="nw">home-wifi</span></li>
+      <li>Под полем ввода выбери Ask for approval</li>
+    </ol>
+  </section>
+
+  <section class="section reveal" id="step-2">
+    <p class="step">Шаг 2 из 4</p>
+    <h2>Найди, что тормозит <span class="nw">Wi-Fi</span></h2>
+    <ol class="sk-flow" aria-label="Что проверит ИИ">
+      <li><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span><b>Твой компьютер</b><small>Здесь ИИ запускает команды и смотрит, кто качает в фоне</small></span></li>
+      <li><span class="sk-ico teal" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="13" width="18" height="6" rx="2"/><path d="M7 13V7.5M17 13V7.5M7.5 16h.01M10.5 16h.01"/></svg></span><span><b>Роутер</b><small>ИИ находит его адрес и меряет скорость</small></span></li>
+      <li><span class="sk-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 8.5a13 13 0 0 1 18 0M6 12a8.5 8.5 0 0 1 12 0"/><rect x="9" y="15" width="6" height="5" rx="1"/></svg></span><span><b>Сети соседей</b><small>На каком канале и мешают ли твоей</small></span></li>
+    </ol>
+    <p class="lead-in">Отправь <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> первый промпт</p>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Подключись к моему роутеру и найди всё, что замедляет скорость Wi-Fi. Ничего не меняй, пока я не скажу «да»"><span class="say">Подключись к моему роутеру и найди всё, что замедляет скорость <span class="nw">Wi-Fi</span>. Ничего не меняй, пока я не скажу «да»</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <div class="group">
+      <div class="row result">ИИ всё проверит и пришлёт список исправлений. Пока ты не скажешь «да», ничего не меняет</div>
+    </div>
+    <figure class="clip sk-clip"><video data-clip src="../assets/img/skorost-neighbours.mp4" poster="../assets/img/skorost-neighbours.webp" width="720" height="534" muted loop playsinline autoplay preload="metadata" aria-label="Из ролика: таблица сетей Wi-Fi рядом, три соседние сети на том же канале 6, что и твоя"></video></figure>
+    <p class="foot-note sk-cap">Из ролика: три соседа на том же канале, что и ты</p>
+    <details class="group disclosure">
+      <summary>Подробнее про замер скорости</summary>
+      <div class="row note" data-only="win">Своей команды для замера скорости в Windows нет, поэтому ИИ может предложить скачать Speedtest CLI. Это официальная программа от speedtest.net, ставится только после твоего «да»</div>
+      <div class="row note" data-only="mac">Для замера скорости в macOS есть встроенная команда networkQuality, ставить ничего не нужно</div>
+      <div class="row note">Хочешь сверить сам? До и после открой <a href="https://speed.cloudflare.com/" target="_blank" rel="noopener">speed.cloudflare.com</a>, это замер скорости от Cloudflare</div>
+    </details>
+  </section>
+
+  <section class="section reveal" id="step-3">
+    <p class="step">Шаг 3 из 4</p>
+    <h2>Исправь по одному и замерь снова</h2>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Давай по одному. Перед каждым шагом скажи, что изменится и как это вернуть"><span class="say">Давай по одному. Перед каждым шагом скажи, что изменится и как это вернуть</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <div class="group sk-tip"><span class="sk-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.4 1 1.1 1 1.8V16h5v-.3c0-.7.4-1.4 1-1.8A6 6 0 0 0 12 3z"/></svg></span><p><b>Совет</b>Соглашайся по одному. Так видно, какое исправление помогло, и его легко вернуть, если стало хуже</p></div>
+    <p class="label">Настройки роутера</p>
+    <figure class="clip sk-clip"><video data-clip src="../assets/img/skorost-sticker.mp4" poster="../assets/img/skorost-sticker.webp" width="720" height="440" muted loop playsinline autoplay preload="metadata" aria-label="Из ролика: наклейка на роутере с адресом страницы настроек и паролем"></video></figure>
+    <p class="foot-note sk-cap">Пароль обычно на наклейке. Вводи его сам, на странице роутера</p>
+    <details class="group disclosure">
+      <summary>Подробнее про исправления</summary>
+      <div class="row note">Например: пауза для облака или обновления игры, другой канал <span class="nw">Wi-Fi</span> на роутере, где меньше соседей, обновление прошивки роутера</div>
+      <div class="row note">Для настроек роутера ИИ может открыть его страницу во встроенном браузере приложения</div>
+      <div class="row note">После смены настроек роутер может на минуту отключить <span class="nw">Wi-Fi</span>, и ИИ замолчит. Дождись, пока интернет вернётся, и напиши «Продолжай»</div>
+    </details>
+    <p class="label">Когда исправления закончатся</p>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Замерь скорость ещё раз и сравни с первым замером"><span class="say">Замерь скорость ещё раз и сравни с первым замером</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <div class="group sk-speed reveal" role="img" aria-label="Пример замера: до 87 мегабит в секунду, после 124">
+      <p class="sk-kicker">Пример замера</p>
+      <div class="sk-bars" aria-hidden="true">
+        <div class="sk-bar-row"><span>До</span><span class="sk-bar"><i style="--w: 41%"></i></span><span class="sk-mbps"><span class="sk-count" style="--to: 87"></span> <small>Мбит/с</small></span></div>
+        <div class="sk-bar-row after"><span>После</span><span class="sk-bar"><i style="--w: 58%"></i></span><span class="sk-mbps"><span class="sk-count" style="--to: 124"></span> <small>Мбит/с</small></span></div>
+      </div>
+    </div>
+    <p class="foot-note">Цифры у тебя будут свои. Быстрее тарифа провайдера не будет</p>
+  </section>
+
+  <aside class="tile reveal">
+    <p class="tile-title">Новые гайды выходят в Telegram</p>
+    <p>Сначала там, потом здесь</p>
+    <a class="more" href="https://t.me/rufinlog" target="_blank" rel="noopener">Подписаться на @rufinlog</a>
+  </aside>
+
+  <section class="section reveal" id="step-4">
+    <p class="step">Шаг 4 из 4</p>
+    <h2>Проверь, кто сидит в твоей сети</h2>
+    <figure class="clip">
+      <img src="../assets/img/skorost-devices.webp" width="1200" height="675" loading="lazy" alt="Схема: в центре роутер, от него линии к телефону, ноутбуку, телевизору, колонке, приставке и серому незнакомому устройству с вопросительным знаком">
+    </figure>
+    <p class="lead-in">Это трюк для приватности. Отправь второй промпт</p>
+    <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Теперь покажи все мои устройства, подключённые к Wi-Fi, и пометь каждое, которое ты не знаешь"><span class="say">Теперь покажи все мои устройства, подключённые к <span class="nw">Wi-Fi</span>, и пометь каждое, которое ты не знаешь</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
+    <p class="label">ИИ покажет примерно такой список</p>
+    <ul class="group sk-dev">
+      <li><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span class="sk-what"><b>Этот компьютер</b><small>192.168.0.12</small></span><span class="sk-tag mine">мой</span></li>
+      <li><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span><span class="sk-what"><b>Телефон</b><small>192.168.0.18</small></span><span class="sk-tag mine">мой</span></li>
+      <li><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="12" rx="1.5"/><path d="M8 20.5h8"/></svg></span><span class="sk-what"><b>Телевизор</b><small>192.168.0.24</small></span><span class="sk-tag mine">мой</span></li>
+      <li><span class="sk-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 9h10a4 4 0 0 1 3.9 4.8l-.6 3a2.2 2.2 0 0 1-3.8 1L15 16H9l-1.5 1.8a2.2 2.2 0 0 1-3.8-1l-.6-3A4 4 0 0 1 7 9z"/><path d="M8 11.5v3M6.5 13h3M16 12.5h.01"/></svg></span><span class="sk-what"><b>Приставка</b><small>192.168.0.31</small></span><span class="sk-tag mine">мой</span></li>
+      <li><span class="sk-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.7.3-1 .9-1 1.6v.4M12 17h.01"/></svg></span><span class="sk-what"><b>Неизвестное устройство</b><small>192.168.0.57</small></span><span class="sk-tag unknown">незнакомое</span></li>
+      <li><span class="sk-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.7.3-1 .9-1 1.6v.4M12 17h.01"/></svg></span><span class="sk-what"><b>Неизвестное устройство</b><small>192.168.0.63</small></span><span class="sk-tag unknown">незнакомое</span></li>
+    </ul>
+    <p class="foot-note">Пример. Самый полный список обычно на странице роутера, ИИ может открыть её сам</p>
+    <div class="group sk-tip"><span class="sk-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.7.3-1 .9-1 1.6v.4M12 17h.01"/></svg></span><p><b>Незнакомое не всегда чужое</b>iPhone с iOS 14, Mac с macOS 15 и телефоны с Android 10 подключаются со случайным адресом, своим для каждой сети. Поэтому и твой телефон может выглядеть незнакомым</p></div>
+    <p class="label">Если нашлись чужие</p>
+    <figure class="clip sk-clip"><video data-clip src="../assets/img/skorost-block.mp4" poster="../assets/img/skorost-block.webp" width="720" height="460" muted loop playsinline autoplay preload="metadata" aria-label="Из ролика: Claude спрашивает, какие устройства оставить. Свои отмечены, два незнакомых помечены «Заблокировано»"></video></figure>
+    <p class="foot-note sk-cap">Из ролика: свои отмечаешь, остальные можно заблокировать</p>
+    <div class="group">
+      <div class="row note">Заблокировать можно в настройках роутера, но Apple не советует на это полагаться. Надёжнее сменить пароль <span class="nw">Wi-Fi</span></div>
+      <div class="row note">Напиши ИИ <button type="button" class="pill" aria-label="Скопировать: Помоги сменить пароль Wi-Fi на роутере"><span class="say">Помоги сменить пароль <span class="nw">Wi-Fi</span> на роутере</span></button></div>
+    </div>
+    <details class="group disclosure">
+      <summary>Подробнее про новый пароль</summary>
+      <div class="row note">Заодно попроси включить защиту WPA3 Personal, а если роутер её не умеет, WPA2/WPA3. Так советует Apple</div>
+      <div class="row note">После смены пароля твои устройства отключатся от <span class="nw">Wi-Fi</span>. На каждом введи новый пароль</div>
+    </details>
+  </section>
+
+  <section class="section reveal">
+    <h2>Как это выглядит в чате</h2>
+    <p class="lead-in">Здесь видно, какие команды ИИ запускает на твоём компьютере. Выбери ситуацию над окном</p>
+
+    <div class="phone reveal" role="region" aria-roledescription="карусель" aria-label="Примеры переписки с ИИ">
+      <div class="cmd-tabs" role="group" aria-label="Ситуация">
+        <button type="button" aria-pressed="true">Роутер</button>
+        <button type="button" aria-pressed="false">Фон</button>
+        <button type="button" aria-pressed="false">Канал</button>
+        <button type="button" aria-pressed="false">Замер</button>
+        <button type="button" aria-pressed="false">Чужие</button>
+      </div>
+      <p class="caption" aria-live="polite">Найти роутер и замерить скорость</p>
+      <div class="mac">
+        <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title"><span class="nw">home-wifi</span></span></div>
+          <div class="slides" tabindex="0">
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Найти роутер и замерить скорость" data-caption="Найти роутер и замерить скорость">
+              <div class="history"><div class="msg me"><p class="bubble-me">Вечером <span class="nw">Wi-Fi</span> еле тянет видео</p></div><div class="msg ai"><p class="bubble-ai">Давай разберёмся. Проверю сеть с этого компьютера и ничего не поменяю без тебя</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Подключись к моему роутеру и найди всё, что замедляет скорость Wi-Fi. Ничего не меняй, пока я не скажу «да»"><span class="say">Подключись к моему роутеру и найди всё, что замедляет скорость <span class="nw">Wi-Fi</span>. Ничего не меняй, пока я не скажу «да»</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Подключись к моему роутеру и найди всё, что замедляет скорость Wi-Fi. Ничего не меняй, пока я не скажу «да»"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Ищу роутер"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude"><span data-only="win">PowerShell</span><span data-only="mac">Bash</span></span><span data-ai-only="codex">Ran</span></span><code data-only="win"><span class="tok">ipconfig</span></code><code data-only="mac"><span class="tok">route</span> <span class="tok">-n</span> <span class="tok">get</span> <span class="tok">default</span></code></p></div><div class="msg ai"><p class="bubble-ai">Роутер нашёл, его адрес 192.168.0.1. Для замера скорости <span data-only="win">скачаю Speedtest CLI с сайта Ookla</span><span data-only="mac">запущу встроенный networkQuality</span>. Можно?</p></div><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да"><span class="say">Да</span></button><span class="status" aria-hidden="true"></span></div><div class="msg ai tool" data-status="Замеряю скорость"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude"><span data-only="win">PowerShell</span><span data-only="mac">Bash</span></span><span data-ai-only="codex">Ran</span></span><code data-only="win"><span class="tok">speedtest</span></code><code data-only="mac"><span class="tok">networkQuality</span></code></p></div><div class="msg ai"><p class="bubble-ai">Сейчас 87 Мбит/с на загрузку и 11 на отдачу. Дальше посмотрю, что ещё занимает интернет</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Найти программы, которые качают в фоне" data-caption="Найти программы, которые качают в фоне">
+              <div class="history"><div class="msg me"><p class="bubble-me">Подключись к моему роутеру и найди всё, что замедляет скорость <span class="nw">Wi-Fi</span></p></div><div class="msg ai"><p class="bubble-ai">Сейчас 87 Мбит/с на загрузку и 11 на отдачу. Дальше посмотрю, что ещё занимает интернет</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Проверь, какие программы сейчас качают в фоне"><span class="say">Проверь, какие программы сейчас качают в фоне</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Проверь, какие программы сейчас качают в фоне"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Смотрю, кто ходит в интернет"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude"><span data-only="win">PowerShell</span><span data-only="mac">Bash</span></span><span data-ai-only="codex">Ran</span></span><code data-only="win"><span class="tok">Get-NetTCPConnection</span> <span class="tok">-State</span> <span class="tok">Established</span></code><code data-only="mac"><span class="tok">lsof</span> <span class="tok">-i</span></code></p></div><div class="msg ai" data-status="Разбираю список"><p class="bubble-ai">Сейчас в интернет ходят две программы, которые могут много качать: облако синхронизирует папку с фото, а Steam обновляет игру</p></div><div class="msg ai"><p class="bubble-ai">Могу подсказать, где поставить облако на паузу, а обновления Steam перенести на ночь</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="3 из 5: Сменить канал Wi-Fi на роутере" data-caption="Сменить канал Wi-Fi на роутере">
+              <div class="history"><div class="msg me"><p class="bubble-me">Подключись к моему роутеру и найди всё, что замедляет скорость <span class="nw">Wi-Fi</span></p></div><div class="msg ai"><p class="bubble-ai">Нашёл 5 исправлений. Главное: роутер на канале 6, и там же ещё 4 сети соседей. На канале 11 соседей нет</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Давай по одному. Перед каждым шагом скажи, что изменится и как это вернуть"><span class="say">Давай по одному. Перед каждым шагом скажи, что изменится и как это вернуть</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Давай по одному. Перед каждым шагом скажи, что изменится и как это вернуть"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai"><p class="bubble-ai">Первым сменю канал с 6 на 11. <span class="nw">Wi-Fi</span> пропадёт примерно на минуту, вернуть можно на той же странице роутера. Открыть её?</p></div><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да"><span class="say">Да</span></button><span class="status" aria-hidden="true"></span></div><div class="msg ai" data-status="Открываю страницу роутера"><p class="bubble-ai">Открыл 192.168.0.1 во встроенном браузере. Войди паролем с наклейки, в чат его не пиши</p></div><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Готово"><span class="say">Готово</span></button><span class="status" aria-hidden="true"></span></div><div class="msg ai" data-status="Меняю канал"><p class="bubble-ai">Канал 11 сохранён. Подожди минуту, пока <span class="nw">Wi-Fi</span> вернётся, и напиши «Продолжай»</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="4 из 5: Замерить скорость ещё раз" data-caption="Замерить скорость ещё раз">
+              <div class="history"><div class="msg ai"><p class="bubble-ai">Открыл 192.168.0.1 во встроенном браузере. Войди паролем с наклейки, в чат его не пиши</p></div><div class="msg me"><p class="bubble-me">Готово</p></div><div class="msg ai"><p class="bubble-ai">Канал 11 сохранён. Подожди минуту, пока <span class="nw">Wi-Fi</span> вернётся, и напиши «Продолжай»</p></div><div class="msg me"><p class="bubble-me">Продолжай</p></div><div class="msg ai"><p class="bubble-ai">Облако на паузе, Steam будет обновляться ночью. Исправления закончились</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Замерь скорость ещё раз и сравни с первым замером"><span class="say">Замерь скорость ещё раз и сравни с первым замером</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Замерь скорость ещё раз и сравни с первым замером"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Замеряю скорость"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude"><span data-only="win">PowerShell</span><span data-only="mac">Bash</span></span><span data-ai-only="codex">Ran</span></span><code data-only="win"><span class="tok">speedtest</span></code><code data-only="mac"><span class="tok">networkQuality</span></code></p></div><div class="msg ai" data-status="Сравниваю замеры"><p class="bubble-ai">Было 87 Мбит/с на загрузку, стало 124. Больше всего помог новый канал</p></div></div>
+            </div>
+            <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="5 из 5: Найти чужие устройства в сети" data-caption="Найти чужие устройства в сети">
+              <div class="history"><div class="msg ai"><p class="bubble-ai">Облако на паузе, Steam будет обновляться ночью. Исправления закончились</p></div><div class="msg me"><p class="bubble-me">Замерь скорость ещё раз и сравни с первым замером</p></div><div class="msg ai"><p class="bubble-ai">Было 87 Мбит/с на загрузку, стало 124. Больше всего помог новый канал</p></div></div>
+              <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Теперь покажи все мои устройства, подключённые к Wi-Fi, и пометь каждое, которое ты не знаешь"><span class="say">Теперь покажи все мои устройства, подключённые к <span class="nw">Wi-Fi</span>, и пометь каждое, которое ты не знаешь</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Теперь покажи все мои устройства, подключённые к Wi-Fi, и пометь каждое, которое ты не знаешь"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Ищу устройства в сети"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude"><span data-only="win">PowerShell</span><span data-only="mac">Bash</span></span><span data-ai-only="codex">Ran</span></span><code><span class="tok">arp</span> <span class="tok">-a</span></code></p></div><div class="msg ai" data-status="Сверяю устройства"><p class="bubble-ai">В сети 9 устройств. По производителю узнал 7: роутер, этот компьютер, два телефона, телевизор, приставку и принтер. Не знаю два: 192.168.0.57 и 192.168.0.63. Какие из них твои?</p></div><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Оба не мои"><span class="say">Оба не мои</span></button><span class="status" aria-hidden="true"></span></div><div class="msg ai"><p class="bubble-ai">Тогда лучше сменить пароль <span class="nw">Wi-Fi</span>: блокировку по адресу легко обойти. Твои устройства потом нужно будет подключить заново. Меняем?</p></div></div>
+            </div>
+          </div>
+        <div class="mac-composer" aria-hidden="true">
+          <div class="mc-field"><span class="mc-plus">+</span><span class="mc-ph"><span data-ai-only="claude">Type / for commands</span><span data-ai-only="codex">Ask Codex anything</span></span><span class="mc-icons"><svg viewBox="0 0 14 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="4" y="1" width="6" height="11" rx="3"/><path d="M1 9.5a6 6 0 0 0 12 0M7 15.5V19"/></svg><span class="mc-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5 8 3l4.5 4.5"/></svg></span></span></div>
+          <div class="mc-foot"><span><span data-ai-only="claude">Manual</span><span data-ai-only="codex">Ask for approval</span></span><span><span data-ai-only="claude">Opus 5.5</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
+  </section>
+
+  <section class="section reveal">
+    <h2>Все промпты в одном месте</h2>
+    <div class="group">
+      <div class="row cmd sk-ref"><span class="say">Подключись к моему роутеру и найди всё, что замедляет скорость <span class="nw">Wi-Fi</span>. Ничего не меняй, пока я не скажу «да»</span><button type="button" class="copy">Скопировать</button></div>
+      <div class="row cmd sk-ref"><span class="say">Давай по одному. Перед каждым шагом скажи, что изменится и как это вернуть</span><button type="button" class="copy">Скопировать</button></div>
+      <div class="row cmd sk-ref"><span class="say">Замерь скорость ещё раз и сравни с первым замером</span><button type="button" class="copy">Скопировать</button></div>
+      <div class="row cmd sk-ref"><span class="say">Теперь покажи все мои устройства, подключённые к <span class="nw">Wi-Fi</span>, и пометь каждое, которое ты не знаешь</span><button type="button" class="copy">Скопировать</button></div>
+      <div class="row cmd sk-ref"><span class="say">Помоги сменить пароль <span class="nw">Wi-Fi</span> на роутере</span><button type="button" class="copy">Скопировать</button></div>
+    </div>
+    <p class="done">Готово. Ты знаешь, что тормозило <span class="nw">Wi-Fi</span>, и кто к нему подключён</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_skorost" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Стало хуже, чем было</summary>
+        <p>Напиши ИИ «Верни последнее изменение, как было». Изменение на роутере возвращается на той же странице настроек, ИИ подскажет где</p></details>
+      <details class="row fix"><summary>Пропал интернет и не возвращается</summary>
+        <p>Подожди пару минут, роутеру нужно время после смены настроек. Не помогло, перезагрузи роутер: выключи его из розетки, подожди 30 секунд и включи. Через пару минут <span class="nw">Wi-Fi</span> вернётся</p></details>
+      <details class="row fix"><summary>Пароль с наклейки не подходит</summary>
+        <p>Значит, его уже меняли. Вспомни пароль или спроси того, кто настраивал роутер. Сброс к заводским настройкам может стереть и настройки интернета, поэтому без провайдера его не делай</p></details>
+      <details class="row fix" data-only="win"><summary>ИИ пишет, что Windows не даёт список сетей <span class="nw">Wi-Fi</span></summary>
+        <p>С осени 2024 года Windows показывает соседние сети только программам с доступом к местоположению. Открой Параметры, раздел «Конфиденциальность», затем «Расположение». Включи доступ к местоположению и «Разрешить классическим приложениям доступ к вашему местоположению»</p></details>
+      <details class="row fix"><summary>Скорость не выросла</summary>
+        <p>Сравни замер с тарифом провайдера. Если скорость сильно ниже тарифа даже рядом с роутером, позвони провайдеру и спроси, нет ли сбоя на линии</p></details>
+      <details class="row fix" data-ai-only="claude"><summary>Вкладка Code просит оплату</summary>
+        <p>Claude Code работает на тарифе Pro и выше. Без подписки выбери вверху страницы Codex, он есть даже в бесплатном ChatGPT</p></details>
+      <details class="row fix"><summary>ИИ спрашивает разрешение выполнить команду</summary>
+        <p>Так и должно быть: он показывает команду до запуска. Не понял, что она делает, спроси «Что делает эта команда?»</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Проверено по официальной документации 24 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=31" defer></script>
+</body>
+</html>
