@@ -55,7 +55,6 @@
         </div>
       </div>
     </div>
-    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
   </section>
 
   <section class="section reveal">
@@ -109,7 +108,7 @@
       <div class="row note">Спросит «Ok to proceed? (y)»: нажми y и Enter</div>
       <div class="row note" data-only="win">На Windows именно <code>npx.cmd</code>: так команда сработает в PowerShell без лишних настроек</div>
       <div class="row result">В конце появятся <code>Installed 1 skill</code> и <code>Done!</code></div>
-      <div class="row note" data-only="win">Жёлтая строка Symlinks failed не ошибка: файлы просто скопировались</div>
+      <div class="row note" data-only="win">Жёлтая строка Symlinks failed не ошибка: установщик скопировал файлы</div>
     </div>
     <p class="foot-note"><span data-ai-only="claude">Потом открой новый чат в Claude Code</span><span data-ai-only="codex">Потом закрой и снова открой Codex</span>, чтобы ИИ увидел скилл</p>
   </section>
@@ -130,7 +129,7 @@
     <div class="thread solo"><div class="msg me in"><button type="button" class="bubble-btn" aria-label="Скопировать: Запусти doctor.py из скилла geo-sleuth и поставь всё, чего не хватает"><span class="say">Запусти doctor.py из скилла geo-sleuth и поставь всё, чего не хватает</span></button><span class="status">Нажми, чтобы скопировать</span></div></div>
     <div class="group">
       <div class="row result">ИИ проверит Python, uv, curl и браузер, а чего нет, поставит сам. Всё готово, когда в конце написано <code>No failed checks</code></div>
-      <div class="row note">Нет Chrome? ИИ поставит Chromium: через него скилл ищет похожие фото</div>
+      <div class="row note">Если нет Chrome, ИИ поставит Chromium: через него скилл ищет похожие фото</div>
     </div>
   </section>
 
@@ -155,7 +154,7 @@
           <div class="slides" tabindex="0">
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 4: Найти, где снято фото" data-caption="Найти, где снято фото">
               <div class="history"><div class="msg me"><p class="bubble-me">Запусти doctor.py из скилла geo-sleuth и поставь всё, чего не хватает</p></div><div class="msg ai"><p class="bubble-ai">Готово: поставил Chromium, все проверки прошли</p></div></div>
-              <div class="exchange"><div class="msg me"><img class="att" src="../assets/img/foto-oven.webp" alt="Фото: белая печь у края убранного рисового поля, за полем виадук и гора" width="560" height="420" decoding="async"><button type="button" class="bubble-btn" aria-label="Скопировать: Найди, где снято это фото"><span class="say">Найди, где снято это фото</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Найди, где снято это фото"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю фото"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">uv</span> <span class="tok">run</span> <span class="path"><span data-ai-only="claude">~/.claude/skills</span><span data-ai-only="codex">~/.agents/skills</span>/<wbr><span class="tok">geo-sleuth</span>/scripts/<wbr>intake.py</span> <span class="tok">photo.jpg</span> <span class="tok">--out-dir</span> <span class="tok">intake</span></code></p></div><div class="msg ai" data-status="Сравниваю горы и мосты с картой"><p class="bubble-ai">Нашёл: Цинъюань, провинция Гуандун в Китае. Ты стоял у края рисового поля и снимал на восток, точность ±2 м. Карту с точкой съёмки положил в папку</p></div></div>
+              <div class="exchange"><div class="msg me"><img class="att" src="../assets/img/foto-oven.webp" alt="Фото: белая печь у края убранного рисового поля, за полем виадук и гора" width="560" height="420" decoding="async"><button type="button" class="bubble-btn" aria-label="Скопировать: Найди, где снято это фото"><span class="say">Найди, где снято это фото</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Найди, где снято это фото"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Читаю фото"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Bash</span><span data-ai-only="codex">Ran</span></span><code><span class="tok">uv</span> <span class="tok">run</span> <span class="path"><span data-ai-only="claude">~/.claude/skills</span><span data-ai-only="codex">~/.agents/skills</span>/<wbr><span class="tok">geo-sleuth</span>/scripts/<wbr>intake.py</span> <span class="tok">photo.jpg</span> <span class="tok">--out-dir</span> <span class="tok">intake</span></code></p></div><div class="msg ai" data-status="Сравниваю горы и мосты с картой"><p class="bubble-ai">Нашёл: Цинъюань, провинция Гуандун в Китае. Снимали у края рисового поля, на восток, точность ±2 м. Карту с точкой съёмки положил в папку</p></div></div>
             </div>
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 4: Узнать, что выдаёт место, до публикации" data-caption="Узнать, что выдаёт место, до публикации">
               <div class="history"><div class="msg me"><p class="bubble-me">Запусти doctor.py из скилла geo-sleuth</p></div><div class="msg ai"><p class="bubble-ai">Готово, все проверки прошли</p></div><div class="msg me"><p class="bubble-me">Найди, где снято это фото</p></div><div class="msg ai"><p class="bubble-ai">Нашёл: Цинъюань, Китай, точность ±2 м</p></div></div>
@@ -197,7 +196,7 @@
       <li>Геопозиция в самом файле. На iPhone при отправке нажми «Параметры» и выключи «Геопозиция»</li>
       <li>Фото уже есть в интернете: тогда место находят поиском похожих картинок</li>
     </ul>
-    <p class="done">Готово. Теперь ты узнаешь, что фото говорит о месте, раньше всех, кто его увидит</p>
+    <p class="done">Готово: теперь ты видишь, что фото выдаёт о месте, ещё до публикации</p>
   </section>
 
   <div class="glow reveal" id="club">
@@ -217,9 +216,9 @@
       <details class="row fix"><summary>Ошибка про версию Node.js или Unsupported engine</summary>
         <p>Нужен Node.js 22.20 или новее. Поставь свежий командой из шага 1, закрой и открой терминал</p></details>
       <details class="row fix" data-only="win"><summary>Выполнение сценариев отключено в этой системе</summary>
-        <p>Команда начата с <code>npx</code> без <code>.cmd</code>. Скопируй её из шага 2, там уже <code>npx.cmd</code></p></details>
+        <p>Команда начинается с <code>npx</code> без <code>.cmd</code>. Скопируй её из шага 2, там уже <code>npx.cmd</code></p></details>
       <details class="row fix"><summary>ИИ не знает про geo-sleuth</summary>
-        <p><span data-ai-only="claude">Открой новый чат в Claude Code.</span><span data-ai-only="codex">Закрой и снова открой Codex.</span> Скиллы подхватываются при запуске</p></details>
+        <p><span data-ai-only="claude">Открой новый чат в Claude Code.</span><span data-ai-only="codex">Закрой и снова открой Codex.</span> ИИ подхватывает скиллы при запуске</p></details>
       <details class="row fix"><summary>doctor.py пишет FAIL</summary>
         <p>Напиши ИИ: «Исправь всё, что doctor.py отметил FAIL, и запусти его ещё раз». Под каждым FAIL есть строка Next с подсказкой, ИИ её прочитает</p></details>
       <details class="row fix"><summary>Поиск по картинкам: 403, 429 или капча</summary>

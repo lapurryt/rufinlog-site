@@ -52,7 +52,6 @@
         </div>
       </div>
     </div>
-    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
   </section>
 
   <section class="section reveal">
@@ -68,7 +67,7 @@
       <li>Расписывает ролики на месяц вперёд</li>
     </ul>
     <div class="group">
-      <div class="row note">Скилл бесплатный, код открыт на GitHub. Ключи и API не нужны: цифры канала можно просто вставить в чат</div>
+      <div class="row note">Скилл бесплатный, код открыт на GitHub. Ключи и API не нужны: цифры канала вставь в чат</div>
     </div>
   </section>
 
@@ -77,7 +76,7 @@
     <ul class="group">
       <li>Claude Code. Он входит в тарифы Pro, Max, Ultra, Team и Enterprise, на бесплатном его нет</li>
       <li>Компьютер на Windows или Mac: приложение Claude или Claude Code в терминале</li>
-      <li>Git: через него скилл скачивается с GitHub. Как поставить, в шаге 1</li>
+      <li>Git: через него Claude скачает скилл с GitHub. Как поставить, в шаге 1</li>
     </ul>
   </section>
 
@@ -91,10 +90,10 @@
     </ol>
     <div class="group">
       <div class="row cmd"><code>git --version</code><button type="button" class="copy">Скопировать</button></div>
-      <div class="row result">Появится строка вида <code>git version 2.56.1</code>. Цифры могут быть другими, значит Git уже есть</div>
+      <div class="row result">Появится строка вида <code>git version 2.56.1</code>, значит Git уже есть. Цифры могут быть другими</div>
     </div>
 
-    <p class="label">Пишет, что git не найден? Поставь его</p>
+    <p class="label">Если пишет, что git не найден, поставь его</p>
     <div class="group">
       <div class="row cmd"><code data-only="win">winget install --id Git.Git -e --source winget</code><code data-only="mac">xcode-select --install</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row note" data-only="mac">Откроется окно установки инструментов разработчика, нажми «Установить»</div>
@@ -110,7 +109,7 @@
       <li>Под полем ввода выбери Local, затем Open folder… и любую папку, например новую папку youtube</li>
     </ol>
     <div class="group">
-      <div class="row note">Работаешь в терминале? Набери <code>claude</code> в любой папке</div>
+      <div class="row note">Если работаешь в терминале, набери <code>claude</code> в любой папке</div>
       <div class="row note">Если вместо чата Claude просит сменить тариф, значит на твоём тарифе Claude Code нет</div>
     </div>
   </section>
@@ -129,7 +128,7 @@
     </div>
 
     <details class="group disclosure">
-      <summary>Через терминал, если привык</summary>
+      <summary>Через терминал, если так удобнее</summary>
       <div class="row cmd"><code data-only="win">irm https://github.com/AgriciDaniel/claude-youtube/raw/main/install.ps1 | iex</code><code data-only="mac">curl -fsSL https://github.com/AgriciDaniel/claude-youtube/raw/main/install.sh | bash</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row note">Это установщик автора скилла из того же репозитория. Он кладёт скилл в ту же папку</div>
     </details>
@@ -232,7 +231,7 @@
       <details class="row fix"><summary>Ответ пришёл на английском</summary>
         <p>Допиши в конце сообщения: «Отвечай по-русски»</p></details>
       <details class="row fix"><summary>Вместо картинок обложек только описание</summary>
-        <p>Так и задумано: рисовать картинки скилл умеет только с ключом Gemini через NanoBanana. Без него отдай описание обложки в ChatGPT, и он её нарисует</p></details>
+        <p>Рисовать картинки скилл умеет только с ключом Gemini через NanoBanana. Без него отдай описание обложки в ChatGPT, и он её нарисует</p></details>
       <details class="row fix"><summary>Хочу, чтобы он сам смотрел цифры канала</summary>
         <p>Для этого нужен ключ YouTube Data API, как получить, написано в <a href="https://github.com/AgriciDaniel/claude-youtube#optional-youtube-api-for-live-channel-data" target="_blank" rel="noopener">README скилла</a>. Без ключа просто вставь цифры из YouTube Studio в чат</p></details>
     </div>

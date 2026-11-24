@@ -55,7 +55,6 @@
         </div>
       </div>
     </div>
-    <p class="foot-note">Шаги ниже подстроятся под твой выбор</p>
   </section>
 
   <section class="section reveal">
@@ -79,8 +78,8 @@
     <ul class="group">
       <li>Компьютер на Windows или Mac</li>
       <li>Python 3.14. Поставим в шаге 1</li>
-      <li data-ai-only="claude">Claude Code, чтобы Claude переводил файлы сам (шаг 4). Без него перевод работает с любым Claude</li>
-      <li data-ai-only="codex">Codex, чтобы он переводил файлы сам (шаг 4). Он есть даже в бесплатном ChatGPT. Без него перевод работает с любым ChatGPT</li>
+      <li data-ai-only="claude">Claude Code, чтобы Claude переводил файлы сам (шаг 4). Без него переводишь ты, а файл подойдёт любому Claude</li>
+      <li data-ai-only="codex">Codex, чтобы он переводил файлы сам (шаг 4). Он есть даже в бесплатном ChatGPT. Без него переводишь ты, а файл подойдёт любому ChatGPT</li>
       <li>MarkItDown бесплатный, его сделали в Microsoft, лицензия MIT</li>
     </ul>
   </section>
@@ -111,8 +110,8 @@
     <div class="group">
       <div class="row cmd"><code data-only="win">python --version</code><code data-only="mac">python3 --version</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row result">Появится <code>Python 3.14.10</code>. Последняя цифра может быть другой</div>
-      <div class="row note" data-only="win">Видишь 3.15? Значит, раньше уже стоял новый Python. Тогда в следующих командах пиши <code>py -3.14 -m pip</code> вместо <code>pip</code></div>
-      <div class="row note" data-only="mac">Видишь 3.15? Значит, раньше уже стоял новый Python. Тогда в следующих командах пиши <code>python3.14 -m pip</code> вместо <code>pip3</code></div>
+      <div class="row note" data-only="win">Если видишь 3.15, значит, раньше уже стоял новый Python. Тогда в следующих командах пиши <code>py -3.14 -m pip</code> вместо <code>pip</code></div>
+      <div class="row note" data-only="mac">Если видишь 3.15, значит, раньше уже стоял новый Python. Тогда в следующих командах пиши <code>python3.14 -m pip</code> вместо <code>pip3</code></div>
     </div>
   </section>
 
@@ -136,8 +135,8 @@
     <div class="group">
       <div class="row cmd"><code>markitdown --version</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row result">Появится строка вида <code>markitdown 0.1.9</code>. Цифры могут быть новее</div>
-      <div class="row note" data-only="win">Пишет, что команда не найдена? Закрой PowerShell и открой снова</div>
-      <div class="row note" data-only="mac">Пишет command not found? Закрой Терминал и открой новое окно</div>
+      <div class="row note" data-only="win">Если пишет, что команда не найдена, закрой PowerShell и открой снова</div>
+      <div class="row note" data-only="mac">Если пишет command not found, закрой Терминал и открой новое окно</div>
     </div>
   </section>
 
@@ -146,7 +145,7 @@
     <h2>Переведи файл и отдай <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span></h2>
     <ol class="how">
       <li>Напиши в том же окне <code>markitdown</code> и пробел</li>
-      <li>Перетащи PDF в окно: путь к файлу допишется сам</li>
+      <li>Перетащи PDF в окно: терминал сам допишет путь к файлу</li>
       <li>Допиши пробел и <code>-o otchet.md</code></li>
       <li>Нажми Enter</li>
       <li>Прикрепи otchet.md в чат <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span> вместо PDF</li>
@@ -154,7 +153,7 @@
     <div class="group">
       <div class="row cmd"><code>markitdown otchet.pdf -o otchet.md</code><button type="button" class="copy">Скопировать</button></div>
       <div class="row result">Команда ничего не пишет в ответ. Файл otchet.md появится в <span data-only="win">папке C:\Users\твоё_имя</span><span data-only="mac">папке пользователя, в Finder это папка с домиком</span></div>
-      <div class="row note">Так же переводятся Word, Excel, PowerPoint и ссылки на YouTube</div>
+      <div class="row note">Так же MarkItDown переведёт Word, Excel, PowerPoint и ссылки на YouTube</div>
     </div>
     <figure class="term">
       <div class="shot-bar" aria-hidden="true"><i></i><i></i><i></i><span>otchet.md</span></div>
@@ -181,7 +180,7 @@
     <p class="step">Шаг 4 из 4</p>
     <h2>Подключи MarkItDown к <span data-ai-only="claude">Claude Code</span><span data-ai-only="codex">Codex</span></h2>
     <p class="lead-in" data-ai-only="claude">Тогда Claude сам переводит файл, когда ты даёшь путь к нему или ссылку</p>
-    <p class="lead-in" data-ai-only="codex">Codex входит в ChatGPT: это ИИ-агент от OpenAI. Подключишь MarkItDown, и он сам переводит файл, когда ты даёшь путь к нему или ссылку</p>
+    <p class="lead-in" data-ai-only="codex">Codex входит в ChatGPT: это ИИ-агент от OpenAI. Подключишь MarkItDown, и он сам будет переводить файл, когда ты дашь путь к нему или ссылку</p>
     <p class="label">Поставь сервер</p>
     <div class="group">
       <div class="row cmd"><code data-only="win">pip install markitdown-mcp</code><code data-only="mac">pip3 install markitdown-mcp</code><button type="button" class="copy">Скопировать</button></div>
@@ -246,7 +245,7 @@
       </div>
     </div>
     <p class="foot-note">Ответы примерные, у тебя ИИ скажет своими словами</p>
-    <p class="done">Готово. Теперь <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span> читает текст, а не картинки страниц, и лимита хватает дольше</p>
+    <p class="done">Готово. Теперь <span data-ai-only="claude">Claude</span><span data-ai-only="codex">ChatGPT</span> получает только текст, и лимита хватает дольше</p>
   </section>
 
   <div class="glow reveal" id="club">
