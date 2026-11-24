@@ -20,6 +20,15 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
 <link rel="stylesheet" href="../assets/style.css?v=32">
 <script>document.documentElement.className = "js";</script>
+<style>
+/* «ФОТО» (24.11, before the re-post): graphics between the text like «СКОРОСТЬ», «ГИТ», «ЗАКОН». Icon tiles, our tokens
+   only; shared style.css untouched */
+.ig-ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: #007AFF; }
+.ig-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-ico.green { background: #34C759; } .ig-ico.orange { background: #FF9500; } .ig-ico.grey { background: #8E8E93; }
+.ig-ico.purple { background: #AF52DE; } .ig-ico.teal { background: #30B0C7; }
+ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 16px; }
+</style>
 </head>
 <body data-os="win" data-ai="claude">
 
@@ -37,6 +46,10 @@
     <p class="sub">Узнай, что твоё фото выдаёт о месте, до того как выложишь</p>
     <p class="meta">15 минут на установку, удобнее с компьютера</p>
   </header>
+
+  <figure class="clip reveal">
+    <video data-clip src="../assets/img/foto-analysis.mp4" poster="../assets/img/foto-analysis.webp" width="1320" height="1284" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: на фото печи в поле скилл отмечает рамками провода на мосту и железную дорогу на заднем плане"></video>
+  </figure>
 
   <section class="setup reveal" aria-label="Настрой гайд под себя">
     <div class="group">
@@ -59,13 +72,13 @@
 
   <section class="section reveal">
     <h2>Что понадобится</h2>
-    <ul class="group">
-      <li>Компьютер на Windows 10, 11 или Mac</li>
-      <li data-ai-only="claude">Claude Code. Он есть в подписке Claude Pro и выше, на бесплатном тарифе его нет</li>
-      <li data-ai-only="codex">Codex. Хватит любого аккаунта ChatGPT, даже бесплатного</li>
-      <li>Оригинал фото с телефона, а не скриншот: скиллу нужны детали</li>
-      <li>Время: полная проверка идёт около часа. В примерах автора скилла от 32 до 72 минут</li>
-      <li>Сам скилл <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">geo-sleuth</a> бесплатный, лицензия MIT</li>
+    <ul class="group ig-list">
+      <li><span class="ig-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span>Компьютер на Windows 10, 11 или Mac</span></li>
+      <li data-ai-only="claude"><span class="ig-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/></svg></span><span>Claude Code. Он есть в подписке Claude Pro и выше, на бесплатном тарифе его нет</span></li>
+      <li data-ai-only="codex"><span class="ig-ico green" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8.5 12h7M12 8.5v7"/></svg></span><span>Codex. Хватит любого аккаунта ChatGPT, даже бесплатного</span></li>
+      <li><span class="ig-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="14" rx="2"/><circle cx="12" cy="13" r="3.5"/><path d="M8 6l1.5-2h5L16 6"/></svg></span><span>Оригинал фото с телефона, а не скриншот: скиллу нужны детали</span></li>
+      <li><span class="ig-ico teal" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg></span><span>Время: полная проверка идёт около часа. В примерах автора скилла от 32 до 72 минут</span></li>
+      <li><span class="ig-ico purple" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l-5 5 5 5M15 7l5 5-5 5"/></svg></span><span>Сам скилл <a href="https://github.com/Oldcircle/geo-sleuth" target="_blank" rel="noopener">geo-sleuth</a> бесплатный, лицензия MIT</span></li>
     </ul>
   </section>
 
@@ -136,6 +149,9 @@
   <section class="section reveal">
     <p class="step">Шаг 4 из 4</p>
     <h2>Проверь своё фото</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/foto-map.mp4" poster="../assets/img/foto-map.webp" width="1320" height="1204" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: на спутниковой карте линии от каждой опоры моста сходятся в одну точку, откуда снято фото"></video>
+    </figure>
     <p class="lead-in">Положи фото в папку <code>photo-check</code> и напиши <span data-ai-only="claude">Claude</span><span data-ai-only="codex">Codex</span> обычным сообщением. Выбери ситуацию над окном</p>
     <div class="group">
       <div class="row note">Проверяй свои фото или те, на которые тебе дали разрешение. Искать людей, которые этого не хотят, нельзя: так написано и в правилах скилла</div>
@@ -187,6 +203,9 @@
   <section class="section reveal">
     <h2>Что на фоне выдаёт место</h2>
     <p class="lead-in">По этим уликам ищет скилл. Проверь их на своём фото перед публикацией</p>
+    <figure class="clip">
+      <video data-clip src="../assets/img/foto-toggle.mp4" poster="../assets/img/foto-toggle.webp" width="1320" height="880" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: на фото выключают геолокацию, но фон остаётся прежним"></video>
+    </figure>
     <ul class="group">
       <li>Вывески, названия магазинов и любой текст. Их читают первыми</li>
       <li>Номера машин и домов: по ним узнают страну, регион и улицу</li>
