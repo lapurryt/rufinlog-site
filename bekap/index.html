@@ -20,6 +20,14 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
 <link rel="stylesheet" href="../assets/style.css?v=32">
 <script>document.documentElement.className = "js";</script>
+<style>
+/* «БЭКАП» (24.11, before the re-post): graphics between the text like «СКОРОСТЬ», «ГИТ», «ЗАКОН», «ФОТО». Icon tiles,
+   our tokens only; shared style.css untouched */
+.ig-ico { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; color: #fff; background: #007AFF; }
+.ig-ico svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.ig-ico.orange { background: #FF9500; } .ig-ico.grey { background: #8E8E93; } .ig-ico.teal { background: #30B0C7; }
+ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12px 18px 12px 16px; }
+</style>
 </head>
 <body data-os="win" data-ai="claude" data-ai-lock="claude">
 
@@ -37,6 +45,10 @@
     <p class="sub">Скачай все свои чаты, пока доступ полный</p>
     <p class="meta">5 минут, только с компьютера</p>
   </header>
+
+  <figure class="clip reveal">
+    <video data-clip src="../assets/img/bekap-lock.mp4" poster="../assets/img/bekap-lock.webp" width="1320" height="1412" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: список чатов и проектов в Claude, появляется «Your account has been suspended», и на каждом чате замок"></video>
+  </figure>
 
   <section class="setup reveal" aria-label="Настрой гайд под себя">
     <div class="group">
@@ -60,16 +72,19 @@
 
   <section class="section reveal">
     <h2>Что понадобится</h2>
-    <ul class="group">
-      <li>Личный аккаунт Claude: Free, Pro, Max или Ultra</li>
-      <li>Компьютер: claude.ai в браузере или приложение Claude. В приложении на телефоне экспорта нет</li>
-      <li>Доступ к почте, на которую зарегистрирован Claude</li>
+    <ul class="group ig-list">
+      <li><span class="ig-ico orange" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-3.5 3.8-5 7-5s6 1.5 7 5"/></svg></span><span>Личный аккаунт Claude: Free, Pro, Max или Ultra</span></li>
+      <li><span class="ig-ico grey" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="11" rx="1.5"/><path d="M2 19h20"/></svg></span><span>Компьютер: claude.ai в браузере или приложение Claude. В приложении на телефоне экспорта нет</span></li>
+      <li><span class="ig-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span><span>Доступ к почте, на которую зарегистрирован Claude</span></li>
     </ul>
   </section>
 
   <section class="section reveal">
     <p class="step">Шаг 1 из 4</p>
     <h2>Запроси экспорт</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/bekap-export.mp4" poster="../assets/img/bekap-export.webp" width="1320" height="764" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: в Claude открывают Settings, раздел Privacy и нажимают Export data, телефон перечёркнут: экспорт только с компьютера"></video>
+    </figure>
     <ol class="how">
       <li>Открой <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> или приложение Claude на компьютере</li>
       <li>Зайди в Settings, раздел Privacy</li>
@@ -97,6 +112,9 @@
   <section class="section reveal">
     <p class="step">Шаг 3 из 4</p>
     <h2>Сохрани свои файлы отдельно</h2>
+    <figure class="clip">
+      <video data-clip src="../assets/img/bekap-files.mp4" poster="../assets/img/bekap-files.webp" width="1320" height="954" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: архив Claude, а PDF и картинки, которые ты загружал, в него не попадают и перечёркнуты"></video>
+    </figure>
     <p class="lead-in">В архиве твои чаты и данные аккаунта, а ещё голосовые записи, если они были. Загруженных в Claude файлов там нет</p>
     <ol class="how">
       <li>Вспомни, какие PDF, таблицы и картинки были в чатах с Claude, и найди оригиналы у себя на компьютере, в телефоне или в облаке</li>
