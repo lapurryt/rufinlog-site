@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Промпт Googly Doodle для ChatGPT | rufinlog</title>
+<meta name="description" content="Промпт для ChatGPT, который превращает твоё фото в весёлый рисунок мелками с большими глазами, как в карусели. Три шага, можно с телефона">
+<meta property="og:title" content="Промпт Googly Doodle для ChatGPT">
+<meta property="og:description" content="Твоё фото станет рисунком масляной пастелью и мелками: огромные глаза, румяные щёки, кремовая бумага">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/dudl-og.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1440">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=32">
+<script>document.documentElement.className = "js";</script>
+<style>
+/* «ДУДЛ» only (25.11): a short prompt page for the carousel, two slides from it as examples. Shared style.css untouched */
+.ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 18px; }
+.ex-grid figure { margin: 0; border-radius: var(--r-card); overflow: hidden; background: #EFEDEA; }
+.ex-grid img { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body data-os="win" data-ai="codex" data-ai-lock="codex">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>Промпт Googly Doodle</h1>
+    <p class="sub">Твоё фото станет рисунком мелками: огромные глаза, румяные щёки и кремовая бумага</p>
+    <p class="meta">2 минуты, можно с телефона</p>
+  </header>
+
+  <div class="ex-grid reveal">
+    <figure><img src="../assets/img/dudl-before-after.webp" width="720" height="960" alt="До и после: парень в ресторане с вилкой на обычном фото сверху и тот же кадр рисунком мелками с огромными глазами снизу"></figure>
+    <figure><img src="../assets/img/dudl-animals.webp" width="720" height="960" alt="Пример с животными: пушистый телёнок и щенок на фото сверху и они же рисунком мелками с большими глазами снизу"></figure>
+  </div>
+
+  <section class="section reveal">
+    <h2>Что понадобится</h2>
+    <ul class="group">
+      <li>ChatGPT в приложении или на chatgpt.com. Подойдёт и бесплатный, но картинок там меньше</li>
+      <li>Твоё фото. Работает и с животными, и с компаниями друзей</li>
+    </ul>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 1 из 2</p>
+    <h2>Прикрепи фото</h2>
+    <ol class="how">
+      <li>Открой ChatGPT и начни новый чат</li>
+      <li>Нажми «+» в поле ввода и выбери своё фото</li>
+    </ol>
+  </section>
+
+  <section class="section reveal">
+    <p class="step">Шаг 2 из 2</p>
+    <h2>Вставь промпт и отправь</h2>
+    <p class="lead-in">Скопируй промпт целиком, вставь в поле под фото и отправь</p>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Turn the attached photo into a cute googly doodle drawing in oil pastel and crayon: thick wobbly crayon outlines, huge round googly eyes with small black pupils, round simplified faces, rosy cheeks, visible crayon texture, a few small motion lines around the character, warm cream paper background. Keep the same pose, outfit, objects and colours as in the photo. No text, no logos, no watermark. Vertical 3:4</span><button type="button" class="copy button" aria-label="Скопировать промпт">Скопировать промпт</button></div>
+    </div>
+    <div class="group">
+      <div class="row result">В ответ ChatGPT пришлёт рисунок по твоему фото</div>
+    </div>
+    <p class="done">Готово. Сохрани картинку и выкладывай</p>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_dudl" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>ChatGPT пишет, что картинки закончились</summary>
+        <p>На бесплатном тарифе картинок меньше. Попробуй позже, когда лимит обновится</p></details>
+      <details class="row fix"><summary>Получилось не похоже на фото</summary>
+        <p>Напиши в тот же чат: «Сохрани позу, одежду и предметы как на фото». Или возьми фото, где лица крупнее и светлее</p></details>
+      <details class="row fix"><summary>На картинке появился текст</summary>
+        <p>Напиши в тот же чат: «Убери весь текст с картинки»</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Промпт тот же, которым сделаны картинки в карусели, 25 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=32" defer></script>
+</body>
+</html>
