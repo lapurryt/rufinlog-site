@@ -93,7 +93,7 @@ ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12
       <video data-clip src="../assets/img/zakon-fix.mp4" poster="../assets/img/zakon-fix.webp" width="1320" height="624" muted loop playsinline autoplay preload="auto" aria-label="Из ролика: в Claude и ChatGPT отправляют «Проверь мой сайт по закону и исправь все нарушения», ИИ отвечает, что нашёл пять нарушений и исправил их"></video>
     </figure>
     <div class="group">
-      <div class="row prompt-row"><span class="say prompt">Проверь мой сайт по семи пунктам, которые обязательны почти в любой стране, и исправь всё, что не так. Сначала покажи список проблем, потом исправляй по одному пункту и после каждого коротко пиши, что поменял
+      <div class="row prompt-row"><span class="say prompt">Проверь мой сайт по восьми пунктам, которые обязательны почти в любой стране, и исправь всё, что не так. Сначала покажи список проблем, потом исправляй по одному пункту и после каждого коротко пиши, что поменял
 
 1. Формы. Везде, где сайт собирает почту, телефон или имя, нужны галочка согласия на обработку персональных данных (по умолчанию пустая) и ссылка на политику конфиденциальности. Без галочки форма не отправляется. Если политики нет, создай страницу: какие данные собираем и зачем, где и сколько храним, кому передаём, как их удалить и куда писать
 
@@ -103,16 +103,18 @@ ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12
 
 4. База данных. Проверь, может ли посторонний прочитать или скачать чужие данные: секретные ключи и пароли не лежат в коде страницы, у всех таблиц включены правила доступа (в Supabase это Row Level Security), запросы без входа не отдают чужие записи. Покажи, что нашёл, и закрой доступ
 
-5. Картинки, шрифты и иконки. Составь список с источником и лицензией каждого. Всё, где лицензия непонятна или запрещает коммерческое использование, замени на свободное, например фото с Unsplash и шрифты с открытой лицензией из Google Fonts
+5. Картинки, шрифты и иконки. Составь список с источником и лицензией каждого. Всё, где лицензия непонятна или запрещает коммерческое использование, замени на свободное, например фото с Unsplash и шрифты с открытой лицензией (OFL)
 
 6. Запись сессий. Если в аналитике (Hotjar, Microsoft Clarity, PostHog и похожих) есть запись сессий, проверь, включена ли она по умолчанию и пишет ли нажатия клавиш и то, что вводят в формы. Записывать можно только после согласия посетителя в баннере, а все поля ввода в записи должны быть скрыты. Если баннера согласия нет, добавь его, а до этого отключи запись
 
 7. Подписки с автопродлением. Если на сайте есть платная подписка (Stripe, Paddle, Lemon Squeezy и похожие), рядом с кнопкой оплаты должны быть видны цена, как часто списываются деньги и что подписка продлевается сама. Покупатель явно соглашается на автопродление, например отдельной галочкой, а отменить подписку можно в пару нажатий в личном кабинете, без писем в поддержку
 
+8. Шрифты и чужие загрузки. Если шрифты подключены с серверов Google (fonts.googleapis.com, fonts.gstatic.com), скачай файлы шрифтов и подключи их со своего сайта, чтобы браузер посетителя не отправлял Google его IP-адрес. Если пользователи могут загружать аватарки, фото или файлы, сделай кнопку «Пожаловаться» или адрес для жалоб и способ быстро удалить чужую картинку, на которую пожаловался её автор
+
 В конце дай короткий отчёт: что было не так, что исправил и что мне нужно сделать руками, например вписать в политику своё имя и почту. Если что-то не можешь проверить сам, скажи, как проверить мне</span><button type="button" class="copy button" aria-label="Скопировать промпт">Скопировать промпт</button></div>
     </div>
     <div class="group">
-      <div class="row result">Сначала ИИ покажет список проблем по семи пунктам, а исправлять начнёт, когда ты разрешишь</div>
+      <div class="row result">Сначала ИИ покажет список проблем по восьми пунктам, а исправлять начнёт, когда ты разрешишь</div>
     </div>
   </section>
 
@@ -134,7 +136,7 @@ ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12
         <div class="mac-bar" aria-hidden="true"><i></i><i></i><i></i><span class="mac-title">my-site</span></div>
           <div class="slides" tabindex="0">
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="1 из 5: Форма без галочки и политики" data-caption="Форма без галочки и политики">
-              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Проверь мой сайт по семи пунктам…</p></div><div class="msg ai"><p class="bubble-ai">Нашёл 5 проблем: форма, возраст, письма, база, картинки. Начать с формы?</p></div></div>
+              <div class="history"><div class="msg me"><p class="bubble-me">Сделай сайт для кофейни: меню, регистрация и рассылка</p></div><div class="msg ai"><p class="bubble-ai">Готово: главная, меню, форма регистрации и письма для рассылки</p></div><div class="msg me"><p class="bubble-me">Проверь мой сайт по восьми пунктам…</p></div><div class="msg ai"><p class="bubble-ai">Нашёл 5 проблем: форма, возраст, письма, база, картинки. Начать с формы?</p></div></div>
               <div class="exchange"><div class="msg me"><button type="button" class="bubble-btn" aria-label="Скопировать: Да, исправь форму регистрации"><span class="say">Да, исправь форму регистрации</span></button><span class="msg-tools"><span class="status" aria-hidden="true"></span><button type="button" class="copy-msg" aria-label="Скопировать: Да, исправь форму регистрации"><svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="2"/><path d="M10.5 5.5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v4.5a2 2 0 0 0 2 2h1.5"/></svg><svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 8.5 3.2 3L13 4.5"/></svg></button></span></div><div class="msg ai tool" data-status="Правлю форму"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Edit</span><span data-ai-only="codex">Edited</span></span><code><span class="tok">src/pages/Signup.tsx</span></code></p></div><div class="msg ai tool" data-status="Пишу политику"><p class="bubble-ai tool-row"><span class="tool-name"><span data-ai-only="claude">Write</span><span data-ai-only="codex">Added</span></span><code><span class="tok">src/pages/Privacy.tsx</span></code></p></div><div class="msg ai" data-status="Отвечаю"><p class="bubble-ai">Под формой теперь галочка «Согласен на обработку персональных данных», по умолчанию пустая, и ссылка на политику. Без галочки кнопка не нажимается. Политику создал на странице /privacy, впиши туда своё имя и почту</p></div></div>
             </div>
             <div class="slide thread" role="group" aria-roledescription="слайд" aria-label="2 из 5: Нет вопроса про возраст" data-caption="Нет вопроса про возраст">
@@ -184,11 +186,12 @@ ul.group.ig-list li { display: flex; align-items: center; gap: 14px; padding: 12
       <li><b>Картинки и шрифты.</b> У каждого есть источник и лицензия, чужое заменено</li>
       <li><b>Запись сессий.</b> Пока посетитель не нажал «Согласен» в баннере, аналитика не записывает сессию. В записях поля ввода скрыты</li>
       <li><b>Подписка.</b> Рядом с кнопкой оплаты видны цена, как часто списываются деньги и что подписка продлевается сама. Отменить её можно в пару нажатий</li>
+      <li><b>Шрифты и загрузки.</b> Шрифты грузятся с твоего сайта, а не с серверов Google. На чужую загруженную картинку можно пожаловаться, и ты удаляешь её за пару минут</li>
     </ul>
     <div class="group">
       <div class="row note">Детали в разных странах отличаются, например возраст: от 13 до 16 лет. 16 подходит почти везде. Если сайт уже приносит деньги, покажи результат юристу</div>
     </div>
-    <p class="done">Готово: ИИ проверил семь пунктов и исправил ошибки</p>
+    <p class="done">Готово: ИИ проверил восемь пунктов и исправил ошибки</p>
   </section>
 
   <div class="glow reveal" id="club">
