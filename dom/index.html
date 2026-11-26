@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ru" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>7 промптов ChatGPT для дизайна интерьера | rufinlog</title>
+<meta name="description" content="7 промптов из карусели: загрузи фото комнаты, и ChatGPT разберёт её как дизайнер интерьера. Каждый копируется в одно касание">
+<meta property="og:title" content="7 промптов ChatGPT для дизайна интерьера">
+<meta property="og:description" content="Загрузи фото комнаты, и ChatGPT предложит план преображения, цвета, свет и новую расстановку мебели">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://rufinlog.ru/assets/img/dom-og.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1440">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<link rel="stylesheet" href="../assets/style.css?v=32">
+<script>document.documentElement.className = "js";</script>
+<style>
+/* «ДОМ» only (26.11): 7 interior design prompts from the carousel 01.12, three slides as examples. Shared style.css untouched */
+.ex-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 14px 0 18px; }
+.ex-grid figure { margin: 0; border-radius: 12px; overflow: hidden; background: #111; }
+.ex-grid img { display: block; width: 100%; height: auto; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
+.jump a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px;
+  background: var(--pill); color: var(--text); font-size: .8824rem; text-decoration: none; }
+.jump a:hover { text-decoration: underline; }
+.ph { background: var(--pill); border-radius: 5px; padding: 0 2px; font-weight: 600;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+section[id] { scroll-margin-top: 72px; }
+</style>
+</head>
+<body data-os="win" data-ai="codex" data-ai-lock="codex">
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="../">rufinlog</a>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero">
+    <h1>7 промптов для дизайна интерьера</h1>
+    <p class="sub">Загрузи фото комнаты, и ChatGPT разберёт её как дизайнер: план, цвета, свет и расстановка мебели</p>
+    <p class="meta">Каждый копируется в одно касание</p>
+  </header>
+
+  <div class="ex-grid reveal">
+    <figure><img src="../assets/img/dom-cover.webp" width="720" height="960" alt="Обложка карусели: ChatGPT теперь переделает твой дом как профессиональный дизайнер интерьера, вот 7 крутых промптов"></figure>
+    <figure><img src="../assets/img/dom-budget.webp" width="720" height="960" alt="Слайд карусели: промпт 4, преображение комнаты в рамках бюджета"></figure>
+    <figure><img src="../assets/img/dom-final.webp" width="720" height="960" alt="Последний слайд карусели: мужчина рассматривает чертежи гостиной, напиши «дом», и я пришлю тебе промпты"></figure>
+  </div>
+
+  <section class="section reveal">
+    <h2>Как пользоваться</h2>
+    <ol class="how">
+      <li>Открой ChatGPT, начни новый чат и прикрепи фото комнаты через «+»</li>
+      <li>Нажми «Скопировать промпт» у нужного и вставь его в поле</li>
+      <li>Замени то, что в <span class="ph">[квадратных скобках]</span>, на своё и отправь</li>
+    </ol>
+    <div class="group">
+      <div class="row note">В промпте 6 оставь в скобках одно настроение, например «уютно». Для промпта 7 прикрепи фото нескольких комнат сразу</div>
+    </div>
+    <nav class="jump" aria-label="Промпты">
+      <a href="#p1">1. Полное преображение комнаты</a>
+      <a href="#p2">2. Пусть комната выглядит дорого</a>
+      <a href="#p3">3. Комната в стиле Pinterest</a>
+      <a href="#p4">4. Преображение комнаты в рамках бюджета</a>
+      <a href="#p5">5. Исправь планировку комнаты</a>
+      <a href="#p6">6. Идеальный подбор цвета и света</a>
+      <a href="#p7">7. Дизайн-аудит всего дома</a>
+    </nav>
+  </section>
+
+  <section class="section reveal" id="p1">
+    <h2>1. Полное преображение комнаты</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Я загружу фото своей комнаты. Выступи в роли профессионального дизайнера интерьера. Проанализируй планировку, мебель, освещение, цвета, стены, пол, захламлённость, пустые места и общий визуальный баланс
+
+Затем дай мне полный план преображения, взяв мою комнату как отправную точку. Скажи точно, что убрать, передвинуть, перекрасить, заменить, добавить и переставить, по порядку важности. Мой бюджет <span class="ph">[БЮДЖЕТ]</span>, а любимый стиль <span class="ph">[СТИЛЬ]</span></span><button type="button" class="copy button" aria-label="Скопировать промпт «Полное преображение комнаты»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p2">
+    <h2>2. Пусть комната выглядит дорого</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Проанализируй загруженное фото моей комнаты и покажи, как сделать, чтобы она выглядела заметно дороже без лишних трат. Найди самые дешёвые изменения, которые дадут самый большой визуальный эффект
+
+Дай конкретные советы по освещению, шторам, цветам, расстановке мебели, декору стен, постельному белью, растениям, коврам и аксессуарам, исходя из того, что ты действительно видишь</span><button type="button" class="copy button" aria-label="Скопировать промпт «Пусть комната выглядит дорого»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p3">
+    <h2>3. Комната в стиле Pinterest</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Переведи дизайн моей комнаты в стильное, современное пространство, достойное Pinterest. Сначала разбери, что сейчас делает комнату обычной или непривлекательной
+
+Затем создай конкретную дизайн-концепцию: цветовая палитра, расстановка мебели, освещение, отделка стен, текстиль, декор, растения и финальные штрихи. Советы должны быть реальными для настоящего размера и планировки комнаты</span><button type="button" class="copy button" aria-label="Скопировать промпт «Комната в стиле Pinterest»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p4">
+    <h2>4. Преображение комнаты в рамках бюджета</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Я загружу фото комнаты. Переделай её так, чтобы она выглядела намного лучше, с бюджетом максимум <span class="ph">[БЮДЖЕТ]</span>. В первую очередь предлагай изменения, которые дают самый большой визуальный эффект за наименьшие деньги
+
+Скажи, что оставить, убрать, переставить, сделать своими руками, перекрасить или купить. Раздели советы на обязательные, самые заметные и необязательные, чтобы я точно знал, куда тратить деньги</span><button type="button" class="copy button" aria-label="Скопировать промпт «Преображение комнаты в рамках бюджета»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p5">
+    <h2>5. Исправь планировку комнаты</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Проанализируй планировку моей комнаты по загруженному фото. Найди пустующее место, неудобную расстановку мебели, неудобные проходы, визуальный дисбаланс и зоны, из-за которых комната кажется меньше
+
+Затем предложи новую расстановку из мебели, которая у меня уже есть. Объясни, куда именно поставить каждый крупный предмет и почему</span><button type="button" class="copy button" aria-label="Скопировать промпт «Исправь планировку комнаты»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p6">
+    <h2>6. Идеальный подбор цвета и света</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Проанализируй загруженное фото моей комнаты и подбери лучшую цветовую палитру и освещение именно для этого пространства. Учти размер комнаты, дневной свет, мебель, пол, цвет стен и общую атмосферу
+
+Дай конкретные цвета для стен, цветовую температуру ламп, расстановку светильников, советы по шторам и акцентные цвета. Цель: чтобы комната ощущалась <span class="ph">[ПРОСТОРНЕЕ / РОСКОШНО / УЮТНО / СОВРЕМЕННО / СПОКОЙНО]</span></span><button type="button" class="copy button" aria-label="Скопировать промпт «Идеальный подбор цвета и света»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <section class="section reveal" id="p7">
+    <h2>7. Дизайн-аудит всего дома</h2>
+    <div class="group">
+      <div class="row prompt-row"><span class="say prompt">Я загружу фото разных частей своего дома. Разбери их вместе, а не каждую комнату по отдельности. Найди, где не сочетаются цвета, стили мебели, освещение, декор и переходы между комнатами
+
+Затем создай единое направление дизайна для всего дома: общая цветовая палитра, материалы, стиль освещения, подход к мебели и язык декора. Скажи, что менять в первую очередь</span><button type="button" class="copy button" aria-label="Скопировать промпт «Дизайн-аудит всего дома»">Скопировать промпт</button></div>
+    </div>
+  </section>
+
+  <div class="glow reveal" id="club">
+    <aside class="tile tile-club">
+      <p class="tile-title">Хочешь, настрою ИИ за тебя?</p>
+      <p>Под твою задачу, за 90 минут по видео</p>
+      <a class="button" href="https://t.me/rufinlog_guides_bot?start=call_dom" target="_blank" rel="noopener">Записаться на созвон</a>
+      <p class="fine">5&nbsp;000&nbsp;₽. Не заработает, верну деньги</p>
+    </aside>
+  </div>
+
+  <section class="section reveal">
+    <h2>Если что-то пошло не так</h2>
+    <div class="group">
+      <details class="row fix"><summary>Ответ получился общим</summary>
+        <p>Сфотографируй комнату целиком из угла при дневном свете и допиши в конце размер комнаты в метрах</p></details>
+      <details class="row fix"><summary>ChatGPT не видит фото</summary>
+        <p>Проверь, что превью фото стоит над полем ввода, и только потом отправляй промпт</p></details>
+      <details class="row fix"><summary>ChatGPT ответил про скобки, а не по делу</summary>
+        <p>Значит, в промпте остались слова в квадратных скобках. Замени их на своё и отправь ещё раз</p></details>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Гайд от Ильи Руфина. Нейросети простым языком в <a href="https://www.instagram.com/ilya.rufin/" target="_blank" rel="noopener">Instagram</a> и <a href="https://t.me/rufinlog" target="_blank" rel="noopener">Telegram</a></p>
+  <p>Промпты те же, что в карусели, 26 ноября 2026</p>
+</footer>
+
+<div class="toast" role="status" aria-live="polite" hidden></div>
+<div class="vh" id="sr-live" role="status" aria-live="polite"></div>
+<script src="../assets/guide.js?v=32" defer></script>
+</body>
+</html>

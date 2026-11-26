@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>112 кодов ChatGPT для фото | rufinlog</title>
-<meta name="description" content="12 кодов из карусели и ещё 100 на каждый день: свет, погода, камера, стиль, портрет, фон и картинки для бизнеса. Каждый копируется в одно касание">
+<meta name="description" content="20 кодов из каруселей и ещё 100 на каждый день: свет, погода, камера, стиль, портрет, фон и картинки для бизнеса. Каждый копируется в одно касание">
 <meta property="og:title" content="112 кодов ChatGPT для фото">
-<meta property="og:description" content="Прикрепи фото, напиши короткий код, и ChatGPT переделает кадр. 12 кодов из карусели и ещё 100">
+<meta property="og:description" content="Прикрепи фото, напиши короткий код, и ChatGPT переделает кадр. 20 кодов из каруселей и ещё 100">
 <meta property="og:type" content="article">
 <meta property="og:image" content="https://rufinlog.ru/assets/img/kody-og.jpg">
 <meta property="og:image:width" content="1080">
@@ -21,10 +21,12 @@
 <link rel="stylesheet" href="../assets/style.css?v=32">
 <script>document.documentElement.className = "js";</script>
 <style>
-/* «КОДЫ» only (25.11): 112 photo codes for ChatGPT from the carousels 28.11 and 29.11. Shared style.css untouched */
+/* «КОДЫ» only (25.11, +8 from КОДЫ 3 on 26.11): photo codes for ChatGPT from the carousels 27.11, 28.11 and 02.12. Shared style.css untouched */
 .ex-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0 18px; }
 .ex-grid figure { margin: 0; border-radius: var(--r-card); overflow: hidden; background: #EFEDEA; }
 .ex-grid img { display: block; width: 100%; height: auto; }
+.ex-grid.three { grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 4px 0 14px; }
+.ex-grid.three figure { border-radius: 12px; }
 .jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 4px; }
 .jump a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 14px; border-radius: 999px;
   background: var(--pill); color: var(--text); font-size: .8824rem; text-decoration: none; }
@@ -48,7 +50,7 @@ section[id] { scroll-margin-top: 72px; }
 
   <header class="hero">
     <h1>Коды ChatGPT для фото</h1>
-    <p class="sub">Прикрепи фото, напиши короткий код, и ChatGPT переделает кадр. 12 кодов из карусели и ещё 100</p>
+    <p class="sub">Прикрепи фото, напиши короткий код, и ChatGPT переделает кадр. 20 кодов из каруселей и ещё 100</p>
     <p class="meta">Каждый копируется в одно касание</p>
   </header>
 
@@ -68,7 +70,7 @@ section[id] { scroll-margin-top: 72px; }
       <div class="row note">Можно сочетать два кода, например <code>/golden hour</code> + <code>/film grain</code></div>
     </div>
     <nav class="jump" aria-label="Разделы">
-      <a href="#karusel">Коды из карусели</a>
+      <a href="#karusel">Коды из каруселей</a>
       <a href="#svet">Свет и цвет</a>
       <a href="#pogoda">Погода и сезоны</a>
       <a href="#kamera">Камера</a>
@@ -80,7 +82,12 @@ section[id] { scroll-margin-top: 72px; }
   </section>
 
   <section class="section reveal" id="karusel">
-    <h2>Коды из карусели</h2>
+    <h2>Коды из каруселей</h2>
+    <div class="ex-grid three">
+      <figure><img src="../assets/img/kody-darkstage.webp" width="720" height="960" alt="До и после кода /dark stage: парень у озера на солнечном фото и он же на тёмной сцене под софитом" loading="lazy"></figure>
+      <figure><img src="../assets/img/kody-shake.webp" width="720" height="960" alt="До и после кода /camera shake: двое друзей с гитарой на траве и тот же кадр с живой тряской камеры" loading="lazy"></figure>
+      <figure><img src="../assets/img/kody-motion.webp" width="720" height="960" alt="До и после кода /motion blur: парень на стадионе и он же четыре раза подряд в размытии движения" loading="lazy"></figure>
+    </div>
     <div class="group">
       <div class="row cmd kod"><span class="kod-text"><code>/speedshot</code><small>кадр в движении, как на скорости</small></span><button type="button" class="copy" aria-label="Скопировать /speedshot">Скопировать</button></div>
       <div class="row cmd kod"><span class="kod-text"><code>/fog effect</code><small>густой туман вокруг</small></span><button type="button" class="copy" aria-label="Скопировать /fog effect">Скопировать</button></div>
@@ -94,6 +101,14 @@ section[id] { scroll-margin-top: 72px; }
       <div class="row cmd kod"><span class="kod-text"><code>/double exposure</code><small>двойная экспозиция</small></span><button type="button" class="copy" aria-label="Скопировать /double exposure">Скопировать</button></div>
       <div class="row cmd kod"><span class="kod-text"><code>/zoom500</code><small>отъехать от точки до целого пейзажа</small></span><button type="button" class="copy" aria-label="Скопировать /zoom500">Скопировать</button></div>
       <div class="row cmd kod"><span class="kod-text"><code>/zoom100</code><small>подъехать к герою вплотную</small></span><button type="button" class="copy" aria-label="Скопировать /zoom100">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/upscale</code><small>убрать размытость, больше деталей</small></span><button type="button" class="copy" aria-label="Скопировать /upscale">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/dark stage</code><small>ты на тёмной сцене под софитом</small></span><button type="button" class="copy" aria-label="Скопировать /dark stage">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/hills mood</code><small>золотые холмы на закате за спиной</small></span><button type="button" class="copy" aria-label="Скопировать /hills mood">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/camera shake</code><small>живая тряска камеры, движение</small></span><button type="button" class="copy" aria-label="Скопировать /camera shake">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/cosmosdream.png</code><small>ночная мечтательная версия кадра</small></span><button type="button" class="copy" aria-label="Скопировать /cosmosdream.png">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/lofi light</code><small>тёплый мягкий свет и плёночное зерно</small></span><button type="button" class="copy" aria-label="Скопировать /lofi light">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/night mode</code><small>тот же кадр ночью под фонарём</small></span><button type="button" class="copy" aria-label="Скопировать /night mode">Скопировать</button></div>
+      <div class="row cmd kod"><span class="kod-text"><code>/soft blue glow</code><small>мягкое голубое свечение</small></span><button type="button" class="copy" aria-label="Скопировать /soft blue glow">Скопировать</button></div>
     </div>
   </section>
 
